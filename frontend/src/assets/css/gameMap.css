@@ -6,7 +6,7 @@
 .map-container {
   position: relative;
   display: inline-block;
-  background: url("map-usa.png") center center no-repeat;
+  background: url("../images/map-usa.png") center center no-repeat;
   height: 100dvh;
   width: 100dvw;
   display: grid;
