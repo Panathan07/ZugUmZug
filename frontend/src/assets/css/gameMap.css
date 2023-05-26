@@ -1,0 +1,18 @@
+.page-content {
+  height: 100%;
+  width: 100%;
+}
+
+.map-container {
+  position: relative;
+  display: inline-block;
+  background: url("map-usa.png") center center no-repeat;
+  height: 100dvh;
+  width: 100dvw;
+  display: grid;
+  place-items: center;
+  grid-template-rows: repeat(30, 1fr);
+  grid-template-columns: repeat(30, 1fr);
+}
+
+/* TODO: Wellenhintergrund auf vergilbten Papier */
