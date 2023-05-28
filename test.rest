@@ -1,0 +1,9 @@
+GET http://localhost:3000/game/state
+
+###
+
+GET http://localhost:3000/game/start
+
+###
+
+GET http://localhost:3000/game/end
