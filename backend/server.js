@@ -1,6 +1,7 @@
 // node imports
 const http = require('http');
 const express = require('express');
+var cors = require('cors')
 
 // javascript imports
 const Game = require('./game-components/game.js');
@@ -14,6 +15,7 @@ const app = express();
 
 // app configurations
 app.use(express.json())
+app.use(cors())
 
 // routers
 app.get("/game/state", (req, res) => {
@@ -41,8 +43,6 @@ app.get("/game/end", (req, res) => {
     } catch (err) {
         res.status(500);
     }
-
-
 })
 
 
