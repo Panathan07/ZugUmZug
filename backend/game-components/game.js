@@ -1,7 +1,5 @@
 const Status = require("./status.js");
 
-console.log(Status.Started)
-
 class Game {
     constructor(amountTeams) {
         this.colors = ["red", "blue", "green", "yellow", "orange", "black", "white"];
