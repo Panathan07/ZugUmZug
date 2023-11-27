@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\backend",
+    "\\backend\\game-components",
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\assets",
+    "\\frontend\\src\\assets\\roads",
+    "\\frontend\\src\\components"
   ],
-  "SelectedNode": "\\C:\\Users\\Finn\\Source\\Repos\\ZugUmZug",
+  "SelectedNode": "\\backend\\server.js",
   "PreviewInSolutionExplorer": false
 }
