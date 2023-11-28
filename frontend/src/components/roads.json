@@ -1,18 +1,16 @@
 {
   "Denver - Kansas": [
     {
-      "rotation" : 100,
+      "rotation": 100,
       "posy": 9,
       "posx": 10,
-      "color": "blue"
+      "color": "rgb(0,0,255)"
     },
     {
       "rotation": 70,
-      "posy": 9.5,
+      "posy": 10,
       "posx": 11,
-      "color":  "blue"
+      "color": "rgb(0,0,255)"
     }
   ]
-
-
 }

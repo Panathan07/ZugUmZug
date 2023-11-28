@@ -6,7 +6,7 @@ export function Home() {
   return (
     <div className="page-content">
       <div className="map-container">
-        <Road />
+        <Road roadName="Denver - Kansas" />
       </div>
     </div>
   );
