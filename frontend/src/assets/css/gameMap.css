@@ -1,18 +1,39 @@
+body {
+  overflow: hidden;
+}
+
 .page-content {
-  height: 100%;
-  width: 100%;
+  height: 100dvh;
+  width: 100dvw;
+  left: 0;
+  right: 0;
   background: url("../images/Wellen.png");
+  overflow: hidden;
+}
+
+.map-background-image {
+  position: absolute;
+  height: 100dvh;
+  margin: auto;
+  right: 0;
+  left: 0;
+}
+
+@media screen and (orientation: portrait) {
+  .map-background-image {
+    width: 100dvw;
+  }
 }
 
 .map-container {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
   display: inline-block;
-  background: url("../images/map-usa.png") center center no-repeat;
   height: 100dvh;
   width: 100dvw;
   display: grid;
-  grid-template-rows: repeat(30, 1fr);
-  grid-template-columns: repeat(30, 1fr);
 }
 
 /* TODO: Wellenhintergrund auf vergilbten Papier */

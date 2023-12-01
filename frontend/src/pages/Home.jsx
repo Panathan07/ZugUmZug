@@ -1,13 +1,13 @@
 import "../assets/css/gameMap.css";
-import { Road } from "../components/Road";
+import { Map } from "../components/Map";
+
+// import { useEffect, useRef, useState } from "react";
 
 export function Home() {
   // TODO: place one road on game field
   return (
     <div className="page-content">
-      <div className="map-container">
-        <Road roadName="Denver - Kansas" />
-      </div>
+      <Map />
     </div>
   );
 }

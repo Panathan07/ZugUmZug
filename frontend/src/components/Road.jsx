@@ -7,7 +7,7 @@ export function Road({ roadName }) {
   const collectRoadData = (roadName) => {
     let roads = jsondata;
     let output = roads[roadName];
-    console.log(output);
+    // console.log(output);
     return output;
   };
 
