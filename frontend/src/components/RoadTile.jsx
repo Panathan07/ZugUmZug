@@ -7,8 +7,8 @@ export function RoadTile({ color, posx, posy, rotation }) {
       style={{
         transform: "rotate(" + rotation + "deg)",
         background: color,
-        top: posy + "px",
-        left: posx + "px",
+        top: posy + "%",
+        left: posx + "%",
       }}
     ></div>
   );
