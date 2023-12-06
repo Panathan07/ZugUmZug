@@ -17,6 +17,7 @@ body {
   margin: auto;
   right: 0;
   left: 0;
+  z-index: 0;
 }
 
 @media screen and (orientation: portrait) {
@@ -34,6 +35,18 @@ body {
   height: 100dvh;
   width: 100dvw;
   display: grid;
+}
+
+.roads-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.road-tile {
+  position: absolute;
+  width: 30px;
+  height: 20px;
 }
 
 /* TODO: Wellenhintergrund auf vergilbten Papier */
