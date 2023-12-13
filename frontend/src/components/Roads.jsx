@@ -5,8 +5,13 @@ import { useState } from "react";
 export function Roads() {
   const collectRoadData = () => {
     let roads = [];
-    for (let value of Object.values(jsondata)) {
-      roads.push(...value);
+      for (let value of Object.values(jsondata)) {
+          if (value.activatet == 1) {
+              for (let road of value.roads) {
+                  road["color"] = value.color;
+                  roads.push(road)
+              }
+          }
     }
     console.log(roads);
 
