@@ -45,6 +45,14 @@ app.get("/game/end", (req, res) => {
     }
 })
 
+app.get("/teams", (req, res) => {
+    try {
+        res.status(200).json(game.jsonTeamResponse())
+    } catch (err) {
+        res.status(500);
+    }
+})
+
 
 // app listens on port
 app.listen(port, () => console.log(`server started on http://localhost:${port}`));
