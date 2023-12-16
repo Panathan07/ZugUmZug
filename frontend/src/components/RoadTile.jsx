@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-export function RoadTile({ color, posx, posy, rotation }) {
+export function RoadTile({ color, posx, posy, rotation, activated }) {
   return (
     <div
       className="road-tile"

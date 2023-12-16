@@ -5,13 +5,20 @@ import { useState } from "react";
 export function Roads() {
   const collectRoadData = () => {
     let roads = [];
-      for (let value of Object.values(jsondata)) {
-          if (value.activatet == 1) {
-              for (let road of value.roads) {
-                  road["color"] = value.color;
-                  roads.push(road)
-              }
-          }
+    for (let value of Object.values(jsondata)) {
+      let roadGroup = [];
+      if (value.activated == 1) {
+        roadGroup.push(true);
+      } else {
+        roadGroup.push(false);
+      }
+      let roadGroupRoads = [];
+      for (let road of value.roads) {
+        road["color"] = value.color;
+        roadGroupRoads.push(road);
+      }
+      roadGroup.push(roadGroupRoads);
+      roads.push(roadGroup);
     }
     console.log(roads);
 
@@ -21,16 +28,21 @@ export function Roads() {
   const [roads, setRoads] = useState(collectRoadData());
   return (
     <div className="roads-wrapper">
-      {roads.map((roadTile) => (
-        <RoadTile
-          key={roads.indexOf(roadTile)}
-          className="road-tile"
-          color={roadTile.color}
-          rotation={roadTile.rotation}
-          posx={roadTile.posx}
-          posy={roadTile.posy}
-        />
-      ))}
+      {roads.map((roadGroup) =>
+        roadGroup[1].map((roadTile) => (
+          <RoadTile
+            key={
+              roadGroup[1].indexOf(roadTile) + 100 * roads.indexOf(roadGroup)
+            }
+            className="road-tile"
+            color={roadTile.color}
+            rotation={roadTile.rotation}
+            posx={roadTile.posx}
+            posy={roadTile.posy}
+            activated={roadGroup[0]}
+          />
+        ))
+      )}
     </div>
   );
 }
