@@ -45,8 +45,9 @@ body {
 
 .road-tile {
   position: absolute;
-  width: 3%;
-  height: 1%;
+  width: 3.6%;
+  height: 1.9%;
+  transform-origin: top left;
 }
 
 /* TODO: Wellenhintergrund auf vergilbten Papier */
