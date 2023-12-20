@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import map from "../assets/images/map-usa.png";
+import map from "../../assets/images/map-usa.png";
 import { Roads } from "./Roads";
+import { BuyRoadPopUp } from "./BuyRoadPopUp";
 
 export function Map() {
   const [mapImageSize, setMapImageSize] = useState({ width: 100, height: 200 });
@@ -42,6 +43,7 @@ export function Map() {
       >
         <Roads />
       </div>
+      <BuyRoadPopUp></BuyRoadPopUp>
     </div>
   );
 }

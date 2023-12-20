@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-export function RoadTile({ color, posx, posy, rotation, activated }) {
+export function RoadTile({ onClick, color, posx, posy, rotation, activated }) {
   return (
     <div
       className="road-tile"
@@ -12,8 +12,14 @@ export function RoadTile({ color, posx, posy, rotation, activated }) {
               top: posy + "%",
               left: posx + "%",
             }
-          : { display: "none" }
+          : {
+              transform: "rotate(" + rotation + "deg)",
+              background: "transparent",
+              top: posy + "%",
+              left: posx + "%",
+            }
       }
+      onClick={onClick}
     ></div>
   );
 }
