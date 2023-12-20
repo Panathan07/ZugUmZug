@@ -1,5 +1,5 @@
 import { RoadTile } from "./RoadTile";
-import jsondata from "./roads.json";
+import jsondata from "../roads.json";
 import { useState } from "react";
 
 export function Roads() {
@@ -20,12 +20,23 @@ export function Roads() {
       roadGroup.push(roadGroupRoads);
       roads.push(roadGroup);
     }
-    console.log(roads);
+    // console.log(roads);
 
     return roads;
   };
 
   const [roads, setRoads] = useState(collectRoadData());
+
+  const roadOnClick = (oldState, roadGroupIndex) => {
+    changeActivityState((oldState + 1) % 2, roadGroupIndex);
+  };
+
+  const changeActivityState = (newState, roadGroupIndex) => {
+    let newRoads = [...roads];
+    newRoads[roadGroupIndex][0] = newState;
+    setRoads(newRoads);
+  };
+
   return (
     <div className="roads-wrapper">
       {roads.map((roadGroup) =>
@@ -40,6 +51,7 @@ export function Roads() {
             posx={roadTile.posx}
             posy={roadTile.posy}
             activated={roadGroup[0]}
+            onClick={() => roadOnClick(roadGroup[0], roads.indexOf(roadGroup))}
           />
         ))
       )}
