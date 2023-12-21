@@ -1,3 +1,3 @@
 export function BuyRoadPopUp() {
-  return <div>BuyRoadPopUp</div>;
+  return <div></div>;
 }

@@ -1,5 +1,5 @@
 import { RoadTile } from "./RoadTile";
-import jsondata from "../roads.json";
+import jsondata from "./roads.json";
 import { useState } from "react";
 
 export function Roads() {
