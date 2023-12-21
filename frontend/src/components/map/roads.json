@@ -1,7 +1,7 @@
 {
   "Atlanta - Charleston": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 2,
@@ -17,7 +17,7 @@
   },
   "Atlanta - Miami": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 51,
@@ -48,7 +48,7 @@
   },
   "Atlanta - New Orleans": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -69,
@@ -74,7 +74,7 @@
   },
   "Atlanta - Raleigh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -42,
@@ -90,7 +90,7 @@
   },
   "Boston - Montreal": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 39,
@@ -106,7 +106,7 @@
   },
   "Boston - New York": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -58,
@@ -122,7 +122,7 @@
   },
   "Calgary - Helena": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 50,
@@ -148,7 +148,7 @@
   },
   "Calgary - Winnipeg": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -24,
@@ -184,7 +184,7 @@
   },
   "Charleston - Miami": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 87,
@@ -210,7 +210,7 @@
   },
   "Chicago - Pittsburgh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -16,
@@ -231,7 +231,7 @@
   },
   "Chicago - Saint Louis": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -57,
@@ -247,7 +247,7 @@
   },
   "Chicago - Toronto": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -45,
@@ -273,7 +273,7 @@
   },
   "Dallas - Little Rock": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -55,
@@ -289,7 +289,7 @@
   },
   "Dallas - Oklahoma City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 82,
@@ -305,7 +305,7 @@
   },
   "Dallas - Houston": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 48,
@@ -316,7 +316,7 @@
   },
   "Denver - Kansas City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 1,
@@ -342,7 +342,7 @@
   },
   "Denver - Oklahoma City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 44,
@@ -368,7 +368,7 @@
   },
   "Denver - Omaha": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -38,
@@ -394,7 +394,7 @@
   },
   "Denver - Salt Lake City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 11,
@@ -415,7 +415,7 @@
   },
   "Duluth - Chicago": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 30,
@@ -436,7 +436,7 @@
   },
   "Duluth - Omaha": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -68,
@@ -452,7 +452,7 @@
   },
   "Duluth - Sault St. Marie": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -23,
@@ -473,7 +473,7 @@
   },
   "Duluth - Toronto": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -10,
@@ -509,7 +509,7 @@
   },
   "El Paso - Dallas": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -9,
@@ -535,7 +535,7 @@
   },
   "El Paso - Houston": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 30,
@@ -571,7 +571,7 @@
   },
   "El Paso - Oklahoma City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -17,
@@ -602,7 +602,7 @@
   },
   "Helena - Denver": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 68,
@@ -628,7 +628,7 @@
   },
   "Helena - Duluth": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -1,
@@ -664,7 +664,7 @@
   },
   "Helena - Omaha": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 22,
@@ -695,7 +695,7 @@
   },
   "Helena - Winnipeg": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -45,
@@ -721,7 +721,7 @@
   },
   "Houston - Dallas": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 48,
@@ -732,7 +732,7 @@
   },
   "Houston - New Orleans": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -9,
@@ -748,7 +748,7 @@
   },
   "Kansas City - Denver": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 1,
@@ -774,7 +774,7 @@
   },
   "Kansas City - Oklahoma City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 106,
@@ -790,7 +790,7 @@
   },
   "Kansas City - Omaha": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 64,
@@ -801,7 +801,7 @@
   },
   "Kansas City - Saint Louis": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -1,
@@ -817,7 +817,7 @@
   },
   "Las Vegas - Salt Lake City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -45,
@@ -838,7 +838,7 @@
   },
   "Little Rock - Nashville": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -7,
@@ -859,7 +859,7 @@
   },
   "Little Rock - New Orleans": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 62,
@@ -880,7 +880,7 @@
   },
   "Little Rock - Saint Louis": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -76,
@@ -896,7 +896,7 @@
   },
   "Los Angeles - El Paso": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 36,
@@ -932,7 +932,7 @@
   },
   "Los Angeles - Las Vegas": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -64,
@@ -948,7 +948,7 @@
   },
   "Los Angeles - Phoenix": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -8,
@@ -969,7 +969,7 @@
   },
   "Los Angeles - San Francisco": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 67,
@@ -990,7 +990,7 @@
   },
   "Montreal - Boston": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 39,
@@ -1006,7 +1006,7 @@
   },
   "Montreal - New York": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 81,
@@ -1027,7 +1027,7 @@
   },
   "Nashville - Atlanta": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 35,
@@ -1038,7 +1038,7 @@
   },
   "Nashville - Pittsburgh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -63,
@@ -1064,7 +1064,7 @@
   },
   "Nashville - Raleigh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -32,
@@ -1085,7 +1085,7 @@
   },
   "New Orleans - Atlanta": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -69,
@@ -1111,7 +1111,7 @@
   },
   "New Orleans - Miami": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -31,
@@ -1147,7 +1147,7 @@
   },
   "New York - Boston": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -58,
@@ -1163,7 +1163,7 @@
   },
   "New York - Pittsburgh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -31,
@@ -1179,7 +1179,7 @@
   },
   "New York - Washington": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 86,
@@ -1195,7 +1195,7 @@
   },
   "Oklahoma City - Dallas": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 82,
@@ -1211,7 +1211,7 @@
   },
   "Oklahoma City - Kansas City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 106,
@@ -1227,7 +1227,7 @@
   },
   "Oklahoma City - Little Rock": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -2,
@@ -1243,7 +1243,7 @@
   },
   "Omaha - Chicago": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -34,
@@ -1269,7 +1269,7 @@
   },
   "Omaha - Duluth": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -68,
@@ -1285,7 +1285,7 @@
   },
   "Omaha - Kansas City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 64,
@@ -1296,7 +1296,7 @@
   },
   "Phoenix - Denver": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -68,
@@ -1327,7 +1327,7 @@
   },
   "Phoenix - El Paso": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 16,
@@ -1348,7 +1348,7 @@
   },
   "Phoenix - Santa Fe": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -24,
@@ -1369,7 +1369,7 @@
   },
   "Pittsburgh - Chicago": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 3,
@@ -1390,7 +1390,7 @@
   },
   "Pittsburgh - New York": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -31,
@@ -1406,7 +1406,7 @@
   },
   "Pittsburgh - Raleigh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 77,
@@ -1422,7 +1422,7 @@
   },
   "Pittsburgh - Washington": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 28,
@@ -1438,7 +1438,7 @@
   },
   "Portland - Salt Lake City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 12,
@@ -1474,7 +1474,7 @@
   },
   "Portland - San Francisco": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 113,
@@ -1505,7 +1505,7 @@
   },
   "Portland - Seattle": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 112,
@@ -1516,7 +1516,7 @@
   },
   "Raleigh - Atlanta": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -42,
@@ -1532,7 +1532,7 @@
   },
   "Raleigh - Charleston": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 35,
@@ -1548,7 +1548,7 @@
   },
   "Raleigh - Washington": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -50,
@@ -1564,7 +1564,7 @@
   },
   "Saint Louis - Chicago": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -57,
@@ -1580,7 +1580,7 @@
   },
   "Saint Louis - Kansas City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -1,
@@ -1596,7 +1596,7 @@
   },
   "Saint Louis - Nashville": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 17,
@@ -1612,7 +1612,7 @@
   },
   "Saint Louis - Pittsburgh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -30,
@@ -1643,7 +1643,7 @@
   },
   "Salt Lake City - Denver": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 11,
@@ -1664,7 +1664,7 @@
   },
   "Salt Lake City - Helena": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -59.5,
@@ -1685,7 +1685,7 @@
   },
   "Salt Lake City - San Francisco": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -19,
@@ -1716,7 +1716,7 @@
   },
   "San Francisco - Los Angeles": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 67,
@@ -1737,7 +1737,7 @@
   },
   "San Francisco - Portland": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 113,
@@ -1768,7 +1768,7 @@
   },
   "San Francisco - Salt Lake City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -19,
@@ -1799,7 +1799,7 @@
   },
   "Santa Fe - Denver": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 93,
@@ -1815,7 +1815,7 @@
   },
   "Santa Fe - El Paso": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 93,
@@ -1831,7 +1831,7 @@
   },
   "Santa Fe - Oklahoma City": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -7,
@@ -1852,7 +1852,7 @@
   },
   "Sault St. Marie - Montreal": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -41,
@@ -1883,7 +1883,7 @@
   },
   "Sault St. Marie - Toronto": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 13,
@@ -1899,7 +1899,7 @@
   },
   "Seattle - Calgary": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 0,
@@ -1925,7 +1925,7 @@
   },
   "Seattle - Helena": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 13,
@@ -1961,7 +1961,7 @@
   },
   "Seattle - Portland": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 112,
@@ -1972,7 +1972,7 @@
   },
   "Seattle - Vancouver": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 90,
@@ -1983,7 +1983,7 @@
   },
   "Toronto - Montreal": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -60,
@@ -2004,7 +2004,7 @@
   },
   "Toronto - Pittsburgh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 86,
@@ -2020,7 +2020,7 @@
   },
   "Vancouver - Calgary": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -6,
@@ -2041,7 +2041,7 @@
   },
   "Vancouver - Seattle": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 90,
@@ -2052,7 +2052,7 @@
   },
   "Washington - New York": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 86,
@@ -2068,7 +2068,7 @@
   },
   "Washington - Raleigh": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": -50,
@@ -2084,7 +2084,7 @@
   },
   "Winnipeg - Duluth": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 44,
@@ -2110,7 +2110,7 @@
   },
   "Winnipeg - Sault St. Marie": {
     "color": "rgb(0,0,255)",
-    "activated": 1,
+    "activated": 0,
     "roads": [
       {
         "rotation": 12,
