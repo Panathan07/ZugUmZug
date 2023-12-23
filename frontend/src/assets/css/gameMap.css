@@ -48,6 +48,9 @@ body {
   width: 3.6%;
   height: 1.9%;
   transform-origin: top left;
+  transition-property: background-color;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
 }
 
 .road-tile:hover {

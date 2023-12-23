@@ -24,7 +24,6 @@ export function Map() {
       window.removeEventListener("load", handleResize);
     };
   }, [mapImageSize.height, mapImageSize.width]);
-  //   useEffect(() => console.log(mapImageWidth), [mapImageWidth]);
 
   return (
     <div className="map-wrapper">

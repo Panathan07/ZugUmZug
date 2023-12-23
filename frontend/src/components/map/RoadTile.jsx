@@ -11,18 +11,12 @@ export function RoadTile({ onClick, color, posx, posy, rotation, activated }) {
               background: color,
               top: posy + "%",
               left: posx + "%",
-              transitionProperty: "background",
-              transitionDuration: "0.1s",
-              transitionTimingFunction: "linear",
             }
           : {
               transform: "rotate(" + rotation + "deg)",
               background: "transparent",
               top: posy + "%",
               left: posx + "%",
-              transitionProperty: "background",
-              transitionDuration: "0.1s",
-              transitionTimingFunction: "linear",
             }
       }
       onClick={onClick}
