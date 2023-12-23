@@ -3,7 +3,7 @@ class Team {
         this.color = color;
         this.points = 0;
         this.name = color;
-        this.member = [];
+        this.members = [];
         this.tasks = [];
         this.roads = {
             "yellow": 0,

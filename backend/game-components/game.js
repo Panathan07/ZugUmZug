@@ -2,7 +2,7 @@ const Status = require("./status.js");
 const Team = require("./teams.js")
 class Game {
     constructor(amountTeams) {
-        this.colors = ["red", "blue", "green", "yellow", "orange", "black", "white"];
+        this.colors = ["blue", "green", "yellow", "red",    "orange", "black", "white"];
         this.amountTeams = amountTeams;
         this.state = Status.NotStarted;
         this.teams = []
@@ -26,11 +26,16 @@ class Game {
     }
     jsonTeamResponse() {
         this.response = {
-            teams: this.teams,
-            amountTeams: this.amountTeams
+            teams: this.teams
         }
 
         return this.response
+    }
+    addIP(IP, team) {
+        this.teams[parseInt(team)].members.push(IP);
+    }
+    loghey() {
+        console.log("hey")
     }
 }
 

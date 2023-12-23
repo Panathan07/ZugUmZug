@@ -1,9 +1,9 @@
 import React from 'react'
 
 export default function PointShop() {
-  return (
-    <div>
-      
+    return (
+        <div>
+            
     </div>
   )
 }

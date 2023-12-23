@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import map from "../assets/images/map-usa.png";
+import map from "../../assets/images/map-usa.png";
 import { Roads } from "./Roads";
 
 export function Map() {
