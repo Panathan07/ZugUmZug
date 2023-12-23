@@ -2,10 +2,11 @@
 const fs = require("fs");
 const http = require('http');
 const express = require('express');
-var cors = require('cors')
+const cors = require('cors')
+const bodyParser = require('body-parser');
 
 // javascript imports
-const Game = require('./game-components/game.js');
+const Game = require('./gameComponents/game.js');
 const getUUID = require("./utilityFunctions/getUUID")
 // setting variables
 const port = 3000;
@@ -14,14 +15,14 @@ const corsOptions = {
     origin: "*",
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
-    
+
 }
 const usedUUIDs = JSON.parse(fs.readFileSync("./UUID.json"));
 // building app
 const app = express();
 
 // app configurations
-app.use(express.json()) 
+app.use(express.json())
 app.use(cors(corsOptions))
 app.use(function (req, res, next) {
 
@@ -41,6 +42,10 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // routers
 app.get("/game/state", (req, res) => {
@@ -69,6 +74,15 @@ app.get("/game/end", (req, res) => {
         res.status(500);
     }
 })
+app.get("/game/unique-random-user-ID", (req, res) => {
+    try {
+        let uuid = getUUID(usedUUIDs.UUIDs);
+        fs.writeFileSync("./UUID.json", JSON.stringify(usedUUIDs))
+        res.status(200).json({ "UUID": uuid })
+    } catch (err) {
+        res.status(500);
+    }
+})
 
 app.get("/teams", (req, res) => {
     try {
@@ -77,19 +91,30 @@ app.get("/teams", (req, res) => {
         res.status(500);
     }
 })
-app.get("/game/unique-random-user-ID", (req, res) => {
+
+app.get("/teams/member-exists", (req, res) => {
     try {
-        let uuid = getUUID(usedUUIDs.UUIDs);
-        fs.writeFileSync("./UUID.json", JSON.stringify(usedUUIDs))
-        res.status(200).json({ "uuid": uuid })
+        let userID = req.query.userID;
+        let teams = game.jsonTeamResponse().teams;
+        let exists = false;
+        teams.map((team) => {
+            if (team.hasMember(userID)) exists = true;
+        })
+        res.status(200).json({ "userExists": exists })
     } catch (err) {
         res.status(500);
     }
 })
-app.get("/teams/:ip/:team", (req, res) => {
+
+app.post("/teams/addMember", (req, res) => {
     try {
-        game.addIP(req.params.ip, req.params.team);
-        res.status(200).json({stat:"hello"});
+        const team = req.body.team;
+        const userID = req.body.userID;
+        const teams = game.getTeams();
+
+        teams[team].addMember(userID)
+        // console.log(team, userID)
+        res.status(200).json(teams)
     } catch {
         res.status(500);
     }
