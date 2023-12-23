@@ -1,11 +1,12 @@
 // node imports
+const fs = require("fs");
 const http = require('http');
 const express = require('express');
 var cors = require('cors')
 
 // javascript imports
 const Game = require('./game-components/game.js');
-
+const getUUID = require("./utilityFunctions/getUUID")
 // setting variables
 const port = 3000;
 const game = new Game(4)
@@ -15,6 +16,7 @@ const corsOptions = {
     optionSuccessStatus: 200,
     
 }
+const usedUUIDs = JSON.parse(fs.readFileSync("./UUID.json"));
 // building app
 const app = express();
 
@@ -71,6 +73,15 @@ app.get("/game/end", (req, res) => {
 app.get("/teams", (req, res) => {
     try {
         res.status(200).json(game.jsonTeamResponse())
+    } catch (err) {
+        res.status(500);
+    }
+})
+app.get("/game/unique-random-user-ID", (req, res) => {
+    try {
+        let uuid = getUUID(usedUUIDs.UUIDs);
+        fs.writeFileSync("./UUID.json", JSON.stringify(usedUUIDs))
+        res.status(200).json({ "uuid": uuid })
     } catch (err) {
         res.status(500);
     }
