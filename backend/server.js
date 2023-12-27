@@ -7,7 +7,11 @@ const bodyParser = require('body-parser');
 
 // javascript imports
 const Game = require('./gameComponents/game.js');
-const getUUID = require("./utilityFunctions/getUUID")
+const { handleUserID, userIDInTeam } = require("./utilityFunctions/userIDHandler.js");
+const JSONStorage = require("./gameComponents/JSONStorage.js");
+
+
+
 // setting variables
 const port = 3000;
 const game = new Game(4)
@@ -15,9 +19,13 @@ const corsOptions = {
     origin: "*",
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200,
-
 }
-const usedUUIDs = JSON.parse(fs.readFileSync("./UUID.json"));
+const userIDFilePath = "./UserIDs.json";
+const userIDStorageLayout = {
+    "UserIDs": []
+}
+const userIDStorage = new JSONStorage(`${userIDFilePath}`, userIDStorageLayout, "UserIDs");
+
 // building app
 const app = express();
 
@@ -74,11 +82,11 @@ app.get("/game/end", (req, res) => {
         res.status(500);
     }
 })
-app.get("/game/unique-random-user-ID", (req, res) => {
+app.get("/userID/instantiate", (req, res) => {
     try {
-        let uuid = getUUID(usedUUIDs.UUIDs);
-        fs.writeFileSync("./UUID.json", JSON.stringify(usedUUIDs))
-        res.status(200).json({ "UUID": uuid })
+        let incomingUserID = req.query.userID;
+        let response = handleUserID(incomingUserID, userIDStorage, game.getTeams())
+        res.status(200).json(response);
     } catch (err) {
         res.status(500);
     }
@@ -92,21 +100,18 @@ app.get("/teams", (req, res) => {
     }
 })
 
-app.get("/teams/member-exists", (req, res) => {
+app.get("/teams/members/exists", (req, res) => {
     try {
         let userID = req.query.userID;
-        let teams = game.jsonTeamResponse().teams;
-        let exists = false;
-        teams.map((team) => {
-            if (team.hasMember(userID)) exists = true;
-        })
+        let teams = game.getTeams();
+        let exists = userIDInTeam(userID, teams)
         res.status(200).json({ "userExists": exists })
     } catch (err) {
         res.status(500);
     }
 })
 
-app.post("/teams/addMember", (req, res) => {
+app.post("/teams/members/add", (req, res) => {
     try {
         const team = req.body.team;
         const userID = req.body.userID;
@@ -119,6 +124,17 @@ app.post("/teams/addMember", (req, res) => {
         res.status(500);
     }
 })
+
+/*TODO: 
+    - frontend sammelt userID von localstorage (Wert oder null)
+    - frontend sendet http Request an backend 
+    - backend generiert neue User Id, wenn keine vorhanden und fügt sie der json hinzu
+    - backend schaut, ob User Id schon vorhanden 
+    - backend sendet json zurück mit userId und ob sie existert
+
+
+
+*/
 
 
 // app listens on port

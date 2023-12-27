@@ -1,21 +1,19 @@
-import React from 'react'
 import "../assets/css/login.css";
-import { getIP } from "../user/getUserData.js";
-export default function Login() {
-    return (
-        <div className="login-grid">
-            <button  class="item-1" className="button" style={{ backgroundColor: "blue" }}>
-                select <br></br> Team blue
-            </button>
-            <button class="item-2" className="button" style={{ backgroundColor: "green" }}>
-                select <br></br> Team green
-            </button>
-            <button class="item-3" className="button" style={{ backgroundColor: "yellow" }}>
-                select <br></br> Team yellow
-            </button>
-            <button class="item-4" className="button" style={{ backgroundColor: "red" }}>
-                select <br></br> Team Red
-            </button>
-        </div>
-    );
+export function Login() {
+  return (
+    <div className="login-grid">
+      <button className="item-1 button" style={{ backgroundColor: "blue" }}>
+        select <br></br> Team blue
+      </button>
+      <button className="item-2 button" style={{ backgroundColor: "green" }}>
+        select <br></br> Team green
+      </button>
+      <button className="item-3 button" style={{ backgroundColor: "yellow" }}>
+        select <br></br> Team yellow
+      </button>
+      <button className="item-4 button" style={{ backgroundColor: "red" }}>
+        select <br></br> Team Red
+      </button>
+    </div>
+  );
 }

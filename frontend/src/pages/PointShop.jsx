@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function PointShop() {
-    return (
-        <div>
-            
-    </div>
-  )
+export function PointShop() {
+  return <div></div>;
 }

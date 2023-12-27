@@ -1,61 +1,29 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
-import PointShop from "./pages/PointShop";
-import Login from "./pages/LoginPage";
-import fs from "fs";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useState } from "react";
+import { MapPage } from "./pages/MapPage";
+import { PointShop } from "./pages/PointShop";
+import { Login } from "./pages/LoginPage";
+import { useUserID } from "./hooks/useUserID";
 import { useEffect } from "react";
-import { getUUIDFromServer } from "./utilityFunctions/getUUIDFromServer";
+import { NavigationBar } from "./pages/Navigation";
 
 export default function App() {
-  const [UUID, setUUID] = useLocalStorage("uuid", false);
+  const [userID, setUserID, userIDInTeam] = useUserID(
+    "http://localhost:3000/userID/instantiate"
+  );
+  useEffect(() => {
+    console.log(userID, userIDInTeam);
+  }, [userID, userIDInTeam]);
 
-  if (UUID) {
-    return (
-      <Routes>
-        <Route path="/map" element={<Home />} />
-        <Route path="/shop" element={<PointShop />} />
-      </Routes>
-    );
-  } else {
-    return (
-      <Routes>
-        <Route path="/" element={<Login />} />
-      </Routes>
-    );
-  }
+  return (
+    <>
+      {/* <NavigationBar /> */}
+      <div className="container">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/shop" element={<PointShop />} />
+        </Routes>
+      </div>
+    </>
+  );
 }
-
-// isipused(IP)
-
-function isipused(IP) {
-  fetch("http://localhost:3000/teams")
-    .then((response) => {
-      return response.json();
-    })
-    .then((teams) => {
-      for (let team of teams.teams) {
-        if (team.members.includes(IP)) {
-          let user_team = {
-            team: team.color,
-          };
-          let data = JSON.stringify(user_team);
-          fs.writeFile("user_data.json", data, (error) => {
-            // throwing the error
-            // in case of a writing problem
-            if (error) {
-              // logging the error
-              console.error(error);
-
-              throw error;
-            }
-          });
-          return true;
-        }
-        return false;
-      }
-    });
-}
-
-function isUUIDInTeam(UUID) {}
