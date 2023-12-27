@@ -23,6 +23,7 @@ body {
 @media screen and (orientation: portrait) {
   .map-background-image {
     width: 100dvw;
+    height: auto;
   }
 }
 
