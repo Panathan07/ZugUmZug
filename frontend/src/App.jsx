@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <>
-      {/* <NavigationBar /> */}
+      <NavigationBar />
       <div className="container">
         <Routes>
           <Route path="/login" element={<Login />} />

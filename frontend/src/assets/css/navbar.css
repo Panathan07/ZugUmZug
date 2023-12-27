@@ -1,0 +1,46 @@
+.navbar {
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  z-index: 2;
+  left: -20%;
+  transition-duration: 0.1s;
+  transition-property: all;
+  transition-timing-function: linear;
+}
+
+.navbar.active {
+  backdrop-filter: blur(2px) brightness(70%);
+  left: 0;
+}
+
+.navbar-wrapper {
+  background: white;
+  height: 100%;
+  width: 15rem;
+  margin-right: 2px;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  -webkit-box-shadow: 2px 0px 5px 2px #4f5461;
+  box-shadow: 2px 0px 5px 2px #4f5461;
+}
+
+.navbar-header {
+  height: 3rem;
+  width: 100%;
+  box-shadow: -5px 2px 5px 1px #4f5461;
+}
+
+.navbar-content {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.show-navbar {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+}

@@ -1,23 +1,24 @@
-body {
-  overflow: hidden;
-}
-
 .page-content {
-  height: 100dvh;
-  width: 100dvw;
+  height: 100%;
+  width: 100%;
   left: 0;
   right: 0;
   background: url("../images/Wellen.png");
+  background: grey;
   overflow: hidden;
+}
+
+.map-wrapper {
+  height: 100%;
+  width: 100%;
 }
 
 .map-background-image {
   position: absolute;
-  height: 100dvh;
+  height: 100%;
   margin: auto;
   right: 0;
   left: 0;
-  z-index: 0;
 }
 
 @media screen and (orientation: portrait) {
