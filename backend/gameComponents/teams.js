@@ -3,7 +3,7 @@ class Team {
         this.color = color;
         this.points = 0;
         this.name = color;
-        this.member = [];
+        this.members = [];
         this.tasks = [];
         this.roads = {
             "yellow": 0,
@@ -27,7 +27,18 @@ class Team {
     }
     removetask(task) {
         let index = this.tasks.indexOf(task);
-        this.tasks.splice(index,1)
+        this.tasks.splice(index, 1)
+    }
+
+    addMember(memberID) {
+        this.members.push(memberID);
+    }
+    removeMember(memberID) {
+        if (!this.hasMember(memberID)) return;
+        this.members.splice(this.members.indexOf(memberID), 1)
+    }
+    hasMember(memberID) {
+        return this.members.includes(memberID)
     }
 
 }
