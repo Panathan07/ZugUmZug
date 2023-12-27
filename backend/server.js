@@ -56,6 +56,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // routers
+
 app.get("/game/state", (req, res) => {
     try {
         let json = game.jsonResponse()
@@ -139,3 +140,5 @@ app.post("/teams/members/add", (req, res) => {
 
 // app listens on port
 app.listen(port, () => console.log(`server started on http://localhost:${port}`));
+
+module.exports = game

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 export function RoadTile({ onClick, color, posx, posy, rotation, activated }) {
   return (
     <div
