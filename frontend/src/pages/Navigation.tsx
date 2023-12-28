@@ -1,17 +1,8 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import "../assets/css/navbar.css";
 import { useState } from "react";
+import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import React from "react";
-
-const TanStackRouterDevtools =
-  process.env.NODE_ENV === "production"
-    ? () => null // Render nothing in production
-    : React.lazy(() =>
-        // Lazy load in development
-        import("@tanstack/router-devtools").then((res) => ({
-          default: res.TanStackRouterDevtools,
-        }))
-      );
 
 export function NavigationBar() {
   const [isActive, setIsActive] = useState(false);
@@ -20,7 +11,10 @@ export function NavigationBar() {
 
   return (
     <>
-      <div className="show-navbar button"></div>
+      <div
+        className="show-navbar button"
+        onClick={() => setIsActive((prev) => !prev)}
+      ></div>
       <nav className={navbarClasses}>
         <div className="navbar-wrapper">
           <section className="navbar-header">
@@ -38,9 +32,9 @@ export function NavigationBar() {
             </div>
           </section>
         </div>
-        <Outlet />
-        <TanStackRouterDevtools />
       </nav>
+      <Outlet />
+      <TanStackRouterDevtools />
     </>
   );
 }

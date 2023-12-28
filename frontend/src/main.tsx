@@ -13,6 +13,8 @@ import App from "./App.tsx";
 import { MapPage } from "./pages/MapPage";
 import { PointShop } from "./pages/PointShop";
 import { Login } from "./pages/LoginPage";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
 
 const rootRoute = new RootRoute({
   component: App,
@@ -60,8 +62,12 @@ declare module "@tanstack/react-router" {
   }
 }
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

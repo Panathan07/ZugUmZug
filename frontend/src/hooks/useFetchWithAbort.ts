@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-export const useFetchWithAbort = (url, config = {}) => {
-  const [data, setData] = useState(null);
+export const useFetchWithAbort = (url: string, config = {}) => {
+  const [data, setData] = useState<object | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [fetchError, setFetchError] = useState<Error | null>(null);
 
   useEffect(() => {
-    let controller = new AbortController();
+    const controller = new AbortController();
     const fetchData = async () => {
       try {
         const response = await fetch(url, {
@@ -17,9 +17,9 @@ export const useFetchWithAbort = (url, config = {}) => {
         setData(result);
         setIsLoading(false);
       } catch (error) {
-        if (error.name === "AbortError") {
+        if (error instanceof Error) {
           console.log(error.message);
-          setError(error);
+          setFetchError(error);
           setIsLoading(false);
         }
       }
@@ -32,5 +32,5 @@ export const useFetchWithAbort = (url, config = {}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
-  return [data, isLoading, error];
+  return [data, isLoading, fetchError];
 };
