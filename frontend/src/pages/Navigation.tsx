@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "@tanstack/react-router";
 import "../assets/css/navbar.css";
 import { useState } from "react";
+import React from "react";
+
+const TanStackRouterDevtools =
+  process.env.NODE_ENV === "production"
+    ? () => null // Render nothing in production
+    : React.lazy(() =>
+        // Lazy load in development
+        import("@tanstack/router-devtools").then((res) => ({
+          default: res.TanStackRouterDevtools,
+        }))
+      );
 
 export function NavigationBar() {
   const [isActive, setIsActive] = useState(false);
@@ -27,6 +38,8 @@ export function NavigationBar() {
             </div>
           </section>
         </div>
+        <Outlet />
+        <TanStackRouterDevtools />
       </nav>
     </>
   );
