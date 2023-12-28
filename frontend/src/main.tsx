@@ -7,14 +7,15 @@ import {
   Route,
   Router,
 } from "@tanstack/react-router";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import App from "./App.tsx";
 
 import { MapPage } from "./pages/MapPage";
 import { PointShop } from "./pages/PointShop";
 import { Login } from "./pages/LoginPage";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { QueryClient } from "@tanstack/react-query";
 
 const rootRoute = new RootRoute({
   component: App,
@@ -68,6 +69,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>
 );
