@@ -2,55 +2,55 @@ import { RoadTile } from "./RoadTile";
 import jsondata from "./roads.json";
 import { useState } from "react";
 
+type RoadGroup = {
+  activated: boolean;
+  color: string;
+  roads: { rotation: number; posx: number; posy: number }[];
+};
+
 export function Roads() {
   const collectRoadData = () => {
     const roads = [];
     for (const value of Object.values(jsondata)) {
-      const roadGroup = [];
-      if (value.activated == 1) {
-        roadGroup.push(true);
-      } else {
-        roadGroup.push(false);
-      }
-      const roadGroupRoads = [];
-      for (const road of value.roads) {
-        road["color"] = value.color;
-        roadGroupRoads.push(road);
-      }
-      roadGroup.push(roadGroupRoads);
+      const roadGroup: RoadGroup = {
+        activated: value.activated === 1 ? true : false,
+        color: value.color,
+        roads: value.roads,
+      };
       roads.push(roadGroup);
     }
-    // console.log(roads);
 
     return roads;
   };
 
   const [roads, setRoads] = useState(collectRoadData());
 
-  const roadOnClick = (oldState, roadGroupIndex) => {
-    changeActivityState((oldState + 1) % 2, roadGroupIndex);
+  const roadOnClick = (oldState: boolean, roadGroupIndex: number): void => {
+    changeActivityState(!oldState, roadGroupIndex);
   };
 
-  const changeActivityState = (newState, roadGroupIndex) => {
+  const changeActivityState = (newState: boolean, roadGroupIndex: number) => {
     const newRoads = [...roads];
-    newRoads[roadGroupIndex][0] = newState;
+    newRoads[roadGroupIndex].activated = newState;
     setRoads(newRoads);
   };
 
   return (
     <div className="roads-wrapper">
       {roads.map((roadGroup) =>
-        roadGroup[1].map((roadTile) => (
+        roadGroup.roads.map((roadTile) => (
           <RoadTile
             key={
-              roadGroup[1].indexOf(roadTile) + 100 * roads.indexOf(roadGroup)
+              roadGroup.roads.indexOf(roadTile) + 100 * roads.indexOf(roadGroup)
             }
-            color={roadTile.color}
+            color={roadGroup.color}
             rotation={roadTile.rotation}
             posx={roadTile.posx}
             posy={roadTile.posy}
-            activated={roadGroup[0]}
-            onClick={() => roadOnClick(roadGroup[0], roads.indexOf(roadGroup))}
+            activated={roadGroup.activated}
+            onClick={() =>
+              roadOnClick(roadGroup.activated, roads.indexOf(roadGroup))
+            }
           />
         ))
       )}
