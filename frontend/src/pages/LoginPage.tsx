@@ -1,19 +1,37 @@
+import React from "react";
 import "../assets/css/login.css";
+import { useTeamData } from "../hooks/useTeamData";
+
 export function Login() {
+  // const teams = useTeamData("http://localhost:3000/teams");
+
   return (
     <div className="login-grid">
-      <button className="item-1 button" style={{ backgroundColor: "blue" }}>
-        select <br></br> Team blue
-      </button>
-      <button className="item-2 button" style={{ backgroundColor: "green" }}>
-        select <br></br> Team green
-      </button>
-      <button className="item-3 button" style={{ backgroundColor: "yellow" }}>
-        select <br></br> Team yellow
-      </button>
-      <button className="item-4 button" style={{ backgroundColor: "red" }}>
-        select <br></br> Team Red
-      </button>
+      <section
+        className="team-card"
+        style={{ "--_color": "blue" } as React.CSSProperties}
+      >
+        <div className="team-name">Team Blau</div>
+        <div className="current-members">Aktuelle Mitglieder():</div>
+      </section>
+      <section
+        className="team-card"
+        style={{ "--_color": "green" } as React.CSSProperties}
+      >
+        <div className="team-name">Team Grün</div>
+      </section>
+      <section
+        className="team-card"
+        style={{ "--_color": "yellow" } as React.CSSProperties}
+      >
+        <div className="team-name">Team Gelb</div>
+      </section>
+      <section
+        className="team-card"
+        style={{ "--_color": "red" } as React.CSSProperties}
+      >
+        <div className="team-name">Team Rot</div>
+      </section>
     </div>
   );
 }

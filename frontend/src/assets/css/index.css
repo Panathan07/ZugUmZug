@@ -1,6 +1,9 @@
 :root {
-  --font-size: 1rem;
+  --font-size-normal: 1rem;
+  --font-size-big: 1.5rem;
+  --font-size-header: 2rem;
 
+  font-family: "Nunito Sans", sans-serif;
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
