@@ -24,7 +24,8 @@ export const useUserID = (
 ): [
   string | null,
   React.Dispatch<React.SetStateAction<string | null>>,
-  boolean | null
+  boolean | null,
+  boolean
 ] => {
   const [localUserID, setLocalUserID] = useLocalStorage<string>("userID", null);
   const [userIDInTeam, setUserIDInTeam] = useState<boolean | null>(null);
@@ -49,5 +50,5 @@ export const useUserID = (
     setLocalUserID,
   ]);
 
-  return [localUserID, setLocalUserID, userIDInTeam];
+  return [localUserID, setLocalUserID, userIDInTeam, UserIDResult.isLoading];
 };
