@@ -1,8 +1,7 @@
 import { useUserID } from "./hooks/useUserID";
 import { useEffect } from "react";
 import { NavigationBar } from "./pages/Navigation";
-import { useNavigate } from "@tanstack/react-router";
-import { LoadingPage } from "./pages/LoadingPage";
+import { RouterProvider, useNavigate } from "react-router-dom";
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -10,33 +9,21 @@ function App() {
     "http://localhost:3000/userID/instantiate"
   );
 
-  const navigate = useNavigate({ from: "/" });
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoading) {
       if (!userIDInTeam) {
-        navigate({ to: "/login" });
+        navigate("/login");
         return;
       }
-      navigate({ to: "/map" });
+      navigate("/map");
     }
 
     console.log(userID, userIDInTeam);
-  }, [userID, userIDInTeam, isLoading, navigate]);
+  }, [userID, userIDInTeam, isLoading]);
 
-  if (isLoading) {
-    return (
-      <>
-        <LoadingPage />
-      </>
-    );
-  }
-
-  return (
-    <>
-      <NavigationBar />
-    </>
-  );
+  return <NavigationBar />;
 }
 
 export default App;
