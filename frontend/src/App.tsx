@@ -1,7 +1,7 @@
 import { useUserID } from "./hooks/useUserID";
 import { useEffect } from "react";
 import { NavigationBar } from "./pages/Navigation";
-import { RouterProvider, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -21,7 +21,7 @@ function App() {
     }
 
     console.log(userID, userIDInTeam);
-  }, [userID, userIDInTeam, isLoading]);
+  }, [userID, userIDInTeam, isLoading, navigate]);
 
   return <NavigationBar />;
 }
