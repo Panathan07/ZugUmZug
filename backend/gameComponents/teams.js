@@ -1,6 +1,5 @@
 class Team {
     constructor(color) {
-        this.color = color;
         this.points = 0;
         this.name = color;
         this.members = [];
@@ -29,7 +28,6 @@ class Team {
         let index = this.tasks.indexOf(task);
         this.tasks.splice(index, 1)
     }
-
     addMember(memberID) {
         this.members.push(memberID);
     }

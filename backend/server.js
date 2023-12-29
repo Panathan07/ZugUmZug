@@ -14,7 +14,8 @@ const JSONStorage = require("./gameComponents/JSONStorage.js");
 
 // setting variables
 const port = 3000;
-const game = new Game(4)
+const amountTeams = 4;
+const game = new Game(amountTeams);
 const corsOptions = {
     origin: "*",
     credentials: true,            //access-control-allow-credentials:true
