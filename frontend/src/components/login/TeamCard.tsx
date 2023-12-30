@@ -12,10 +12,25 @@ export function TeamCard({
       style={{ "--_color": color } as React.CSSProperties}
     >
       <div className="team-name">{name}</div>
-      <button className="team-join">Team beitreten</button>
+
       <div className="current-members">
         Aktuelle Mitglieder({members.length}):
+        <section className="members-list">
+          <div className="members-list--content">
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+            <div className="member">Finn</div>
+          </div>
+        </section>
       </div>
+      <button className="team-join">Team beitreten</button>
     </section>
   );
 }

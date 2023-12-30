@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [userID, setUserID, userIDInTeam, isLoading] = useUserID(
-    "http://localhost:3000/userID/instantiate",
+  const [userID, setUserID, userIDInTeam, userIDResponse] = useUserID(
+    "http://localhost:3000/userID/instantiate"
   );
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!userIDResponse.isLoading) {
       if (!userIDInTeam) {
         navigate("/login");
         return;
@@ -21,7 +21,7 @@ function App() {
     }
 
     console.log(userID, userIDInTeam);
-  }, [userID, userIDInTeam, isLoading, navigate]);
+  }, [userID, userIDInTeam, userIDResponse.isLoading, navigate]);
 
   return <NavigationBar />;
 }
