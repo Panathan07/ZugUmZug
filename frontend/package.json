@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "format": "npx prettier --write ./",
-    "check-foramt": "npx prettier --check ./"
+    "check-format": "npx prettier --check ./"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.15.0",
