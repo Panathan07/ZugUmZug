@@ -37,8 +37,8 @@ export function Login() {
         {teams.map((team) => (
           <TeamCard
             key={teams.indexOf(team)}
-            name={"Team " + team.color}
-            color={team.name}
+            name={team.name}
+            color={team.color}
             members={team.members}
           />
         ))}

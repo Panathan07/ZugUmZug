@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { useQuery } from "@tanstack/react-query";
+import { UseQueryResult, useQuery } from "@tanstack/react-query";
 
 type UserIDData = {
   userID: string;
@@ -10,22 +10,24 @@ type UserIDData = {
 
 const getUserInfo = async (userID: string | null, api: string) => {
   const response = await fetch(
-    api + "?" + new URLSearchParams({ userID: userID ? userID : "_" }),
+    api +
+      "?" +
+      new URLSearchParams({ userID: userID ? userID : "_" }).toString()
   ); // if userID != null -> pass it - else pass an invalid ID
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
-  const userInfo: UserIDData = await response.json();
+  const userInfo: UserIDData = (await response.json()) as UserIDData;
   return userInfo;
 };
 
 export const useUserID = (
-  instantiateUserIDAPI: string,
+  instantiateUserIDAPI: string
 ): [
   string | null,
   React.Dispatch<React.SetStateAction<string | null>>,
   boolean | null,
-  boolean,
+  UseQueryResult<UserIDData, Error>,
 ] => {
   const [localUserID, setLocalUserID] = useLocalStorage<string>("userID", null);
   const [userIDInTeam, setUserIDInTeam] = useState<boolean | null>(null);
@@ -50,5 +52,5 @@ export const useUserID = (
     setLocalUserID,
   ]);
 
-  return [localUserID, setLocalUserID, userIDInTeam, UserIDResult.isLoading];
+  return [localUserID, setLocalUserID, userIDInTeam, UserIDResult];
 };
