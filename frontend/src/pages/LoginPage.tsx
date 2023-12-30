@@ -1,37 +1,48 @@
-import React from "react";
 import "../assets/css/login.css";
 import { useTeamData } from "../hooks/useTeamData";
+import { TeamCard } from "../components/login/TeamCard";
+import { LoadingPage } from "./LoadingPage";
+import { ErrorPage } from "./ErrorPage";
+
+declare global {
+  type Team = {
+    name: string;
+    color: string;
+    points: number;
+    members: string[];
+    tasks: string[]; //TODO: needs to be specified when tasks are done in backend
+    roads: {
+      [key: string]: number;
+    };
+  };
+}
 
 export function Login() {
-  // const teams = useTeamData("http://localhost:3000/teams");
+  const [teams, teamsResponse] = useTeamData<Team>(
+    "http://localhost:3000/teams"
+  );
+
+  if (teamsResponse.isLoading) {
+    return <LoadingPage />;
+  }
+
+  if (teamsResponse.isError || teams == null) {
+    return <ErrorPage />;
+  }
 
   return (
-    <div className="login-grid">
-      <section
-        className="team-card"
-        style={{ "--_color": "blue" } as React.CSSProperties}
-      >
-        <div className="team-name">Team Blau</div>
-        <div className="current-members">Aktuelle Mitglieder():</div>
-      </section>
-      <section
-        className="team-card"
-        style={{ "--_color": "green" } as React.CSSProperties}
-      >
-        <div className="team-name">Team Grün</div>
-      </section>
-      <section
-        className="team-card"
-        style={{ "--_color": "yellow" } as React.CSSProperties}
-      >
-        <div className="team-name">Team Gelb</div>
-      </section>
-      <section
-        className="team-card"
-        style={{ "--_color": "red" } as React.CSSProperties}
-      >
-        <div className="team-name">Team Rot</div>
-      </section>
-    </div>
+    <>
+      {/* <h1>Wähle ein Team aus, dem du beitreten möchtest</h1> */}
+      <div className="login-grid">
+        {teams.map((team) => (
+          <TeamCard
+            key={teams.indexOf(team)}
+            name={"Team " + team.color}
+            color={team.name}
+            members={team.members}
+          />
+        ))}
+      </div>
+    </>
   );
 }

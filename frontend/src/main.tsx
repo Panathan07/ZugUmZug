@@ -24,8 +24,8 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="map" element={<MapPage />} />
       <Route path="shop" element={<PointShop />} />
-    </Route>
-  )
+    </Route>,
+  ),
 );
 
 const queryClient = new QueryClient();
@@ -36,5 +36,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

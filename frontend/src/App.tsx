@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [userID, setUserID, userIDInTeam, isLoading] = useUserID(
-    "http://localhost:3000/userID/instantiate"
+    "http://localhost:3000/userID/instantiate",
   );
 
   const navigate = useNavigate();

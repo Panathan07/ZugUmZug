@@ -2,6 +2,7 @@ class Team {
     constructor(color) {
         this.points = 0;
         this.name = color;
+        this.color = color;
         this.members = [];
         this.tasks = [];
         this.roads = {

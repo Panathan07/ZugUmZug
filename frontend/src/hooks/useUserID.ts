@@ -10,7 +10,7 @@ type UserIDData = {
 
 const getUserInfo = async (userID: string | null, api: string) => {
   const response = await fetch(
-    api + "?" + new URLSearchParams({ userID: userID ? userID : "_" })
+    api + "?" + new URLSearchParams({ userID: userID ? userID : "_" }),
   ); // if userID != null -> pass it - else pass an invalid ID
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -20,12 +20,12 @@ const getUserInfo = async (userID: string | null, api: string) => {
 };
 
 export const useUserID = (
-  instantiateUserIDAPI: string
+  instantiateUserIDAPI: string,
 ): [
   string | null,
   React.Dispatch<React.SetStateAction<string | null>>,
   boolean | null,
-  boolean
+  boolean,
 ] => {
   const [localUserID, setLocalUserID] = useLocalStorage<string>("userID", null);
   const [userIDInTeam, setUserIDInTeam] = useState<boolean | null>(null);
