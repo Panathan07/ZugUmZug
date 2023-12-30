@@ -6,7 +6,7 @@ type ImageSize = {
 };
 
 export const useImageSize = (
-  imgRef: RefObject<HTMLImageElement>
+  imgRef: RefObject<HTMLImageElement>,
 ): ImageSize => {
   const [size, setSize] = useState<ImageSize>({ width: 100, height: 100 });
 

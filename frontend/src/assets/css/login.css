@@ -12,7 +12,8 @@
   width: 90%;
   border-radius: 10px;
   padding: 1rem;
-  box-shadow: 5px 5px 5px -5px #000000,
+  box-shadow:
+    5px 5px 5px -5px #000000,
     -10px -10px 1px 0px var(--_color, #000000);
 }
 

@@ -52,7 +52,7 @@ export function Roads() {
               roadOnClick(roadGroup.activated, roads.indexOf(roadGroup))
             }
           />
-        ))
+        )),
       )}
     </div>
   );

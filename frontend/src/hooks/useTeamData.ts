@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 export const useTeamData = <T>(
-  teamsApi: string
+  teamsApi: string,
 ): [T[] | null, UseQueryResult<{ teams: T[] }, Error>] => {
   const [teams, setTeams] = useState<T[] | null>(null);
   const teamsResponse = useQuery({
