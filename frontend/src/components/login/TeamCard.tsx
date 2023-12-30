@@ -19,7 +19,7 @@ export function TeamCard({
         <section className="members-list">
           <div className="members-list--content">
             {members.map((member) => (
-              <TeamMember name={member.name} userID={members.userID} />
+              <TeamMember name={"member.name"} userID={"members.userID"} />
             ))}
           </div>
         </section>

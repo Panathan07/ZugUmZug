@@ -19,7 +19,7 @@ declare global {
 
 export function Login() {
   const [teams, teamsResponse] = useTeamData<Team>(
-    "http://localhost:3000/teams",
+    "http://localhost:3000/teams"
   );
 
   if (teamsResponse.isLoading) {
@@ -37,8 +37,8 @@ export function Login() {
         {teams.map((team) => (
           <TeamCard
             key={teams.indexOf(team)}
-            name={"Team " + team.color}
-            color={team.name}
+            name={team.name}
+            color={team.color}
             members={team.members}
           />
         ))}
