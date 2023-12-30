@@ -19,7 +19,7 @@ declare global {
 
 export function Login() {
   const [teams, teamsResponse] = useTeamData<Team>(
-    "http://localhost:3000/teams"
+    "http://localhost:3000/teams",
   );
 
   if (teamsResponse.isLoading) {
