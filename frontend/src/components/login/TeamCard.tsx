@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes, { InferProps } from "prop-types";
+import { TeamMember } from "./TeamMember";
 
 export function TeamCard({
   color,
@@ -17,16 +18,9 @@ export function TeamCard({
         Aktuelle Mitglieder({members.length}):
         <section className="members-list">
           <div className="members-list--content">
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
-            <div className="member">Finn</div>
+            {members.map((member) => (
+              <TeamMember name={member.name} userID={members.userID} />
+            ))}
           </div>
         </section>
       </div>
