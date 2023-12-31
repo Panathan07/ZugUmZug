@@ -5,25 +5,37 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "format": "npx prettier --write ./",
+    "check-format": "npx prettier --check ./"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.15.0",
+    "@tanstack/react-query-devtools": "^5.15.0",
     "@tanstack/react-router": "^1.0.0",
+    "@tanstack/router-devtools": "^1.0.0",
+    "dotenv": "^16.3.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-query": "^3.39.3"
+    "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react-swc": "^3.0.0",
-    "eslint": "^8.38.0",
-    "eslint-plugin-react": "^7.32.2",
+    "@types/node": "^20.10.5",
+    "@types/prop-types": "^15.7.11",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4",
-    "react-router-dom": "^6.11.2",
-    "vite": "^4.3.2"
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "prettier": "3.1.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
   }
 }
