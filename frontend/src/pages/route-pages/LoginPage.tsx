@@ -1,8 +1,8 @@
-import "../assets/css/login.css";
-import { useTeamData } from "../hooks/useTeamData";
-import { TeamCard } from "../components/login/TeamCard";
-import { LoadingPage } from "./LoadingPage";
-import { ErrorPage } from "./ErrorPage";
+import "../../assets/css/login.css";
+import { useTeamData } from "../../hooks/useTeamData";
+import { TeamCard } from "../../components/login/TeamCard";
+import { LoadingPage } from "../state-pages/LoadingPage";
+import { ErrorPage } from "../state-pages/ErrorPage";
 
 declare global {
   type Team = {

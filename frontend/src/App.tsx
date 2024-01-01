@@ -1,6 +1,6 @@
 import { useUserID } from "./hooks/useUserID";
 import { useEffect } from "react";
-import { NavigationBar } from "./pages/Navigation";
+import { NavigationBar } from "./pages/route-pages/Navigation";
 import { useNavigate } from "react-router-dom";
 
 function App() {

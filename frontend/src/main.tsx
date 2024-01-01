@@ -8,9 +8,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import App from "./App.tsx";
 
-import { Login } from "./pages/LoginPage";
-import { MapPage } from "./pages/MapPage";
-import { PointShop } from "./pages/PointShop";
+import { Login } from "./pages/route-pages/LoginPage.tsx";
+import { MapPage } from "./pages/route-pages/MapPage.tsx";
+import { PointShop } from "./pages/route-pages/PointShop.tsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -24,8 +24,8 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="map" element={<MapPage />} />
       <Route path="shop" element={<PointShop />} />
-    </Route>,
-  ),
+    </Route>
+  )
 );
 
 const queryClient = new QueryClient();
@@ -36,5 +36,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
