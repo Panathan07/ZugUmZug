@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/server.ts",
+  "main": "server.ts",
   "scripts": {
     "build": "npx tsc",
     "start": "node ./src/server.ts",
