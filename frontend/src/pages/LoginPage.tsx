@@ -9,11 +9,16 @@ declare global {
     name: string;
     color: string;
     points: number;
-    members: string[];
+    members: User[];
     tasks: string[]; //TODO: needs to be specified when tasks are done in backend
     roads: {
       [key: string]: number;
     };
+  };
+
+  type User = {
+    name: string;
+    userID: string;
   };
 }
 

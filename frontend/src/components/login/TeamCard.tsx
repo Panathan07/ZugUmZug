@@ -1,12 +1,24 @@
 import React from "react";
-import PropTypes, { InferProps } from "prop-types";
+import PropTypes from "prop-types";
 import { TeamMember } from "./TeamMember";
 
-export function TeamCard({
-  color,
-  name,
-  members,
-}: InferProps<typeof TeamCard.propTypes>) {
+declare global {
+  type TeamCardProps = {
+    color: string;
+    name: string;
+    members: User[];
+  };
+}
+TeamCard.propTypes = {
+  color: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  members: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    userID: PropTypes.string.isRequired,
+  }),
+};
+
+export function TeamCard({ color, name, members }: TeamCardProps) {
   return (
     <section
       className="team-card"
@@ -19,7 +31,7 @@ export function TeamCard({
         <section className="members-list">
           <div className="members-list--content">
             {members.map((member) => (
-              <TeamMember name={"member.name"} userID={"members.userID"} />
+              <TeamMember name={member.name} userID={member.userID} />
             ))}
           </div>
         </section>
@@ -28,9 +40,3 @@ export function TeamCard({
     </section>
   );
 }
-
-TeamCard.propTypes = {
-  color: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  members: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
