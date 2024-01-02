@@ -1,11 +1,13 @@
-import { useUserID } from "./hooks/useUserID";
+import { useUser } from "@hooks/useUser";
 import { useEffect } from "react";
-import { NavigationBar } from "./pages/route-pages/Navigation";
+import { NavigationBar } from "@pages/route-pages/Navigation";
 import { useNavigate } from "react-router-dom";
+import { LoadingPage } from "@pages/state-pages/LoadingPage";
+import { UserContext } from "@hooks/useUserContext";
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [userID, setUserID, userIDInTeam, userIDResponse] = useUserID(
+  const [user, setUserID, userIDResponse] = useUser(
     "http://localhost:3000/userID/instantiate"
   );
 
@@ -13,17 +15,25 @@ function App() {
 
   useEffect(() => {
     if (!userIDResponse.isLoading) {
-      if (!userIDInTeam) {
+      if (!user?.inTeam) {
         navigate("/login");
         return;
       }
       navigate("/map");
     }
 
-    console.log(userID, userIDInTeam);
-  }, [userID, userIDInTeam, userIDResponse.isLoading, navigate]);
+    console.log(user, user?.inTeam);
+  }, [user, userIDResponse.isLoading, navigate]);
 
-  return <NavigationBar />;
+  if (user == null && userIDResponse.isLoading) {
+    return <LoadingPage />;
+  }
+
+  return (
+    <UserContext.Provider value={user}>
+      <NavigationBar />;
+    </UserContext.Provider>
+  );
 }
 
 export default App;

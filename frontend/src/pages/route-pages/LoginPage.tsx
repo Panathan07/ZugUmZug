@@ -1,8 +1,9 @@
-import "../../assets/css/login.css";
-import { useTeamData } from "../../hooks/useTeamData";
-import { TeamCard } from "../../components/login/TeamCard";
-import { LoadingPage } from "../state-pages/LoadingPage";
-import { ErrorPage } from "../state-pages/ErrorPage";
+import "@assets/css/login.css";
+import { useTeamData } from "@hooks/useTeamData";
+import { TeamCard } from "@components/login/TeamCard";
+import { LoadingPage } from "@pages/state-pages/LoadingPage";
+import { ErrorPage } from "@pages/state-pages/ErrorPage";
+import { User } from "@hooks/useUserContext";
 
 declare global {
   type Team = {
@@ -14,11 +15,6 @@ declare global {
     roads: {
       [key: string]: number;
     };
-  };
-
-  type User = {
-    name: string;
-    userID: string;
   };
 }
 
@@ -42,6 +38,7 @@ export function Login() {
         {teams.map((team) => (
           <TeamCard
             key={teams.indexOf(team)}
+            id={teams.indexOf(team)}
             name={team.name}
             color={team.color}
             members={team.members}
