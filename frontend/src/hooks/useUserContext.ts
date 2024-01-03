@@ -1,13 +1,11 @@
+import { User } from "@customtypes/user";
 import { createContext, useContext } from "react";
 
-export type User = {
-  username: string;
-  userID: string;
-  existed: boolean;
-  inTeam: boolean;
-};
+export const UserContext = createContext<User>({
+  username: "",
+  userID: "",
+  existed: false,
+  inTeam: false,
+});
 
-export const UserContext = createContext<User | null>(null);
-
-export const useUserContext = (): User | null =>
-  useContext<User | null>(UserContext);
+export const useUserContext = (): User => useContext<User>(UserContext);

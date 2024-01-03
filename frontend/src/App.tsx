@@ -25,7 +25,7 @@ function App() {
     console.log(user, user?.inTeam);
   }, [user, userIDResponse.isLoading, navigate]);
 
-  if (user == null && userIDResponse.isLoading) {
+  if (user == null || userIDResponse.isLoading) {
     return <LoadingPage />;
   }
 

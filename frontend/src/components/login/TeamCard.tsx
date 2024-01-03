@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { TeamMember } from "./TeamMember";
-import { User, useUserContext } from "@hooks/useUserContext";
+import { useUserContext } from "@hooks/useUserContext";
 import {
   InvalidateQueryFilters,
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
+import { User } from "@customtypes/user";
+import { TeamPostUser } from "@customtypes/team";
 
 declare global {
   type TeamCardProps = {
@@ -31,12 +33,8 @@ async function addUsertoTeam({
   teamName,
   teamID,
   user,
-}: {
-  teamName: string;
-  teamID: number;
-  user: User;
-}): Promise<Response> {
-  const data = { teamID, teamName, user };
+}: TeamPostUser): Promise<Response> {
+  const data: TeamPostUser = { teamID, teamName, user };
   return fetch("http://localhost:3000/teams/members/add", {
     method: "POST",
     body: JSON.stringify(data),
@@ -46,10 +44,10 @@ async function addUsertoTeam({
 export function TeamCard({ color, name, id, members }: TeamCardProps) {
   const user = useUserContext();
   const queryClient = useQueryClient();
-  const { mutateAsync: mutateTeams, isPending } = useMutation<
+  const { mutate: mutateTeams, isPending } = useMutation<
     Response,
     Error,
-    { teamName: string; teamID: number; user: User }
+    TeamPostUser
   >({
     mutationFn: addUsertoTeam,
     onSuccess: (data) => {
@@ -65,12 +63,16 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
     },
   });
 
-  if (user == null || isPending) {
-    return <LoadingPage />;
+  function joinTeam(name: string, id: number, user: User) {
+    void mutateTeams({
+      teamName: name,
+      teamID: id,
+      user: user,
+    } as TeamPostUser);
   }
 
-  function joinTeam(name: string, id: number, user: User) {
-    void mutateTeams({ teamName: name, teamID: id, user: user });
+  if (user == null || isPending) {
+    return <LoadingPage />;
   }
 
   return (

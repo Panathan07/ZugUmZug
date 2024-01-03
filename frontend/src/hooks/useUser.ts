@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { User } from "./useUserContext";
+import { User } from "@customtypes/user";
 
 const getUserInfo = async (user: User | null, api: string) => {
   const response = await fetch(
@@ -14,7 +14,7 @@ const getUserInfo = async (user: User | null, api: string) => {
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
-  const userInfo: User = (await response.json()) as User;
+  const userInfo = (await response.json()) as User;
   return userInfo;
 };
 
@@ -25,7 +25,7 @@ export const useUser = (
   React.Dispatch<React.SetStateAction<User | null>>,
   UseQueryResult<User, Error>,
 ] => {
-  const [localUser, setLocalUser] = useLocalStorage<User>("userID", null);
+  const [localUser, setLocalUser] = useLocalStorage<User | null>("user", null);
   const UserIDResult = useQuery({
     queryKey: ["userID"],
     queryFn: () => getUserInfo(localUser, instantiateUserIDAPI),

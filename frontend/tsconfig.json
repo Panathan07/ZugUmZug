@@ -10,7 +10,7 @@
       "@hooks/*": ["./src/hooks/*"],
       "@assets/*": ["./src/assets/*"],
       "@pages/*": ["./src/pages/*"],
-      "@/*": ["./src/*"]
+      "@customtypes/*": ["./src/custom-types/*"]
     },
 
     /* Bundler mode */

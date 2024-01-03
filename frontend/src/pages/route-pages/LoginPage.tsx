@@ -3,20 +3,7 @@ import { useTeamData } from "@hooks/useTeamData";
 import { TeamCard } from "@components/login/TeamCard";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { ErrorPage } from "@pages/state-pages/ErrorPage";
-import { User } from "@hooks/useUserContext";
-
-declare global {
-  type Team = {
-    name: string;
-    color: string;
-    points: number;
-    members: User[];
-    tasks: string[]; //TODO: needs to be specified when tasks are done in backend
-    roads: {
-      [key: string]: number;
-    };
-  };
-}
+import { Team } from "@customtypes/team";
 
 export function Login() {
   const [teams, teamsResponse] = useTeamData<Team>(
