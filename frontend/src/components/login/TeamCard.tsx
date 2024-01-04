@@ -23,10 +23,12 @@ TeamCard.propTypes = {
   color: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  members: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    userID: PropTypes.string.isRequired,
-  }),
+  members: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      userID: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 async function addUsertoTeam({
@@ -87,7 +89,7 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
         <section className="members-list">
           <div className="members-list--content">
             {members.map((member) => (
-              <TeamMember name={member.username} userID={member.userID} />
+              <TeamMember name={member.name} ID={member.ID} />
             ))}
           </div>
         </section>
