@@ -20,8 +20,8 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/teams/member-exists?userID=5a2643e84b885a0f306e75818ef556e8
+GET http://localhost:3000/teams/members/exists?userID=5edb227ad89fa9e840c3e770b949cac3
 
 ###
 
-GET http://localhost:3000/userID/instantiate?userID=5edb227ad89fa9e840c3e770b949cac3
+GET http://localhost:3000/user/instantiate?userID=5edb227ad89fa9e840c3e770b949cac3

@@ -5,9 +5,10 @@ import cors from "cors";
 import bodyParser from "body-parser";
 
 // javascript imports
-import Game from "./gameComponents/game";
-import { handleUserID, userIDInTeam } from "./utilityFunctions/userIDHandler";
-import JSONStorage from "./gameComponents/JSONStorage";
+import Game from "#game-components/game";
+import { handleUserID } from "#utility-functions/userIDHandler";
+import JSONStorage from "#game-components/JSONStorage";
+import User, { UserProps, UserReplaceKeyMap } from "#game-components/user";
 
 // setting variables
 const port = 3000;
@@ -17,20 +18,15 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 
-// init Game
-const amountTeams = 4;
-const game = new Game(amountTeams);
-
 // init userID storage
-const userIDFilePath = "./UserIDs.json";
-const userIDStorageLayout: JSONStorageLayout = {
-  UserIDs: [],
-};
-const userIDStorage = new JSONStorage(
+const userIDFilePath = "./Users.json";
+const userStorage = new JSONStorage<User>(
   `${userIDFilePath}`,
-  userIDStorageLayout,
-  "UserIDs"
+  "Users",
+  UserReplaceKeyMap
 );
+const amountTeams = 4;
+const game = new Game(amountTeams, userStorage);
 
 // building app
 const app: Application = express();
@@ -96,15 +92,16 @@ app.get("/game/end", (req, res) => {
     res.status(500);
   }
 });
-app.get("/userID/instantiate", (req, res) => {
+app.get("/user/instantiate", (req, res) => {
   try {
     let incomingUserID = req.query.userID?.toString();
     if (incomingUserID == undefined) {
       res.status(400);
       return;
     }
-    let response = handleUserID(incomingUserID, userIDStorage, game.teams);
-    res.status(200).json(response);
+
+    let newUser = handleUserID(incomingUserID, userStorage, game.teams);
+    res.status(200).json(newUser);
   } catch (err) {
     res.status(500);
   }
@@ -123,9 +120,9 @@ app.get("/teams/members/exists", (req, res) => {
       res.send(400);
       return;
     }
-    let teams = game.teams;
-    let exists = userIDInTeam(userID, teams);
-    res.status(200).json({ userExists: exists });
+    let user = game.useStorage().getByKey(UserProps.ID, userID);
+    let exists = false;
+    res.status(200).json({ user: user });
   } catch (err) {
     res.status(500);
   }
