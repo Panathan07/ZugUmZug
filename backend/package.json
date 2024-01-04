@@ -22,5 +22,10 @@
     "@types/express": "^4.17.21",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
+  },
+  "imports": {
+    "#game-components/*": "./src/game-components/*.ts",
+    "#customtypes/*": "./src/custom-types/*.ts",
+    "#utility-functions/*": "./src/utility-functions/*.ts"
   }
 }
