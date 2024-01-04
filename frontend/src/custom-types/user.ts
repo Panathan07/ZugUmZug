@@ -1,6 +1,5 @@
 export type User = {
-  username: string;
-  userID: string;
-  existed: boolean;
+  name: string;
+  ID: string;
   inTeam: boolean;
 };

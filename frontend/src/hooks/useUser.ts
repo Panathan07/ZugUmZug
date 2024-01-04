@@ -8,7 +8,7 @@ const getUserInfo = async (user: User | null, api: string) => {
     api +
       "?" +
       new URLSearchParams({
-        userID: user?.userID ? user?.userID : "_",
+        userID: user?.ID ? user?.ID : "-",
       }).toString()
   ); // if userID != null -> pass it - else pass an invalid ID
   if (!response.ok) {
@@ -37,9 +37,8 @@ export const useUser = (
     if (!UserIDResult.isFetched) return;
     if (!UserIDResult.data) return;
     setLocalUser({
-      username: UserIDResult.data.username,
-      userID: UserIDResult.data.userID,
-      existed: UserIDResult.data.existed,
+      name: UserIDResult.data.name,
+      ID: UserIDResult.data.ID,
       inTeam: UserIDResult.data.inTeam,
     });
     console.log("userIDResponse.inTeam", UserIDResult.data.inTeam);
