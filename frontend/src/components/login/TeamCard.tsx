@@ -26,7 +26,8 @@ TeamCard.propTypes = {
   members: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      userID: PropTypes.string.isRequired,
+      ID: PropTypes.string.isRequired,
+      inTeam: PropTypes.bool.isRequired,
     })
   ).isRequired,
 };
@@ -89,7 +90,11 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
         <section className="members-list">
           <div className="members-list--content">
             {members.map((member) => (
-              <TeamMember name={member.name} ID={member.ID} />
+              <TeamMember
+                key={members.indexOf(member)}
+                name={member.name}
+                ID={member.ID}
+              />
             ))}
           </div>
         </section>
