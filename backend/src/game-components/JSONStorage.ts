@@ -41,6 +41,7 @@ export default class JSONStorage<Schema extends StorageSchema>
   }
   get(item: Schema): Schema | null {
     let itemIndex = this.find(item);
+    console.log(itemIndex, item);
     if (itemIndex === -1) {
       return null;
     }
@@ -83,7 +84,7 @@ export default class JSONStorage<Schema extends StorageSchema>
   }
   private syncData() {
     fs.readFile(this.path, "utf8", (err, data) => {
-      console.log("got data from storage");
+      console.log("got data from storage", data);
       if (err) throw err;
       if (data == null) {
         this.table = {
@@ -96,6 +97,7 @@ export default class JSONStorage<Schema extends StorageSchema>
     });
   }
   private syncChanges() {
+    console.log(this.storage);
     this.table = {
       [this.name]: this.storage,
     };
