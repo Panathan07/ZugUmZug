@@ -11,14 +11,13 @@ import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { User } from "@customtypes/user";
 import { TeamPostUser } from "@customtypes/team";
 
-declare global {
-  type TeamCardProps = {
-    color: string;
-    name: string;
-    id: number;
-    members: User[];
-  };
-}
+export type TeamCardProps = {
+  color: string;
+  name: string;
+  id: number;
+  members: User[];
+};
+
 TeamCard.propTypes = {
   color: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
