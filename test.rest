@@ -14,8 +14,9 @@ POST http://localhost:3000/teams/members/add
 Content-Type: application/json
 
 {
-    "userID": "5edb227ad89fa9e840c3e770b949cac3",
-    "team": 1
+    "user": "5edb227ad89fa9e840c3e770b949cac3",
+    "teamName": "Team Blau",
+    "teamID": 0,
 }
 
 ###
