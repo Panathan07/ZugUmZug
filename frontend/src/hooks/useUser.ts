@@ -19,36 +19,36 @@ const getUserInfo = async (user: User | null, api: string) => {
 };
 
 export const useUser = (
-  instantiateUserIDAPI: string
+  instantiateUserAPI: string
 ): [
   User | null,
   React.Dispatch<React.SetStateAction<User | null>>,
   UseQueryResult<User, Error>,
 ] => {
   const [localUser, setLocalUser] = useLocalStorage<User | null>("user", null);
-  const UserIDResult = useQuery({
-    queryKey: ["userID"],
-    queryFn: () => getUserInfo(localUser, instantiateUserIDAPI),
+  const UserResult = useQuery({
+    queryKey: ["user"],
+    queryFn: () => getUserInfo(localUser, instantiateUserAPI),
   });
 
   useEffect(() => {
-    if (UserIDResult.isLoading) return;
-    if (UserIDResult.isError) return;
-    if (!UserIDResult.isFetched) return;
-    if (!UserIDResult.data) return;
+    if (UserResult.isLoading) return;
+    if (UserResult.isError) return;
+    if (!UserResult.isFetched) return;
+    if (!UserResult.data) return;
     setLocalUser({
-      name: UserIDResult.data.name,
-      ID: UserIDResult.data.ID,
-      inTeam: UserIDResult.data.inTeam,
+      name: UserResult.data.name,
+      ID: UserResult.data.ID,
+      inTeam: UserResult.data.inTeam,
     });
-    console.log("userIDResponse.inTeam", UserIDResult.data.inTeam);
+    console.log("UserResult.data.inTeam", UserResult.data.inTeam);
   }, [
-    UserIDResult.data,
-    UserIDResult.isFetched,
-    UserIDResult.isLoading,
-    UserIDResult.isError,
+    UserResult.data,
+    UserResult.isFetched,
+    UserResult.isLoading,
+    UserResult.isError,
     setLocalUser,
   ]);
 
-  return [localUser, setLocalUser, UserIDResult];
+  return [localUser, setLocalUser, UserResult];
 };
