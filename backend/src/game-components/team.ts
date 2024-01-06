@@ -1,3 +1,4 @@
+import { isEqual } from "#utility-functions/isEqual";
 import Road from "./road";
 import Task from "./task";
 import User from "./user";
@@ -41,6 +42,7 @@ export default class Team {
     this.tasks.splice(index, 1);
   }
   addMember(user: User): void {
+    if (this.hasMember(user)) return;
     this.members.push(user);
   }
   removeMember(user: User): void {
@@ -48,6 +50,9 @@ export default class Team {
     this.members.splice(this.members.indexOf(user), 1);
   }
   hasMember(user: User): boolean {
-    return this.members.includes(user);
+    for (const member of this.members) {
+      if (isEqual(member, user)) return true;
+    }
+    return false;
   }
 }
