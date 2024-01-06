@@ -96,12 +96,9 @@ app.get("/user/instantiate", (req, res) => {
   try {
     let incomingUserID = req.query.userID?.toString();
     if (incomingUserID == undefined) {
-      res.status(400);
-      return;
+      incomingUserID = "";
     }
-
     let newUser = handleUserID(incomingUserID, userStorage, game.teams);
-    console.log(newUser, game.teams);
     res.status(200).json(newUser);
   } catch (err) {
     res.status(500);
