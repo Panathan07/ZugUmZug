@@ -101,6 +101,7 @@ app.get("/user/instantiate", (req, res) => {
     }
 
     let newUser = handleUserID(incomingUserID, userStorage, game.teams);
+    console.log(newUser, game.teams);
     res.status(200).json(newUser);
   } catch (err) {
     res.status(500);
@@ -117,11 +118,9 @@ app.get("/teams/members/exists", (req, res) => {
   try {
     let userID = req.query.userID?.toString();
     if (userID == undefined) {
-      res.send(400);
-      return;
+      userID = "";
     }
     let user = game.useStorage().getByKey(UserProps.ID, userID);
-    let exists = false;
     res.status(200).json({ user: user });
   } catch (err) {
     res.status(500);
@@ -129,12 +128,13 @@ app.get("/teams/members/exists", (req, res) => {
 });
 app.post("/teams/members/add", (req, res) => {
   try {
-    const team = req.body.team;
-    const userID = req.body.userID;
+    const teamName = req.body.teamName;
+    const teamID = req.body.teamID;
+    const user = req.body.user;
     const teams = game.teams;
 
-    teams[team].addMember(userID);
-    // console.log(team, userID)
+    teams[teamID].addMember(user);
+
     res.status(200).json(teams);
   } catch {
     res.status(500);
