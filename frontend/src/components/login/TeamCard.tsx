@@ -38,7 +38,7 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
     mutationFn: addUsertoTeam,
     onSuccess: (data) => {
       console.log(data);
-      const message = "succes";
+      const message = "Team beigetreten.";
       alert(message);
     },
     onError: () => {
