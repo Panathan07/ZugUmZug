@@ -5,6 +5,7 @@ import { IStorage, UserStorage } from "#customtypes/Storage";
 import { UserSchema } from "#customtypes/StorageSchema";
 
 const addUser = (user: User, userStorage: UserStorage) => {
+  if (userStorage.itemExists(user)) return;
   userStorage.insert(user);
 };
 
@@ -32,7 +33,7 @@ export const handleUserID = (
     user = new User("", userID);
   }
   userInTeam(user, teams);
-  userExists(user, userStorage);
+  addUser(user, userStorage);
 
   return user;
 };
@@ -46,15 +47,12 @@ const isValidID = (id: string) => {
   return true;
 };
 
-const userExists = (user: User, userStorage: UserStorage) => {
-  console.log(user, userStorage.itemExists(user));
-  if (userStorage.itemExists(user)) return;
-  addUser(user, userStorage);
-};
-
 export const userInTeam = (user: User, teams: Team[]) => {
   teams.map((team) => {
-    if (team.hasMember(user)) user.inTeam = true;
+    if (team.hasMember(user)) {
+      user.inTeam = true;
+      console.log("User in team", user, team);
+    }
   });
   return user.inTeam;
 };
