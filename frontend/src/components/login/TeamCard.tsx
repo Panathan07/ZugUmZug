@@ -1,12 +1,83 @@
 import React from "react";
-import PropTypes, { InferProps } from "prop-types";
+import PropTypes from "prop-types";
 import { TeamMember } from "./TeamMember";
+import { useUserContext } from "@hooks/useUserContext";
+import {
+  InvalidateQueryFilters,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { LoadingPage } from "@pages/state-pages/LoadingPage";
+import { User } from "@customtypes/user";
+import { TeamPostUser } from "@customtypes/team";
 
-export function TeamCard({
-  color,
-  name,
-  members,
-}: InferProps<typeof TeamCard.propTypes>) {
+declare global {
+  type TeamCardProps = {
+    color: string;
+    name: string;
+    id: number;
+    members: User[];
+  };
+}
+TeamCard.propTypes = {
+  color: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  members: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      ID: PropTypes.string.isRequired,
+      inTeam: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+};
+
+async function addUsertoTeam({
+  teamName,
+  teamID,
+  user,
+}: TeamPostUser): Promise<Response> {
+  const data: TeamPostUser = { teamID, teamName, user };
+  return fetch("http://localhost:3000/teams/members/add", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}
+
+export function TeamCard({ color, name, id, members }: TeamCardProps) {
+  const user = useUserContext();
+  const queryClient = useQueryClient();
+  const { mutate: mutateTeams, isPending } = useMutation<
+    Response,
+    Error,
+    TeamPostUser
+  >({
+    mutationFn: addUsertoTeam,
+    onSuccess: (data) => {
+      console.log(data);
+      const message = "succes";
+      alert(message);
+    },
+    onError: () => {
+      alert("An Error occured. Please try again");
+    },
+    onSettled: () => {
+      void queryClient.invalidateQueries("teams" as InvalidateQueryFilters);
+    },
+  });
+
+  function joinTeam(name: string, id: number, user: User) {
+    void mutateTeams({
+      teamName: name,
+      teamID: id,
+      user: user,
+    } as TeamPostUser);
+  }
+
+  if (user == null || isPending) {
+    return <LoadingPage />;
+  }
+
   return (
     <section
       className="team-card"
@@ -19,18 +90,18 @@ export function TeamCard({
         <section className="members-list">
           <div className="members-list--content">
             {members.map((member) => (
-              <TeamMember name={"member.name"} userID={"members.userID"} />
+              <TeamMember
+                key={members.indexOf(member)}
+                name={member.name}
+                ID={member.ID}
+              />
             ))}
           </div>
         </section>
       </div>
-      <button className="team-join">Team beitreten</button>
+      <button className="team-join" onClick={() => joinTeam(name, id, user)}>
+        Team beitreten
+      </button>
     </section>
   );
 }
-
-TeamCard.propTypes = {
-  color: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  members: PropTypes.arrayOf(PropTypes.string).isRequired,
-};

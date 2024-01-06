@@ -1,10 +1,7 @@
+import { GameState } from "#customtypes/GameState";
 import Team from "./team";
-
-export enum GameState {
-  Started,
-  NotStarted,
-  Ended,
-}
+import { IStorage, UserStorage } from "#customtypes/Storage";
+import { UserSchema } from "#customtypes/StorageSchema";
 
 export default class Game {
   readonly colors: string[];
@@ -23,8 +20,9 @@ export default class Game {
   set teams(value: Team[]) {
     this._teams = value;
   }
+  readonly storage: UserStorage;
 
-  constructor(amountTeams: number) {
+  constructor(amountTeams: number, storage: UserStorage) {
     this.colors = [
       "blue",
       "green",
@@ -40,12 +38,19 @@ export default class Game {
     for (let i = 0; i < this.amountTeams; i++) {
       this.teams.push(new Team("Team " + this.colors[i], this.colors[i]));
     }
+
+    this.storage = storage;
   }
-  start() {
+  start(): GameState {
     this.state = GameState.Started;
+    return this.state;
   }
-  end() {
+  end(): GameState {
     this.state = GameState.Ended;
+    return this.state;
+  }
+  useStorage(): UserStorage {
+    return this.storage;
   }
 }
 

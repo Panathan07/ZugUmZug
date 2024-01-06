@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 export const useTeamData = <T>(
-  teamsApi: string,
+  teamsApi: string
 ): [T[] | null, UseQueryResult<{ teams: T[] }, Error>] => {
   const [teams, setTeams] = useState<T[] | null>(null);
   const teamsResponse = useQuery({
@@ -25,6 +25,6 @@ const getTeams = async <T>(api: string) => {
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
-  const userInfo: { teams: T[] } = await response.json();
+  const userInfo: { teams: T[] } = (await response.json()) as { teams: T[] };
   return userInfo;
 };
