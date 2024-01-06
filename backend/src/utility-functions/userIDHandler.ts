@@ -1,7 +1,6 @@
 import crypto from "crypto";
 import User, { UserProps } from "#game-components/user";
 import Team from "#game-components/team";
-import JSONStorage from "#game-components/JSONStorage";
 import { IStorage, UserStorage } from "#customtypes/Storage";
 import { UserSchema } from "#customtypes/StorageSchema";
 
@@ -48,6 +47,7 @@ const isValidID = (id: string) => {
 };
 
 const userExists = (user: User, userStorage: UserStorage) => {
+  console.log(user, userStorage.itemExists(user));
   if (userStorage.itemExists(user)) return;
   addUser(user, userStorage);
 };
