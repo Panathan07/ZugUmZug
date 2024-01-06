@@ -31,26 +31,10 @@ TeamCard.propTypes = {
   ).isRequired,
 };
 
-async function addUsertoTeam({
-  teamName,
-  teamID,
-  user,
-}: TeamPostUser): Promise<Response> {
-  const data: TeamPostUser = { teamID, teamName, user };
-  return fetch("http://localhost:3000/teams/members/add", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
-}
-
 export function TeamCard({ color, name, id, members }: TeamCardProps) {
   const user = useUserContext();
   const queryClient = useQueryClient();
-  const { mutate: mutateTeams, isPending } = useMutation<
-    Response,
-    Error,
-    TeamPostUser
-  >({
+  const teamsMutation = useMutation<Response, Error, TeamPostUser>({
     mutationFn: addUsertoTeam,
     onSuccess: (data) => {
       console.log(data);
@@ -65,15 +49,7 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
     },
   });
 
-  function joinTeam(name: string, id: number, user: User) {
-    void mutateTeams({
-      teamName: name,
-      teamID: id,
-      user: user,
-    } as TeamPostUser);
-  }
-
-  if (user == null || isPending) {
+  if (user == null) {
     return <LoadingPage />;
   }
 
@@ -98,9 +74,33 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
           </div>
         </section>
       </div>
-      <button className="team-join" onClick={() => joinTeam(name, id, user)}>
-        Team beitreten
+      <button
+        className="team-join"
+        onClick={() =>
+          teamsMutation.mutate({
+            teamName: name,
+            teamID: id,
+            user: user,
+          } as TeamPostUser)
+        }
+      >
+        {teamsMutation.isPending
+          ? "Loading"
+          : teamsMutation.isSuccess
+            ? "Erfolgreich"
+            : "Team beitreten"}
       </button>
     </section>
   );
+}
+
+async function addUsertoTeam(TeamPostUserParams: TeamPostUser) {
+  return await fetch("http://localhost:3000/teams/members/add", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(TeamPostUserParams),
+  });
 }
