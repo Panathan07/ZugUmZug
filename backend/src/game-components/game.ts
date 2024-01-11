@@ -1,7 +1,8 @@
 import { GameState } from "#customtypes/GameState";
-import Team from "./team";
+import Team from "./Team";
 import { IStorage, UserStorage } from "#customtypes/Storage";
 import { UserSchema } from "#customtypes/StorageSchema";
+import RoadManager from "./RoadManager";
 
 export default class Game {
   readonly colors: string[];
@@ -20,9 +21,14 @@ export default class Game {
   set teams(value: Team[]) {
     this._teams = value;
   }
+  readonly roadManager: RoadManager;
   readonly storage: UserStorage;
 
-  constructor(amountTeams: number, storage: UserStorage) {
+  constructor(
+    amountTeams: number,
+    storage: UserStorage,
+    roadManager: RoadManager
+  ) {
     this.colors = [
       "blue",
       "green",
@@ -34,11 +40,8 @@ export default class Game {
     ];
     this.amountTeams = amountTeams;
     this.state = GameState.NotStarted;
-    this.teams = [];
-    for (let i = 0; i < this.amountTeams; i++) {
-      this.teams.push(new Team("Team " + this.colors[i], this.colors[i]));
-    }
-
+    this.teams = this.createTeams();
+    this.roadManager = roadManager;
     this.storage = storage;
   }
   start(): GameState {
@@ -52,6 +55,14 @@ export default class Game {
   useStorage(): UserStorage {
     return this.storage;
   }
+  useRoads(): RoadManager {
+    return this.roadManager;
+  }
+  private createTeams(): Team[] {
+    const teamsArray = [];
+    for (let i = 0; i < this.amountTeams; i++) {
+      teamsArray.push(new Team("Team " + this.colors[i], this.colors[i]));
+    }
+    return teamsArray;
+  }
 }
-
-module.exports = Game;

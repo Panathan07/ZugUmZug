@@ -1,5 +1,5 @@
 import { isEqual } from "#utility-functions/isEqual";
-import Road from "./road";
+import Road from "./Road";
 import Task from "./task";
 import User from "./user";
 
@@ -9,7 +9,7 @@ export default class Team {
   color: string;
   members: User[];
   tasks: Task[];
-  roads: Road[];
+  boughtRoads: Road[];
 
   constructor(name: string, color: string) {
     this.points = 0;
@@ -17,30 +17,34 @@ export default class Team {
     this.color = color;
     this.members = [];
     this.tasks = [];
-    this.roads = [
-      // TODO: add proper roads later, when they are defined.
-      new Road("yellow", false, "City1", "City2"),
-      new Road("blue", false, "City1", "City2"),
-      new Road("red", false, "City1", "City2"),
-      new Road("black", false, "City1", "City2"),
-      new Road("orange", false, "City1", "City2"),
-      new Road("white", false, "City1", "City2"),
-      new Road("green", false, "City1", "City2"),
-    ];
+    this.boughtRoads = [];
   }
-  addpoints(amount_points: number) {
+
+  addPoints(amount_points: number) {
     this.points += amount_points;
   }
-  addroads(road: Road) {
-    this.roads.push(road);
+
+  buyRoad(road: Road): void {
+    if (this.hasBoughtRoad(road)) return;
+    this.boughtRoads.push(road);
+    road.buy();
   }
-  addtask(task: Task) {
+  hasBoughtRoad(road: Road): boolean {
+    if (road.bought) return true;
+    for (const boughtRoad of this.boughtRoads) {
+      if (isEqual(road, boughtRoad)) return true;
+    }
+    return false;
+  }
+
+  addTask(task: Task) {
     this.tasks.push(task);
   }
-  removetask(task: Task) {
+  removeTask(task: Task) {
     const index = this.tasks.indexOf(task);
     this.tasks.splice(index, 1);
   }
+
   addMember(user: User): void {
     if (this.hasMember(user)) return;
     this.members.push(user);

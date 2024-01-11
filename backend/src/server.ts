@@ -5,10 +5,12 @@ import cors from "cors";
 import bodyParser from "body-parser";
 
 // javascript imports
-import Game from "#game-components/game";
+import Game from "#game-components/Game";
 import { handleUserID } from "#utility-functions/userIDHandler";
 import JSONStorage from "#game-components/JSONStorage";
 import User, { UserProps, UserReplaceKeyMap } from "#game-components/user";
+import Team from "#game-components/Team";
+import RoadManager from "#game-components/RoadManager";
 
 // setting variables
 const port = 3000;
@@ -25,8 +27,11 @@ const userStorage = new JSONStorage<User>(
   "Users",
   UserReplaceKeyMap
 );
+
+const roadManager = new RoadManager();
+
 const amountTeams = 4;
-const game = new Game(amountTeams, userStorage);
+const game = new Game(amountTeams, userStorage, roadManager);
 
 // building app
 const app: Application = express();
@@ -92,6 +97,26 @@ app.get("/game/end", (req, res) => {
     res.status(500);
   }
 });
+app.get("/game/roads", (req, res) => {
+  try {
+    const roadName = req.body.roadName;
+    const teamId = req.body.teamId;
+    game.useRoads().buyRoad(game.teams, teamId, roadName);
+    res.status(200).json({ roads: game.teams });
+  } catch (err) {
+    res.status(500);
+  }
+});
+app.post("/game/buyRoad", (req, res) => {
+  try {
+    const roadName = req.body.roadName;
+    const teamId = req.body.teamId;
+    game.useRoads().buyRoad(game.teams, teamId, roadName);
+    res.status(200).json({ roads: game.teams });
+  } catch (err) {
+    res.status(500);
+  }
+});
 app.get("/user/instantiate", (req, res) => {
   try {
     let incomingUserID = req.query.userID?.toString();
@@ -111,24 +136,22 @@ app.get("/teams", (req, res) => {
     res.status(500);
   }
 });
-app.get("/teams/members/exists", (req, res) => {
-  try {
-    let userID = req.query.userID?.toString();
-    if (userID == undefined) {
-      userID = "";
-    }
-    let user = game.useStorage().getByKey(UserProps.ID, userID);
-    res.status(200).json({ user: user });
-  } catch (err) {
-    res.status(500);
-  }
-});
 app.post("/teams/members/add", (req, res) => {
   try {
-    const teamName = req.body.teamName;
+    const teamName = req.body.teamName as string;
     const teamID = req.body.teamID;
-    const user = req.body.user;
+    const user = req.body.user as User;
     const teams = game.teams;
+
+    if (!game.useStorage().itemExists(user)) {
+      res.send(400);
+      return;
+    }
+
+    // iterate through teams and check if user's in them. If he is remove the user.
+    for (const team of teams) {
+      if (team.hasMember(user)) team.removeMember(user);
+    }
 
     teams[teamID].addMember(user);
 

@@ -32,7 +32,8 @@
     "paths": {
       "#game-components/*": ["./src/game-components/*"],
       "#customtypes/*": ["./src/custom-types/*"],
-      "#utility-functions/*": ["./src/utility-functions/*"]
+      "#utility-functions/*": ["./src/utility-functions/*"],
+      "#assets/*": ["./src/assets/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
