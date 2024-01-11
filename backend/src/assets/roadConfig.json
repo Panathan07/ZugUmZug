@@ -1,0 +1,2147 @@
+{
+  "Atlanta - Charleston": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 2,
+        "posx": 81.6,
+        "posy": 65
+      },
+      {
+        "rotation": 2,
+        "posx": 85.4,
+        "posy": 65.35
+      }
+    ]
+  },
+  "Atlanta - Miami": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 51,
+        "posx": 81.09,
+        "posy": 66.45
+      },
+      {
+        "rotation": 51,
+        "posx": 83.5,
+        "posy": 71.08
+      },
+      {
+        "rotation": 51,
+        "posx": 85.85,
+        "posy": 75.72
+      },
+      {
+        "rotation": 51,
+        "posx": 88.2,
+        "posy": 80.2
+      },
+      {
+        "rotation": 51,
+        "posx": 90.62,
+        "posy": 85
+      }
+    ]
+  },
+  "Atlanta - New Orleans": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -69,
+        "posx": 70.75,
+        "posy": 84.5
+      },
+      {
+        "rotation": -58,
+        "posx": 72.25,
+        "posy": 78.75
+      },
+      {
+        "rotation": -50,
+        "posx": 74.4,
+        "posy": 73.8
+      },
+      {
+        "rotation": -41,
+        "posx": 76.9,
+        "posy": 69.1
+      }
+    ]
+  },
+  "Atlanta - Raleigh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -42,
+        "posx": 80,
+        "posy": 61.9
+      },
+      {
+        "rotation": -42,
+        "posx": 82.8,
+        "posy": 58
+      }
+    ]
+  },
+  "Boston - Montreal": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 39,
+        "posx": 91.32,
+        "posy": 8.1
+      },
+      {
+        "rotation": 39,
+        "posx": 94.19,
+        "posy": 11.8
+      }
+    ]
+  },
+  "Boston - New York": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -58,
+        "posx": 93.6,
+        "posy": 27.8
+      },
+      {
+        "rotation": -58,
+        "posx": 95.6,
+        "posy": 22.9
+      }
+    ]
+  },
+  "Calgary - Helena": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 50,
+        "posx": 22.9,
+        "posy": 8.67
+      },
+      {
+        "rotation": 50,
+        "posx": 25.33,
+        "posy": 13.37
+      },
+      {
+        "rotation": 50,
+        "posx": 27.71,
+        "posy": 17.88
+      },
+      {
+        "rotation": 50,
+        "posx": 30.15,
+        "posy": 22.37
+      }
+    ]
+  },
+  "Calgary - Winnipeg": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -24,
+        "posx": 22.55,
+        "posy": 6.1
+      },
+      {
+        "rotation": -12,
+        "posx": 26.19,
+        "posy": 3.64
+      },
+      {
+        "rotation": -2,
+        "posx": 29.9,
+        "posy": 2.4
+      },
+      {
+        "rotation": 3,
+        "posx": 33.75,
+        "posy": 2.21
+      },
+      {
+        "rotation": 16,
+        "posx": 37.7,
+        "posy": 2.7
+      },
+      {
+        "rotation": 25,
+        "posx": 41.32,
+        "posy": 4.4
+      }
+    ]
+  },
+  "Charleston - Miami": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 87,
+        "posx": 90.7,
+        "posy": 66.89
+      },
+      {
+        "rotation": 82,
+        "posx": 90.9,
+        "posy": 72.85
+      },
+      {
+        "rotation": 72,
+        "posx": 91.32,
+        "posy": 78.6
+      },
+      {
+        "rotation": 60,
+        "posx": 92.5,
+        "posy": 84.22
+      }
+    ]
+  },
+  "Chicago - Pittsburgh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -16,
+        "posx": 70.4,
+        "posy": 35.1
+      },
+      {
+        "rotation": -9,
+        "posx": 74.15,
+        "posy": 33.55
+      },
+      {
+        "rotation": 3,
+        "posx": 78.08,
+        "posy": 32.7
+      }
+    ]
+  },
+  "Chicago - Saint Louis": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -57,
+        "posx": 65,
+        "posy": 50.2
+      },
+      {
+        "rotation": -57,
+        "posx": 67.05,
+        "posy": 45.1
+      }
+    ]
+  },
+  "Chicago - Toronto": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -45,
+        "posx": 68.6,
+        "posy": 34.95
+      },
+      {
+        "rotation": -34,
+        "posx": 71.4,
+        "posy": 30.4
+      },
+      {
+        "rotation": -17,
+        "posx": 74.75,
+        "posy": 27
+      },
+      {
+        "rotation": -39,
+        "posx": 78.2,
+        "posy": 25.4
+      }
+    ]
+  },
+  "Dallas - Little Rock": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -55,
+        "posx": 57.37,
+        "posy": 77.04
+      },
+      {
+        "rotation": -55,
+        "posx": 59.5,
+        "posy": 72.3
+      }
+    ]
+  },
+  "Dallas - Oklahoma City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 82,
+        "posx": 56,
+        "posy": 67.4
+      },
+      {
+        "rotation": 82,
+        "posx": 56.55,
+        "posy": 73.3
+      }
+    ]
+  },
+  "Dallas - Houston": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 48,
+        "posx": 56.8,
+        "posy": 81.76
+      }
+    ]
+  },
+  "Denver - Kansas City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 1,
+        "posx": 40,
+        "posy": 54
+      },
+      {
+        "rotation": -4,
+        "posx": 43.73,
+        "posy": 54.1
+      },
+      {
+        "rotation": -11,
+        "posx": 47.46,
+        "posy": 53.73
+      },
+      {
+        "rotation": -23,
+        "posx": 51.04,
+        "posy": 52.53
+      }
+    ]
+  },
+  "Denver - Oklahoma City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 44,
+        "posx": 39.2,
+        "posy": 56.99
+      },
+      {
+        "rotation": 25,
+        "posx": 41.82,
+        "posy": 61.05
+      },
+      {
+        "rotation": 9,
+        "posx": 45.14,
+        "posy": 63.41
+      },
+      {
+        "rotation": 4,
+        "posx": 48.81,
+        "posy": 64.25
+      }
+    ]
+  },
+  "Denver - Omaha": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -38,
+        "posx": 38.6,
+        "posy": 52.36
+      },
+      {
+        "rotation": -26,
+        "posx": 41.75,
+        "posy": 48.6
+      },
+      {
+        "rotation": -17,
+        "posx": 45.24,
+        "posy": 45.94
+      },
+      {
+        "rotation": -10,
+        "posx": 48.97,
+        "posy": 44.3
+      }
+    ]
+  },
+  "Denver - Salt Lake City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 11,
+        "posx": 25.64,
+        "posy": 49.89
+      },
+      {
+        "rotation": 11,
+        "posx": 29.34,
+        "posy": 50.97
+      },
+      {
+        "rotation": 11,
+        "posx": 33.05,
+        "posy": 52.13
+      }
+    ]
+  },
+  "Duluth - Chicago": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 30,
+        "posx": 58,
+        "posy": 29
+      },
+      {
+        "rotation": 20,
+        "posx": 61.2,
+        "posy": 31.9
+      },
+      {
+        "rotation": 14,
+        "posx": 64.7,
+        "posy": 33.8
+      }
+    ]
+  },
+  "Duluth - Omaha": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -68,
+        "posx": 53.9,
+        "posy": 41.3
+      },
+      {
+        "rotation": -68,
+        "posx": 55.35,
+        "posy": 35.8
+      }
+    ]
+  },
+  "Duluth - Sault St. Marie": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -23,
+        "posx": 58.6,
+        "posy": 24.7
+      },
+      {
+        "rotation": -23,
+        "posx": 62.11,
+        "posy": 22.3
+      },
+      {
+        "rotation": -23,
+        "posx": 65.6,
+        "posy": 19.98
+      }
+    ]
+  },
+  "Duluth - Toronto": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -10,
+        "posx": 57.9,
+        "posy": 27.04
+      },
+      {
+        "rotation": -10,
+        "posx": 61.6,
+        "posy": 26.05
+      },
+      {
+        "rotation": -10,
+        "posx": 65.3,
+        "posy": 25.06
+      },
+      {
+        "rotation": -10,
+        "posx": 69.1,
+        "posy": 24.06
+      },
+      {
+        "rotation": -10,
+        "posx": 72.9,
+        "posy": 23.1
+      },
+      {
+        "rotation": -10,
+        "posx": 76.55,
+        "posy": 22.05
+      }
+    ]
+  },
+  "El Paso - Dallas": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -9,
+        "posx": 39.85,
+        "posy": 84.22
+      },
+      {
+        "rotation": -9,
+        "posx": 43.55,
+        "posy": 83.35
+      },
+      {
+        "rotation": -9,
+        "posx": 47.3,
+        "posy": 82.45
+      },
+      {
+        "rotation": -9,
+        "posx": 51,
+        "posy": 81.68
+      }
+    ]
+  },
+  "El Paso - Houston": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 30,
+        "posx": 37.89,
+        "posy": 85.3
+      },
+      {
+        "rotation": 17,
+        "posx": 41.05,
+        "posy": 88.1
+      },
+      {
+        "rotation": 8,
+        "posx": 44.61,
+        "posy": 89.8
+      },
+      {
+        "rotation": 3,
+        "posx": 48.3,
+        "posy": 90.7
+      },
+      {
+        "rotation": -9,
+        "posx": 52,
+        "posy": 90.8
+      },
+      {
+        "rotation": -19,
+        "posx": 55.6,
+        "posy": 89.8
+      }
+    ]
+  },
+  "El Paso - Oklahoma City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -17,
+        "posx": 37.86,
+        "posy": 82.8
+      },
+      {
+        "rotation": -26,
+        "posx": 41.3,
+        "posy": 81.13
+      },
+      {
+        "rotation": -33,
+        "posx": 44.75,
+        "posy": 78.46
+      },
+      {
+        "rotation": -45,
+        "posx": 47.75,
+        "posy": 75.28
+      },
+      {
+        "rotation": -55,
+        "posx": 50.37,
+        "posy": 71.18
+      }
+    ]
+  },
+  "Helena - Denver": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 68,
+        "posx": 33.2,
+        "posy": 30.51
+      },
+      {
+        "rotation": 68,
+        "posx": 34.56,
+        "posy": 36.03
+      },
+      {
+        "rotation": 67,
+        "posx": 35.9,
+        "posy": 41.48
+      },
+      {
+        "rotation": 68,
+        "posx": 37.37,
+        "posy": 46.9
+      }
+    ]
+  },
+  "Helena - Duluth": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -1,
+        "posx": 33.35,
+        "posy": 28.3
+      },
+      {
+        "rotation": -1,
+        "posx": 37.18,
+        "posy": 28.18
+      },
+      {
+        "rotation": -1,
+        "posx": 40.97,
+        "posy": 28.04
+      },
+      {
+        "rotation": -1,
+        "posx": 44.74,
+        "posy": 27.98
+      },
+      {
+        "rotation": -1,
+        "posx": 48.5,
+        "posy": 27.81
+      },
+      {
+        "rotation": -1,
+        "posx": 52.23,
+        "posy": 27.76
+      }
+    ]
+  },
+  "Helena - Omaha": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 22,
+        "posx": 34.63,
+        "posy": 30.4
+      },
+      {
+        "rotation": 22,
+        "posx": 38.1,
+        "posy": 32.7
+      },
+      {
+        "rotation": 22,
+        "posx": 41.6,
+        "posy": 34.87
+      },
+      {
+        "rotation": 22,
+        "posx": 45.1,
+        "posy": 37.2
+      },
+      {
+        "rotation": 22,
+        "posx": 48.6,
+        "posy": 39.4
+      }
+    ]
+  },
+  "Helena - Winnipeg": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -45,
+        "posx": 33,
+        "posy": 26.4
+      },
+      {
+        "rotation": -45,
+        "posx": 35.64,
+        "posy": 22.1
+      },
+      {
+        "rotation": -45,
+        "posx": 38.3,
+        "posy": 17.9
+      },
+      {
+        "rotation": -45,
+        "posx": 40.97,
+        "posy": 13.7
+      }
+    ]
+  },
+  "Houston - Dallas": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 48,
+        "posx": 57.76,
+        "posy": 80.3
+      }
+    ]
+  },
+  "Houston - New Orleans": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -9,
+        "posx": 61.41,
+        "posy": 85.98
+      },
+      {
+        "rotation": -9,
+        "posx": 65.04,
+        "posy": 85
+      }
+    ]
+  },
+  "Kansas City - Denver": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 1,
+        "posx": 40.03,
+        "posy": 56.15
+      },
+      {
+        "rotation": -4,
+        "posx": 43.77,
+        "posy": 56.32
+      },
+      {
+        "rotation": -11,
+        "posx": 47.45,
+        "posy": 55.89
+      },
+      {
+        "rotation": -23,
+        "posx": 51.12,
+        "posy": 54.8
+      }
+    ]
+  },
+  "Kansas City - Oklahoma City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 106,
+        "posx": 56.25,
+        "posy": 53.75
+      },
+      {
+        "rotation": 106,
+        "posx": 55.15,
+        "posy": 59.4
+      }
+    ]
+  },
+  "Kansas City - Omaha": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 64,
+        "posx": 55.4,
+        "posy": 44.3
+      }
+    ]
+  },
+  "Kansas City - Saint Louis": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -1,
+        "posx": 56.8,
+        "posy": 49.7
+      },
+      {
+        "rotation": -1,
+        "posx": 60.6,
+        "posy": 49.6
+      }
+    ]
+  },
+  "Las Vegas - Salt Lake City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -45,
+        "posx": 19.4,
+        "posy": 66.59
+      },
+      {
+        "rotation": -67,
+        "posx": 22.03,
+        "posy": 62.57
+      },
+      {
+        "rotation": -82,
+        "posx": 23.45,
+        "posy": 57.2
+      }
+    ]
+  },
+  "Little Rock - Nashville": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -7,
+        "posx": 64.29,
+        "posy": 65.78
+      },
+      {
+        "rotation": -24,
+        "posx": 67.9,
+        "posy": 65.1
+      },
+      {
+        "rotation": -41.5,
+        "posx": 71.2,
+        "posy": 62.7
+      }
+    ]
+  },
+  "Little Rock - New Orleans": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 62,
+        "posx": 64.36,
+        "posy": 67.77
+      },
+      {
+        "rotation": 62,
+        "posx": 66.11,
+        "posy": 73.18
+      },
+      {
+        "rotation": 62,
+        "posx": 68,
+        "posy": 78.48
+      }
+    ]
+  },
+  "Little Rock - Saint Louis": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -76,
+        "posx": 62.7,
+        "posy": 64.7
+      },
+      {
+        "rotation": -76,
+        "posx": 63.64,
+        "posy": 58.9
+      }
+    ]
+  },
+  "Los Angeles - El Paso": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 36,
+        "posx": 13.5,
+        "posy": 78.1
+      },
+      {
+        "rotation": 24,
+        "posx": 16.5,
+        "posy": 81.45
+      },
+      {
+        "rotation": 15,
+        "posx": 19.89,
+        "posy": 83.8
+      },
+      {
+        "rotation": 8,
+        "posx": 23.53,
+        "posy": 85.32
+      },
+      {
+        "rotation": -4,
+        "posx": 27.1,
+        "posy": 86.09
+      },
+      {
+        "rotation": -13,
+        "posx": 30.8,
+        "posy": 85.7
+      }
+    ]
+  },
+  "Los Angeles - Las Vegas": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -64,
+        "posx": 11.5,
+        "posy": 74.4
+      },
+      {
+        "rotation": -12,
+        "posx": 13.96,
+        "posy": 68.15
+      }
+    ]
+  },
+  "Los Angeles - Phoenix": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -8,
+        "posx": 12.7,
+        "posy": 75.5
+      },
+      {
+        "rotation": 1,
+        "posx": 16.5,
+        "posy": 74.75
+      },
+      {
+        "rotation": 14,
+        "posx": 20.45,
+        "posy": 74.9
+      }
+    ]
+  },
+  "Los Angeles - San Francisco": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 67,
+        "posx": 4.4,
+        "posy": 62.1
+      },
+      {
+        "rotation": 55,
+        "posx": 5.86,
+        "posy": 67.5
+      },
+      {
+        "rotation": 46,
+        "posx": 7.96,
+        "posy": 72.3
+      }
+    ]
+  },
+  "Montreal - Boston": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 39,
+        "posx": 92.2,
+        "posy": 6.3
+      },
+      {
+        "rotation": 39,
+        "posx": 95.1,
+        "posy": 10.15
+      }
+    ]
+  },
+  "Montreal - New York": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 81,
+        "posx": 90.4,
+        "posy": 9.1
+      },
+      {
+        "rotation": 81,
+        "posx": 90.9,
+        "posy": 15
+      },
+      {
+        "rotation": 81,
+        "posx": 91.55,
+        "posy": 20.8
+      }
+    ]
+  },
+  "Nashville - Atlanta": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 35,
+        "posx": 76,
+        "posy": 58.8
+      }
+    ]
+  },
+  "Nashville - Pittsburgh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -63,
+        "posx": 73.2,
+        "posy": 56.7
+      },
+      {
+        "rotation": -51,
+        "posx": 75.07,
+        "posy": 51.21
+      },
+      {
+        "rotation": -33,
+        "posx": 77.65,
+        "posy": 46.36
+      },
+      {
+        "rotation": -55,
+        "posx": 80.8,
+        "posy": 43.25
+      }
+    ]
+  },
+  "Nashville - Raleigh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -32,
+        "posx": 75.3,
+        "posy": 56.3
+      },
+      {
+        "rotation": -14,
+        "posx": 78.85,
+        "posy": 53.09
+      },
+      {
+        "rotation": 2,
+        "posx": 82.77,
+        "posy": 51.77
+      }
+    ]
+  },
+  "New Orleans - Atlanta": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -69,
+        "posx": 69.75,
+        "posy": 83
+      },
+      {
+        "rotation": -57,
+        "posx": 71.2,
+        "posy": 77.2
+      },
+      {
+        "rotation": -50,
+        "posx": 73.4,
+        "posy": 72.1
+      },
+      {
+        "rotation": -41,
+        "posx": 75.9,
+        "posy": 67.5
+      }
+    ]
+  },
+  "New Orleans - Miami": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -31,
+        "posx": 72.2,
+        "posy": 84.88
+      },
+      {
+        "rotation": -16,
+        "posx": 75.5,
+        "posy": 81.8
+      },
+      {
+        "rotation": 0,
+        "posx": 79.41,
+        "posy": 80.35
+      },
+      {
+        "rotation": 27,
+        "posx": 83.54,
+        "posy": 80.57
+      },
+      {
+        "rotation": 40,
+        "posx": 87,
+        "posy": 83.5
+      },
+      {
+        "rotation": 49,
+        "posx": 89.85,
+        "posy": 87.66
+      }
+    ]
+  },
+  "New York - Boston": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -58,
+        "posx": 92.4,
+        "posy": 26.71
+      },
+      {
+        "rotation": -58,
+        "posx": 94.5,
+        "posy": 21.74
+      }
+    ]
+  },
+  "New York - Pittsburgh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -31,
+        "posx": 84.6,
+        "posy": 34.75
+      },
+      {
+        "rotation": -31,
+        "posx": 87.9,
+        "posy": 31.7
+      }
+    ]
+  },
+  "New York - Washington": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 86,
+        "posx": 92.7,
+        "posy": 30.35
+      },
+      {
+        "rotation": 86,
+        "posx": 92.95,
+        "posy": 36.31
+      }
+    ]
+  },
+  "Oklahoma City - Dallas": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 82,
+        "posx": 54.76,
+        "posy": 67.63
+      },
+      {
+        "rotation": 82,
+        "posx": 55.3,
+        "posy": 73.62
+      }
+    ]
+  },
+  "Oklahoma City - Kansas City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 106,
+        "posx": 57.45,
+        "posy": 54.4
+      },
+      {
+        "rotation": 106,
+        "posx": 56.4,
+        "posy": 59.95
+      }
+    ]
+  },
+  "Oklahoma City - Little Rock": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -2,
+        "posx": 55.11,
+        "posy": 65.45
+      },
+      {
+        "rotation": -2,
+        "posx": 58.75,
+        "posy": 65.25
+      }
+    ]
+  },
+  "Omaha - Chicago": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -34,
+        "posx": 54.6,
+        "posy": 42.55
+      },
+      {
+        "rotation": -34,
+        "posx": 57.7,
+        "posy": 39.3
+      },
+      {
+        "rotation": 9,
+        "posx": 61.4,
+        "posy": 35.8
+      },
+      {
+        "rotation": 9,
+        "posx": 65.1,
+        "posy": 36.6
+      }
+    ]
+  },
+  "Omaha - Duluth": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -68,
+        "posx": 52.6,
+        "posy": 40.6
+      },
+      {
+        "rotation": -68,
+        "posx": 54.05,
+        "posy": 35
+      }
+    ]
+  },
+  "Omaha - Kansas City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 64,
+        "posx": 54.2,
+        "posy": 45.25
+      }
+    ]
+  },
+  "Phoenix - Denver": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -68,
+        "posx": 24.3,
+        "posy": 76.75
+      },
+      {
+        "rotation": -61,
+        "posx": 25.8,
+        "posy": 71.2
+      },
+      {
+        "rotation": -55,
+        "posx": 27.66,
+        "posy": 65.9
+      },
+      {
+        "rotation": -40,
+        "posx": 29.97,
+        "posy": 60.71
+      },
+      {
+        "rotation": -20,
+        "posx": 33.2,
+        "posy": 56.8
+      }
+    ]
+  },
+  "Phoenix - El Paso": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 16,
+        "posx": 25.5,
+        "posy": 78.3
+      },
+      {
+        "rotation": 16,
+        "posx": 29.13,
+        "posy": 79.94
+      },
+      {
+        "rotation": 16,
+        "posx": 32.7,
+        "posy": 81.5
+      }
+    ]
+  },
+  "Phoenix - Santa Fe": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -24,
+        "posx": 26,
+        "posy": 76.39
+      },
+      {
+        "rotation": -24,
+        "posx": 29.4,
+        "posy": 73.97
+      },
+      {
+        "rotation": -24,
+        "posx": 32.8,
+        "posy": 71.54
+      }
+    ]
+  },
+  "Pittsburgh - Chicago": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 3,
+        "posx": 78.5,
+        "posy": 34.9
+      },
+      {
+        "rotation": -9,
+        "posx": 74.6,
+        "posy": 35.7
+      },
+      {
+        "rotation": -16,
+        "posx": 70.9,
+        "posy": 37.31
+      }
+    ]
+  },
+  "Pittsburgh - New York": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -31,
+        "posx": 83.9,
+        "posy": 32.9
+      },
+      {
+        "rotation": -31,
+        "posx": 87.1,
+        "posy": 29.91
+      }
+    ]
+  },
+  "Pittsburgh - Raleigh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 77,
+        "posx": 85,
+        "posy": 39.4
+      },
+      {
+        "rotation": 77,
+        "posx": 85.8,
+        "posy": 45.25
+      }
+    ]
+  },
+  "Pittsburgh - Washington": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 28,
+        "posx": 85.3,
+        "posy": 36.65
+      },
+      {
+        "rotation": 28,
+        "posx": 88.59,
+        "posy": 39.35
+      }
+    ]
+  },
+  "Portland - Salt Lake City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 12,
+        "posx": 6.65,
+        "posy": 27.1
+      },
+      {
+        "rotation": 21,
+        "posx": 10.43,
+        "posy": 28.4
+      },
+      {
+        "rotation": 33,
+        "posx": 14.08,
+        "posy": 30.6
+      },
+      {
+        "rotation": 39,
+        "posx": 17.3,
+        "posy": 33.9
+      },
+      {
+        "rotation": 48,
+        "posx": 20.31,
+        "posy": 37.8
+      },
+      {
+        "rotation": 60,
+        "posx": 22.9,
+        "posy": 42.4
+      }
+    ]
+  },
+  "Portland - San Francisco": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 113,
+        "posx": 4.7,
+        "posy": 29.6
+      },
+      {
+        "rotation": 101,
+        "posx": 3.27,
+        "posy": 35
+      },
+      {
+        "rotation": 92,
+        "posx": 2.5,
+        "posy": 40.7
+      },
+      {
+        "rotation": 86,
+        "posx": 2.4,
+        "posy": 46.5
+      },
+      {
+        "rotation": 74,
+        "posx": 2.7,
+        "posy": 52.35
+      }
+    ]
+  },
+  "Portland - Seattle": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 112,
+        "posx": 8.1,
+        "posy": 21.52
+      }
+    ]
+  },
+  "Raleigh - Atlanta": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -42,
+        "posx": 80.95,
+        "posy": 63.4
+      },
+      {
+        "rotation": -42,
+        "posx": 83.75,
+        "posy": 59.5
+      }
+    ]
+  },
+  "Raleigh - Charleston": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 35,
+        "posx": 88.1,
+        "posy": 55.1
+      },
+      {
+        "rotation": -64,
+        "posx": 89.7,
+        "posy": 63.45
+      }
+    ]
+  },
+  "Raleigh - Washington": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -50,
+        "posx": 86.95,
+        "posy": 52.3
+      },
+      {
+        "rotation": -50,
+        "posx": 89.4,
+        "posy": 47.77
+      }
+    ]
+  },
+  "Saint Louis - Chicago": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -57,
+        "posx": 63.9,
+        "posy": 49
+      },
+      {
+        "rotation": -57,
+        "posx": 65.9,
+        "posy": 44
+      }
+    ]
+  },
+  "Saint Louis - Kansas City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -1,
+        "posx": 56.85,
+        "posy": 51.9
+      },
+      {
+        "rotation": -1,
+        "posx": 60.7,
+        "posy": 51.7
+      }
+    ]
+  },
+  "Saint Louis - Nashville": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 17,
+        "posx": 66.18,
+        "posy": 53.93
+      },
+      {
+        "rotation": 17,
+        "posx": 69.75,
+        "posy": 55.67
+      }
+    ]
+  },
+  "Saint Louis - Pittsburgh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -30,
+        "posx": 65.85,
+        "posy": 51.7
+      },
+      {
+        "rotation": -30,
+        "posx": 69.1,
+        "posy": 48.8
+      },
+      {
+        "rotation": -30,
+        "posx": 72.4,
+        "posy": 45.81
+      },
+      {
+        "rotation": -30,
+        "posx": 75.65,
+        "posy": 42.83
+      },
+      {
+        "rotation": -30,
+        "posx": 79,
+        "posy": 39.85
+      }
+    ]
+  },
+  "Salt Lake City - Denver": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 11,
+        "posx": 25.9,
+        "posy": 47.8
+      },
+      {
+        "rotation": 11,
+        "posx": 29.6,
+        "posy": 49
+      },
+      {
+        "rotation": 11,
+        "posx": 33.26,
+        "posy": 50.1
+      }
+    ]
+  },
+  "Salt Lake City - Helena": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -59.5,
+        "posx": 25.1,
+        "posy": 45.8
+      },
+      {
+        "rotation": -59.5,
+        "posx": 27,
+        "posy": 40.7
+      },
+      {
+        "rotation": -59.5,
+        "posx": 28.9,
+        "posy": 35.5
+      }
+    ]
+  },
+  "Salt Lake City - San Francisco": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -19,
+        "posx": 5.7,
+        "posy": 59.4
+      },
+      {
+        "rotation": -19,
+        "posx": 9.26,
+        "posy": 57.53
+      },
+      {
+        "rotation": -19,
+        "posx": 12.82,
+        "posy": 55.8
+      },
+      {
+        "rotation": -19,
+        "posx": 16.32,
+        "posy": 53.97
+      },
+      {
+        "rotation": -19,
+        "posx": 19.82,
+        "posy": 52
+      }
+    ]
+  },
+  "San Francisco - Los Angeles": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 67,
+        "posx": 5.6,
+        "posy": 60.9
+      },
+      {
+        "rotation": 55,
+        "posx": 6.99,
+        "posy": 66.3
+      },
+      {
+        "rotation": 46,
+        "posx": 9.1,
+        "posy": 71
+      }
+    ]
+  },
+  "San Francisco - Portland": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 113,
+        "posx": 6.16,
+        "posy": 29.91
+      },
+      {
+        "rotation": 101,
+        "posx": 4.7,
+        "posy": 35.2
+      },
+      {
+        "rotation": 92,
+        "posx": 4,
+        "posy": 40.8
+      },
+      {
+        "rotation": 86,
+        "posx": 3.8,
+        "posy": 46.8
+      },
+      {
+        "rotation": 74,
+        "posx": 4.17,
+        "posy": 52.6
+      }
+    ]
+  },
+  "San Francisco - Salt Lake City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -19,
+        "posx": 5.3,
+        "posy": 57.35
+      },
+      {
+        "rotation": -19,
+        "posx": 8.89,
+        "posy": 55.5
+      },
+      {
+        "rotation": -19,
+        "posx": 12.34,
+        "posy": 53.7
+      },
+      {
+        "rotation": -19,
+        "posx": 15.85,
+        "posy": 51.9
+      },
+      {
+        "rotation": -19,
+        "posx": 19.4,
+        "posy": 50
+      }
+    ]
+  },
+  "Santa Fe - Denver": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 93,
+        "posx": 38.1,
+        "posy": 62.87
+      },
+      {
+        "rotation": 93,
+        "posx": 38.3,
+        "posy": 56.8
+      }
+    ]
+  },
+  "Santa Fe - El Paso": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 93,
+        "posx": 37.8,
+        "posy": 71.41
+      },
+      {
+        "rotation": 93,
+        "posx": 37.64,
+        "posy": 77.37
+      }
+    ]
+  },
+  "Santa Fe - Oklahoma City": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -7,
+        "posx": 38.67,
+        "posy": 68.98
+      },
+      {
+        "rotation": -7,
+        "posx": 42.45,
+        "posy": 68.24
+      },
+      {
+        "rotation": -7,
+        "posx": 46.22,
+        "posy": 67.5
+      }
+    ]
+  },
+  "Sault St. Marie - Montreal": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -41,
+        "posx": 70.9,
+        "posy": 15.12
+      },
+      {
+        "rotation": -29,
+        "posx": 73.9,
+        "posy": 11.2
+      },
+      {
+        "rotation": -19,
+        "posx": 77.3,
+        "posy": 8.3
+      },
+      {
+        "rotation": -13,
+        "posx": 80.9,
+        "posy": 6.29
+      },
+      {
+        "rotation": 0,
+        "posx": 84.75,
+        "posy": 5
+      }
+    ]
+  },
+  "Sault St. Marie - Toronto": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 13,
+        "posx": 72,
+        "posy": 16.6
+      },
+      {
+        "rotation": 13,
+        "posx": 75.7,
+        "posy": 17.9
+      }
+    ]
+  },
+  "Seattle - Calgary": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 0,
+        "posx": 8.96,
+        "posy": 18.1
+      },
+      {
+        "rotation": -7,
+        "posx": 12.6,
+        "posy": 18.1
+      },
+      {
+        "rotation": -38,
+        "posx": 16.25,
+        "posy": 17.44
+      },
+      {
+        "rotation": -63,
+        "posx": 19.2,
+        "posy": 13.95
+      }
+    ]
+  },
+  "Seattle - Helena": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 13,
+        "posx": 8.89,
+        "posy": 20.86
+      },
+      {
+        "rotation": 13,
+        "posx": 12.54,
+        "posy": 21.96
+      },
+      {
+        "rotation": 13,
+        "posx": 16.19,
+        "posy": 23.3
+      },
+      {
+        "rotation": 13,
+        "posx": 19.89,
+        "posy": 24.61
+      },
+      {
+        "rotation": 13,
+        "posx": 23.6,
+        "posy": 25.9
+      },
+      {
+        "rotation": 13,
+        "posx": 27.24,
+        "posy": 27.25
+      }
+    ]
+  },
+  "Seattle - Portland": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 112,
+        "posx": 6.85,
+        "posy": 20.76
+      }
+    ]
+  },
+  "Seattle - Vancouver": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 90,
+        "posx": 8.9,
+        "posy": 11.92
+      }
+    ]
+  },
+  "Toronto - Montreal": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -60,
+        "posx": 80.6,
+        "posy": 18.6
+      },
+      {
+        "rotation": -41,
+        "posx": 82.7,
+        "posy": 13.05
+      },
+      {
+        "rotation": -23,
+        "posx": 85.7,
+        "posy": 8.9
+      }
+    ]
+  },
+  "Toronto - Pittsburgh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 86,
+        "posx": 83.1,
+        "posy": 22.2
+      },
+      {
+        "rotation": 86,
+        "posx": 83.3,
+        "posy": 28.3
+      }
+    ]
+  },
+  "Vancouver - Calgary": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -6,
+        "posx": 9.1,
+        "posy": 8.39
+      },
+      {
+        "rotation": -6,
+        "posx": 12.89,
+        "posy": 7.84
+      },
+      {
+        "rotation": -6,
+        "posx": 16.6,
+        "posy": 7.17
+      }
+    ]
+  },
+  "Vancouver - Seattle": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 90,
+        "posx": 7.6,
+        "posy": 11.95
+      }
+    ]
+  },
+  "Washington - New York": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 86,
+        "posx": 94.1,
+        "posy": 30.2
+      },
+      {
+        "rotation": 86,
+        "posx": 94.3,
+        "posy": 36.2
+      }
+    ]
+  },
+  "Washington - Raleigh": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": -50,
+        "posx": 87.96,
+        "posy": 53.64
+      },
+      {
+        "rotation": -50,
+        "posx": 90.35,
+        "posy": 49.2
+      }
+    ]
+  },
+  "Winnipeg - Duluth": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 44,
+        "posx": 46.22,
+        "posy": 9.82
+      },
+      {
+        "rotation": 44,
+        "posx": 48.88,
+        "posy": 13.9
+      },
+      {
+        "rotation": 44,
+        "posx": 51.61,
+        "posy": 18
+      },
+      {
+        "rotation": 44,
+        "posx": 54.3,
+        "posy": 22.2
+      }
+    ]
+  },
+  "Winnipeg - Sault St. Marie": {
+    "color": "rgb(0,0,255)",
+    "activated": 0,
+    "roads": [
+      {
+        "rotation": 12,
+        "posx": 47.3,
+        "posy": 8
+      },
+      {
+        "rotation": 12,
+        "posx": 50.98,
+        "posy": 9.2
+      },
+      {
+        "rotation": 12,
+        "posx": 54.69,
+        "posy": 10.4
+      },
+      {
+        "rotation": 12,
+        "posx": 58.3,
+        "posy": 11.6
+      },
+      {
+        "rotation": 12,
+        "posx": 62.04,
+        "posy": 12.8
+      },
+      {
+        "rotation": 12,
+        "posx": 65.7,
+        "posy": 14
+      }
+    ]
+  }
+}

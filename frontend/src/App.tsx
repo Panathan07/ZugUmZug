@@ -31,7 +31,7 @@ function App() {
 
   return (
     <UserContext.Provider value={user}>
-      <NavigationBar />;
+      <NavigationBar />
     </UserContext.Provider>
   );
 }
