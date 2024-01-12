@@ -1,6 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
 import { isEqual } from "./isEqual";
-import User from "#game-components/user";
+import User from "#game-components/User";
 
 describe("isEqual module -> test whether two objects are equal", () => {
   test("same Objects are equal", () => {

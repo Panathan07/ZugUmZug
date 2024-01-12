@@ -1,7 +1,7 @@
 import { isEqual } from "#utility-functions/isEqual";
 import Road from "./Road";
-import Task from "./task";
-import User from "./user";
+import Task from "./Task";
+import User from "./User";
 
 export default class Team {
   points: number;

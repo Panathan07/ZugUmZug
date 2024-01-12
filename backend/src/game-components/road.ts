@@ -1,5 +1,3 @@
-import Team from "./Team";
-
 export default class Road {
   bought: boolean;
   startCity: string;

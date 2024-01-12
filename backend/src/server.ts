@@ -8,7 +8,7 @@ import bodyParser from "body-parser";
 import Game from "#game-components/Game";
 import { handleUserID } from "#utility-functions/userIDHandler";
 import JSONStorage from "#game-components/JSONStorage";
-import User, { UserProps, UserReplaceKeyMap } from "#game-components/user";
+import User, { UserProps, UserReplaceKeyMap } from "#game-components/User";
 import Team from "#game-components/Team";
 import RoadManager from "#game-components/RoadManager";
 
