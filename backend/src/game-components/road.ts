@@ -1,17 +1,17 @@
 export default class Road {
-  color: string;
   bought: boolean;
   startCity: string;
   endCity: string;
-  constructor(
-    color: string,
-    bought: boolean,
-    startCity: string,
-    endCity: string
-  ) {
-    this.color = color;
+  constructor(bought: boolean, startCity: string, endCity: string) {
     this.bought = bought;
     this.startCity = startCity;
     this.endCity = endCity;
+  }
+  buy() {
+    this.bought = true;
+  }
+  hasCities(city1: string, city2: string): boolean {
+    if (city1 === this.startCity && city2 === this.endCity) return true;
+    return false;
   }
 }

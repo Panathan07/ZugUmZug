@@ -1,4 +1,4 @@
-import User from "#game-components/user";
+import User from "#game-components/User";
 
 export interface IStorage<Schema> {
   name: string;
