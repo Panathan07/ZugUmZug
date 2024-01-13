@@ -1,3 +1,4 @@
+import { RoadState } from "#customtypes/RoadState";
 import { isEqual } from "#utility-functions/isEqual";
 import Road from "./Road";
 import Task from "./Task";
@@ -12,7 +13,7 @@ export default class Team {
   boughtRoads: Road[];
 
   constructor(name: string, color: string) {
-    this.points = 0;
+    this.points = 3;
     this.name = name;
     this.color = color;
     this.members = [];
@@ -23,11 +24,36 @@ export default class Team {
   addPoints(amount_points: number) {
     this.points += amount_points;
   }
+  hasEnoughPoints(costs: number) {
+    if (costs > this.points) return false;
+    return true;
+  }
+  removePoints(amount_points: number) {
+    this.points -= amount_points;
+  }
 
-  buyRoad(road: Road): void {
-    if (this.hasBoughtRoad(road)) return;
+  buyRoad(road: Road): RoadState {
+    let state: RoadState = {
+      exists: true,
+      boughtRoad: false,
+      alreadyBought: false,
+      enoughPoints: false,
+    };
+
+    if (this.hasBoughtRoad(road)) {
+      state.alreadyBought = true;
+      return state;
+    }
+
+    if (!this.hasEnoughPoints(road.buyCost)) return state;
+    this.removePoints(road.buyCost);
+
     this.boughtRoads.push(road);
     road.buy();
+
+    state.enoughPoints = true;
+    state.boughtRoad = true;
+    return state;
   }
   hasBoughtRoad(road: Road): boolean {
     if (road.bought) return true;

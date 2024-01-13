@@ -1,3 +1,4 @@
+import { RoadState } from "#customtypes/RoadState";
 import { instantiateRoads } from "#utility-functions/instantiateRoads";
 import { splitCities } from "#utility-functions/splitCities";
 import Road from "./Road";
@@ -9,13 +10,13 @@ export default class RoadManager {
     this.roads = instantiateRoads();
   }
 
-  buyRoad(teams: Team[], teamId: number, roadName: string) {
+  buyRoad(teams: Team[], teamId: number, roadName: string): RoadState | null {
     const [city1, city2] = splitCities(roadName);
     let road: Road | null = this.getRoad(city1, city2);
 
-    if (road == null) return;
+    if (road == null) return null;
 
-    teams[teamId].buyRoad(road);
+    return teams[teamId].buyRoad(road);
   }
   getRoad(city1: string, city2: string): Road | null {
     for (const road of this.roads) {
