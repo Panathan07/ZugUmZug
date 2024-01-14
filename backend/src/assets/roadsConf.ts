@@ -1,17 +1,6 @@
 import { splitCities } from "#utility-functions/splitCities";
 import fs from "fs";
-
-type RoadJSON = {
-  [key: string]: {
-    color: string;
-    activated: boolean;
-    roads: {
-      rotation: number;
-      posx: number;
-      posy: number;
-    }[];
-  };
-};
+import RoadJson from "./roadConfig.json";
 
 type RoadConfig = {
   city1: string;
@@ -19,14 +8,11 @@ type RoadConfig = {
   buyCost: number;
 };
 
-export function createRoadConfig(): RoadConfig[] {
+export function createRoadConfig() {
   const roadConfig = [];
-  const roadsJSON: RoadJSON = JSON.parse(
-    fs.readFileSync("./src/assets/roadConfig.json", "utf8")
-  );
 
-  for (const cities of Object.keys(roadsJSON)) {
-    let amountRoads = roadsJSON[cities].roads.length;
+  for (const [cities, props] of Object.entries(RoadJson)) {
+    let amountRoads = props.roads.length;
     let [city1, city2] = splitCities(cities);
     roadConfig.push({ city1: city1, city2: city2, buyCost: amountRoads });
   }
