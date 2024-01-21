@@ -1,0 +1,7 @@
+export type RoadGroup = {
+  startCity: string;
+  endCity: string;
+  activated: boolean;
+  color: string;
+  roads: { rotation: number; posx: number; posy: number }[];
+};

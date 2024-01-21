@@ -1,5 +1,4 @@
 import { RoadState } from "#customtypes/RoadState";
-import { task } from "#customtypes/gameTask";
 import { isEqual } from "#utility-functions/isEqual";
 import Road from "./Road";
 import Task from "./Task";
@@ -12,7 +11,6 @@ export default class Team {
   members: User[];
   tasks: Task[];
   boughtRoads: Road[];
-  task_options: { [key: string]: task };
 
   constructor(name: string, color: string) {
     this.points = 3;
@@ -21,7 +19,6 @@ export default class Team {
     this.members = [];
     this.tasks = [];
     this.boughtRoads = [];
-    this.task_options = {};
   }
 
   addPoints(amount_points: number) {
@@ -87,12 +84,5 @@ export default class Team {
       if (isEqual(member, user)) return true;
     }
     return false;
-  }
-  get rotation(): { [key: string]: task } {
-    return this.task_options;
-  }
-  set_task(new_taskOptions: { [key: string]: task }) {
-    console.log(new_taskOptions);
-    this.task_options = new_taskOptions;
   }
 }

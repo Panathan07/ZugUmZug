@@ -1,28 +1,28 @@
 import crypto from "crypto";
-import User, { UserProps } from "#game-components/user";
-import Team from "#game-components/team";
+import User, { UserProps } from "#game-components/User";
+import Team from "#game-components/Team";
 import { IStorage, UserStorage } from "#customtypes/Storage";
 import { UserSchema } from "#customtypes/StorageSchema";
 
-const addUser = (user: User, userStorage: UserStorage) => {
+function addUser(user: User, userStorage: UserStorage) {
   if (userStorage.itemExists(user)) return;
   userStorage.insert(user);
-};
+}
 
-const createNewUserID = (userStorage: UserStorage) => {
+function createNewUserID(userStorage: UserStorage) {
   let id = "";
   while (true) {
     id = crypto.randomBytes(16).toString("hex");
-    if (!userStorage.itemWithPropExists("ID", id)) break;
+    if (!userStorage.itemWithPropExists(UserProps.ID, id)) break;
   }
   return id;
-};
+}
 
-export const handleUserID = (
+export function handleUserID(
   incomingUserID: string,
   userStorage: UserStorage,
   teams: Team[]
-): User => {
+): User {
   let userID = incomingUserID;
   if (!isValidID(userID)) {
     userID = createNewUserID(userStorage);
@@ -36,23 +36,22 @@ export const handleUserID = (
   addUser(user, userStorage);
 
   return user;
-};
+}
 
-const isValidID = (id: string) => {
+function isValidID(id: string) {
   const regex = /[0-9A-Fa-f]{6}/g;
   if (id == null) return false;
   if (typeof id !== "string") return false;
   if (id.length <= 0) return false;
   if (!regex.test(id)) return false;
   return true;
-};
+}
 
-export const userInTeam = (user: User, teams: Team[]) => {
+export function userInTeam(user: User, teams: Team[]) {
   teams.map((team) => {
     if (team.hasMember(user)) {
       user.inTeam = true;
-      console.log("User in team", user, team);
     }
   });
   return user.inTeam;
-};
+}
