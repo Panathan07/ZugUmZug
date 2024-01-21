@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
-export const useTeamData = <T>(
-  teamsApi: string
-): [T[] | null, UseQueryResult<{ teams: T[] }, Error>] => {
+export const useTeamData = <T>(): [
+  T[] | null,
+  UseQueryResult<{ teams: T[] }, Error>,
+] => {
   const [teams, setTeams] = useState<T[] | null>(null);
   const teamsResponse = useQuery({
     queryKey: ["teams"],
-    queryFn: () => getTeams<T>(teamsApi),
+    queryFn: () => getTeams<T>("http://localhost:3000/teams"),
   });
 
   useEffect(() => {

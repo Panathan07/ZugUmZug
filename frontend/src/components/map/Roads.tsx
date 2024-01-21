@@ -1,39 +1,46 @@
+import { useUserContext } from "@hooks/useUserContext";
 import { RoadTile } from "./RoadTile";
-import jsondata from "./roads.json";
-import { useState } from "react";
-
-type RoadGroup = {
-  activated: boolean;
-  color: string;
-  roads: { rotation: number; posx: number; posy: number }[];
-};
+import { useRoads } from "@hooks/useRoads";
+import { useTeamData } from "@hooks/useTeamData";
+import { Team } from "@customtypes/team";
+import { LoadingPage } from "@pages/state-pages/LoadingPage";
 
 export function Roads() {
-  const collectRoadData = () => {
-    const roads = [];
-    for (const value of Object.values(jsondata)) {
-      const roadGroup: RoadGroup = {
-        activated: value.activated === 1 ? true : false,
-        color: value.color,
-        roads: value.roads,
-      };
-      roads.push(roadGroup);
-    }
+  function roadOnClick(
+    currentState: boolean,
+    startCity: string,
+    endCity: string,
+    teamId: number
+  ): void {
+    if (currentState) return;
+    buyRoad(teamId, startCity, endCity);
+    return;
+  }
 
-    return roads;
-  };
+  function buyRoad(teamId: number, startCity: string, endCity: string) {
+    buyRoadMutation.mutate({
+      teamId: teamId,
+      roadName: startCity + " - " + endCity,
+    });
+  }
 
-  const [roads, setRoads] = useState(collectRoadData());
+  const [roads, , buyRoadMutation] = useRoads();
+  const user = useUserContext();
+  const [teams] = useTeamData<Team>();
 
-  const roadOnClick = (oldState: boolean, roadGroupIndex: number): void => {
-    changeActivityState(!oldState, roadGroupIndex);
-  };
+  if (teams == null) return <LoadingPage />;
 
-  const changeActivityState = (newState: boolean, roadGroupIndex: number) => {
-    const newRoads = [...roads];
-    newRoads[roadGroupIndex].activated = newState;
-    setRoads(newRoads);
-  };
+  let teamId: number = 0;
+
+  for (const team of teams) {
+    if (team.members.some((member) => member.ID === user.ID)) break;
+
+    teamId++;
+  }
+
+  console.log(teamId, user, roads);
+
+  //TODO: create function that turns roads on or off; modifies their colors to the team color, if turned on
 
   return (
     <div className="roads-wrapper">
@@ -49,10 +56,15 @@ export function Roads() {
             posy={roadTile.posy}
             activated={roadGroup.activated}
             onClick={() =>
-              roadOnClick(roadGroup.activated, roads.indexOf(roadGroup))
+              roadOnClick(
+                roadGroup.activated,
+                roadGroup.startCity,
+                roadGroup.endCity,
+                teamId
+              )
             }
           />
-        )),
+        ))
       )}
     </div>
   );
