@@ -95,7 +95,7 @@ export default class Game {
     taskRotation = shuffle(taskRotation);
     for (const team of teams) {
       console.log(currentTasks(team.color, taskRotation, tasks));
-      team.set_task(currentTasks(team.color, taskRotation, tasks));
+      team.setTask(currentTasks(team.color, taskRotation, tasks));
     }
   }
   shuffle(array: string[]) {
