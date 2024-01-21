@@ -19,7 +19,6 @@ function App() {
         navigate("/login");
         return;
       }
-      navigate("/map");
     }
 
     console.log(user, user?.inTeam);
