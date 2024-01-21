@@ -123,6 +123,13 @@ app.get("/teams/members/exists", (req, res) => {
     res.status(500);
   }
 });
+app.get("/teams/tasks", (req, res) => {
+    try {
+        res.status(200).json(game.get_rotation("blue"));
+    } catch {
+        res.status(500);
+    }
+})
 app.post("/teams/members/add", (req, res) => {
   try {
     const teamName = req.body.teamName;

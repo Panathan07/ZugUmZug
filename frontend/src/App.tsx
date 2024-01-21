@@ -19,7 +19,6 @@ function App() {
         navigate("/login");
         return;
       }
-      navigate("/map");
     }
 
     console.log(user, user?.inTeam);
@@ -31,7 +30,7 @@ function App() {
 
   return (
     <UserContext.Provider value={user}>
-      <NavigationBar />;
+      <NavigationBar />
     </UserContext.Provider>
   );
 }
