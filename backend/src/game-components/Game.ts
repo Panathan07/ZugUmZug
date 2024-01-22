@@ -2,12 +2,17 @@ import { GameState } from "#customtypes/GameState";
 import Team from "./Team";
 import { IStorage, UserStorage } from "#customtypes/Storage";
 import { UserSchema } from "#customtypes/StorageSchema";
+import jsontask from "./tasks.json";
+import { task } from "../custom-types/gameTask";
 import RoadManager from "./RoadManager";
 
 export default class Game {
   readonly colors: string[];
   readonly amountTeams: number;
   private _state: GameState = GameState.NotStarted;
+  private taskRotation: string[];
+  private tasks: { [key: string]: task } = {};
+
   get state(): GameState {
     return this._state;
   }
@@ -17,6 +22,9 @@ export default class Game {
   private _teams: Team[] = [];
   get teams(): Team[] {
     return this._teams;
+  }
+  get_rotation(color: string) {
+    return this.teams[this.colors.indexOf(color)].rotation;
   }
   set teams(value: Team[]) {
     this._teams = value;
@@ -38,14 +46,23 @@ export default class Game {
       "black",
       "white",
     ];
+
     this.amountTeams = amountTeams;
     this.state = GameState.NotStarted;
     this.teams = this.createTeams();
     this.roadManager = roadManager;
     this.storage = storage;
+    for (const value of Object.values(jsontask)) {
+      this.tasks[value["name"]] = value as task;
+    }
+    this.taskRotation = [];
+    for (const value of Object.values(this.tasks)) {
+      this.taskRotation.push(value.name);
+    }
   }
   start(): GameState {
     this.state = GameState.Started;
+    this.timeoutTask();
     return this.state;
   }
   end(): GameState {
@@ -55,6 +72,54 @@ export default class Game {
   useStorage(): UserStorage {
     return this.storage;
   }
+  timeoutTask() {
+    setInterval(
+      () =>
+        this.changeTasksRotation(
+          this._teams,
+          this.currentTasks,
+          this.shuffle,
+          this.taskRotation,
+          this.tasks
+        ),
+      10000
+    );
+  }
+  private changeTasksRotation(
+    teams: Team[],
+    currentTasks: Function,
+    shuffle: Function,
+    taskRotation: string[],
+    tasks: { [key: string]: task }
+  ) {
+    taskRotation = shuffle(taskRotation);
+    for (const team of teams) {
+      console.log(currentTasks(team.color, taskRotation, tasks));
+      team.setTask(currentTasks(team.color, taskRotation, tasks));
+    }
+  }
+  shuffle(array: string[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  currentTasks(
+    color: string,
+    taskRotation: string[],
+    tasks: { [key: string]: task }
+  ) {
+    let task_ret: { [key: string]: task } = {};
+    console.log(taskRotation);
+    for (const value of taskRotation) {
+      if (!tasks[value]["completed"].includes(color)) {
+        task_ret[value] = tasks[value];
+      }
+    }
+    return task_ret;
+  }
+
   useRoads(): RoadManager {
     return this.roadManager;
   }
