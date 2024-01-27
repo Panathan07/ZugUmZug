@@ -40,8 +40,8 @@ export const useUser = (
       name: UserResult.data.name,
       ID: UserResult.data.ID,
       inTeam: UserResult.data.inTeam,
+      teamId: UserResult.data.teamId,
     });
-    console.log("UserResult.data.inTeam", UserResult.data.inTeam);
   }, [
     UserResult.data,
     UserResult.isFetched,

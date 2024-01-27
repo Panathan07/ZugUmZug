@@ -1,8 +1,7 @@
 import { useRef } from "react";
-import map from "../../assets/images/map-usa.png";
+import map from "@assets/images/map-usa.png";
 import { Roads } from "./Roads";
-import { BuyRoadPopUp } from "./BuyRoadPopUp";
-import { useImageSize } from "../../hooks/useImageSize";
+import { useImageSize } from "@hooks/useImageSize";
 
 export function Map() {
   const mapRef = useRef<HTMLImageElement>(null);
@@ -20,7 +19,6 @@ export function Map() {
       >
         <Roads />
       </div>
-      <BuyRoadPopUp></BuyRoadPopUp>
     </div>
   );
 }

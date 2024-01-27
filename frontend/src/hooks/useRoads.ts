@@ -59,7 +59,7 @@ async function buyRoadFetch({
   teamId,
   roadName,
 }: {
-  teamId: number;
+  teamId: number | null;
   roadName: string;
 }) {
   return await fetch("http://localhost:3000/game/buyRoad", {
@@ -82,7 +82,7 @@ export function useRoads(): [
     Response,
     Error,
     {
-      teamId: number;
+      teamId: number | null;
       roadName: string;
     },
     unknown
@@ -99,7 +99,7 @@ export function useRoads(): [
       alert(message);
     },
     onError: () => {
-      alert("An Error occured. Please try again");
+      alert("An Error occurred. Please try again");
     },
     onSettled: () => {
       void queryClient.invalidateQueries("teams" as InvalidateQueryFilters);
