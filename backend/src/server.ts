@@ -102,8 +102,8 @@ app.post("/game/buyRoad", (req, res) => {
   try {
     const roadName = req.body.roadName;
     const teamId = req.body.teamId;
-    let succesful = game.useRoads().buyRoad(game.teams, teamId, roadName);
-    res.status(200).json({ boughtRoad: succesful });
+    let successful = game.useRoads().buyRoad(game.teams, teamId, roadName);
+    res.status(200).json({ boughtRoad: successful });
   } catch (err) {
     res.status(500);
   }
@@ -134,10 +134,14 @@ app.post("/teams/members/add", (req, res) => {
     const user = req.body.user as User;
     const teams = game.teams;
 
-    if (!game.useStorage().itemExists(user)) {
-      res.send(400);
+    if (!game.useStorage().itemExists(user) || user == null) {
+      res.status(400);
       return;
     }
+
+    let originalUser = game.useStorage().get(user);
+
+    if (originalUser == null) return res.status(500);
 
     for (const team of teams) {
       if (team.hasMember(user)) team.removeMember(user);

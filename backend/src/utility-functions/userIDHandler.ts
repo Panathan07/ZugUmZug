@@ -48,9 +48,10 @@ function isValidID(id: string) {
 }
 
 export function userInTeam(user: User, teams: Team[]) {
-  teams.map((team) => {
+  teams.forEach((team, index) => {
     if (team.hasMember(user)) {
       user.inTeam = true;
+      user.teamId = index;
     }
   });
   return user.inTeam;
