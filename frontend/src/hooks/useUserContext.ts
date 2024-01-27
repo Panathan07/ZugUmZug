@@ -5,6 +5,7 @@ export const UserContext = createContext<User>({
   name: "",
   ID: "",
   inTeam: false,
+  teamId: null,
 });
 
 export const useUserContext = (): User => useContext<User>(UserContext);

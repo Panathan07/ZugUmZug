@@ -8,15 +8,17 @@ import User from "./User";
 export default class Team {
   points: number;
   name: string;
+  id: number;
   color: string;
   members: User[];
   tasks: Task[];
   boughtRoads: Road[];
   taskOptions: { [key: string]: task };
 
-  constructor(name: string, color: string) {
+  constructor(name: string, color: string, id: number) {
     this.points = 3;
     this.name = name;
+    this.id = id;
     this.color = color;
     this.members = [];
     this.tasks = [];
@@ -76,6 +78,7 @@ export default class Team {
 
   addMember(user: User): void {
     if (this.hasMember(user)) return;
+    user.teamId = this.id;
     this.members.push(user);
   }
   removeMember(user: User): void {
@@ -84,7 +87,7 @@ export default class Team {
   }
   hasMember(user: User): boolean {
     for (const member of this.members) {
-      if (isEqual(member, user)) return true;
+      if (member.ID === user.ID) return true;
     }
     return false;
   }
