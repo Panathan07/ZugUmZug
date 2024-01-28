@@ -27,18 +27,15 @@ export function Roads() {
     startCity: "",
     endCity: "",
   });
-  const submitBuyRoad = useCallback(() => {
-    console.log(user.teamId, cityConnection.startCity, cityConnection.endCity);
-    return buyRoadMutation.mutate({
-      teamId: user.teamId,
-      roadName: cityConnection.startCity + " - " + cityConnection.endCity,
-    });
-  }, [
-    user.teamId,
-    buyRoadMutation,
-    cityConnection.startCity,
-    cityConnection.endCity,
-  ]);
+  const submitBuyRoad = useCallback(
+    (startCity: string, endCity: string) => {
+      return buyRoadMutation.mutate({
+        teamId: user.teamId,
+        roadName: startCity + " - " + endCity,
+      });
+    },
+    [user.teamId, buyRoadMutation]
+  );
 
   if (teams == null) return <LoadingPage />;
 
@@ -70,6 +67,7 @@ export function Roads() {
       </div>
       <BuyRoadPopUp
         active={isPopUpActivated}
+        cityConnection={cityConnection}
         submitBuyRoad={submitBuyRoad}
         setIsPopUpActivated={setIsPopUpActivated}
       />
