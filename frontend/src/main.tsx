@@ -11,6 +11,7 @@ import App from "./App.tsx";
 import { Login } from "./pages/route-pages/LoginPage.tsx";
 import { MapPage } from "./pages/route-pages/MapPage.tsx";
 import { PointShop } from "./pages/route-pages/PointShop.tsx";
+import { Taskmanager } from "./pages/route-pages/Taskmanager.tsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="map" element={<MapPage />} />
       <Route path="shop" element={<PointShop />} />
+      <Route path="taskmanager" element={<Taskmanager/> }/>
     </Route>
   )
 );

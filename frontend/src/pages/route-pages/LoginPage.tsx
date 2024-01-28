@@ -6,9 +6,7 @@ import { ErrorPage } from "@pages/state-pages/ErrorPage";
 import { Team } from "@customtypes/team";
 
 export function Login() {
-  const [teams, teamsResponse] = useTeamData<Team>(
-    "http://localhost:3000/teams"
-  );
+  const [teams, teamsResponse] = useTeamData<Team>();
 
   if (teamsResponse.isLoading) {
     return <LoadingPage />;

@@ -2,10 +2,17 @@ export default class Road {
   bought: boolean;
   startCity: string;
   endCity: string;
-  constructor(bought: boolean, startCity: string, endCity: string) {
+  buyCost: number;
+  constructor(
+    bought: boolean,
+    startCity: string,
+    endCity: string,
+    cost: number
+  ) {
     this.bought = bought;
     this.startCity = startCity;
     this.endCity = endCity;
+    this.buyCost = cost;
   }
   buy() {
     this.bought = true;

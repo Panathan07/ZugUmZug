@@ -21,8 +21,6 @@ function App() {
       }
       navigate("/map");
     }
-
-    console.log(user, user?.inTeam);
   }, [user, userIDResponse.isLoading, navigate]);
 
   if (user == null || userIDResponse.isLoading) {

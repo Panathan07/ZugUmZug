@@ -97,22 +97,13 @@ app.get("/game/end", (req, res) => {
     res.status(500);
   }
 });
-app.get("/game/roads", (req, res) => {
-  try {
-    const roadName = req.body.roadName;
-    const teamId = req.body.teamId;
-    game.useRoads().buyRoad(game.teams, teamId, roadName);
-    res.status(200).json({ roads: game.teams });
-  } catch (err) {
-    res.status(500);
-  }
-});
+
 app.post("/game/buyRoad", (req, res) => {
   try {
     const roadName = req.body.roadName;
     const teamId = req.body.teamId;
-    game.useRoads().buyRoad(game.teams, teamId, roadName);
-    res.status(200).json({ roads: game.teams });
+    let successful = game.useRoads().buyRoad(game.teams, teamId, roadName);
+    res.status(200).json({ boughtRoad: successful });
   } catch (err) {
     res.status(500);
   }
@@ -143,18 +134,19 @@ app.post("/teams/members/add", (req, res) => {
     const user = req.body.user as User;
     const teams = game.teams;
 
-    if (!game.useStorage().itemExists(user)) {
-      res.send(400);
+    if (!game.useStorage().itemExists(user) || user == null) {
+      res.status(400);
       return;
     }
 
-    // iterate through teams and check if user's in them. If he is remove the user.
+    let originalUser = game.useStorage().get(user);
+
+    if (originalUser == null) return res.status(500);
+
     for (const team of teams) {
       if (team.hasMember(user)) team.removeMember(user);
     }
-
     teams[teamID].addMember(user);
-
     res.status(200).json(teams);
   } catch {
     res.status(500);

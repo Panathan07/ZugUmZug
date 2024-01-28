@@ -5,6 +5,7 @@ export default class User {
   name: string = "";
   ID: string = "";
   inTeam: boolean = false;
+  teamId: number | null = null;
 
   constructor(name: string, ID: string) {
     this.name = name;

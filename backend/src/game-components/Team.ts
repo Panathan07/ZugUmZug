@@ -1,3 +1,5 @@
+import { RoadState } from "#customtypes/RoadState";
+import { task } from "#customtypes/gameTask";
 import { isEqual } from "#utility-functions/isEqual";
 import Road from "./Road";
 import Task from "./Task";
@@ -6,28 +8,57 @@ import User from "./User";
 export default class Team {
   points: number;
   name: string;
+  id: number;
   color: string;
   members: User[];
   tasks: Task[];
   boughtRoads: Road[];
+  taskOptions: { [key: string]: task };
 
-  constructor(name: string, color: string) {
-    this.points = 0;
+  constructor(name: string, color: string, id: number) {
+    this.points = 3;
     this.name = name;
+    this.id = id;
     this.color = color;
     this.members = [];
     this.tasks = [];
     this.boughtRoads = [];
+    this.taskOptions = {};
   }
 
   addPoints(amount_points: number) {
     this.points += amount_points;
   }
+  hasEnoughPoints(costs: number) {
+    if (costs > this.points) return false;
+    return true;
+  }
+  removePoints(amount_points: number) {
+    this.points -= amount_points;
+  }
 
-  buyRoad(road: Road): void {
-    if (this.hasBoughtRoad(road)) return;
+  buyRoad(road: Road): RoadState {
+    let state: RoadState = {
+      exists: true,
+      boughtRoad: false,
+      alreadyBought: false,
+      enoughPoints: false,
+    };
+
+    if (this.hasBoughtRoad(road)) {
+      state.alreadyBought = true;
+      return state;
+    }
+
+    if (!this.hasEnoughPoints(road.buyCost)) return state;
+    this.removePoints(road.buyCost);
+
     this.boughtRoads.push(road);
     road.buy();
+
+    state.enoughPoints = true;
+    state.boughtRoad = true;
+    return state;
   }
   hasBoughtRoad(road: Road): boolean {
     if (road.bought) return true;
@@ -47,6 +78,7 @@ export default class Team {
 
   addMember(user: User): void {
     if (this.hasMember(user)) return;
+    user.teamId = this.id;
     this.members.push(user);
   }
   removeMember(user: User): void {
@@ -55,8 +87,15 @@ export default class Team {
   }
   hasMember(user: User): boolean {
     for (const member of this.members) {
-      if (isEqual(member, user)) return true;
+      if (member.ID === user.ID) return true;
     }
     return false;
+  }
+  get rotation(): { [key: string]: task } {
+    return this.taskOptions;
+  }
+  setTask(new_taskOptions: { [key: string]: task }) {
+    console.log(new_taskOptions);
+    this.taskOptions = new_taskOptions;
   }
 }
