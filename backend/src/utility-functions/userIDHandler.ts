@@ -21,7 +21,7 @@ function createNewUserID(userStorage: UserStorage) {
 export function handleUserID(
   incomingUserID: string,
   userStorage: UserStorage,
-  teams: Team[]
+  teams: Team[],
 ): User {
   let userID = incomingUserID;
   if (!isValidID(userID)) {

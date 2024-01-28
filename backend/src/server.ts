@@ -25,7 +25,7 @@ const userIDFilePath = "./Users.json";
 const userStorage = new JSONStorage<User>(
   `${userIDFilePath}`,
   "Users",
-  UserReplaceKeyMap
+  UserReplaceKeyMap,
 );
 
 const roadManager = new RoadManager();
@@ -46,13 +46,13 @@ app.use(function (req, res, next) {
   // Request methods you wish to allow
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
   );
 
   // Request headers you wish to allow
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
+    "X-Requested-With,content-type",
   );
 
   // Set to true if you need the website to include cookies in the requests sent
@@ -66,7 +66,7 @@ app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
-  })
+  }),
 );
 
 // routers
@@ -155,5 +155,5 @@ app.post("/teams/members/add", (req, res) => {
 
 // app listens on port
 app.listen(port, () =>
-  console.log(`server started on http://localhost:${port}`)
+  console.log(`server started on http://localhost:${port}`),
 );

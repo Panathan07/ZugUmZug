@@ -35,7 +35,7 @@ export default class Game {
   constructor(
     amountTeams: number,
     storage: UserStorage,
-    roadManager: RoadManager
+    roadManager: RoadManager,
   ) {
     this.colors = [
       "blue",
@@ -80,9 +80,9 @@ export default class Game {
           this.currentTasks,
           this.shuffle,
           this.taskRotation,
-          this.tasks
+          this.tasks,
         ),
-      10000
+      10000,
     );
   }
   private changeTasksRotation(
@@ -90,7 +90,7 @@ export default class Game {
     currentTasks: Function,
     shuffle: Function,
     taskRotation: string[],
-    tasks: { [key: string]: task }
+    tasks: { [key: string]: task },
   ) {
     taskRotation = shuffle(taskRotation);
     for (const team of teams) {
@@ -108,7 +108,7 @@ export default class Game {
   currentTasks(
     color: string,
     taskRotation: string[],
-    tasks: { [key: string]: task }
+    tasks: { [key: string]: task },
   ) {
     let task_ret: { [key: string]: task } = {};
     console.log(taskRotation);
