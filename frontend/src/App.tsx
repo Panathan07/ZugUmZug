@@ -8,7 +8,7 @@ import { UserContext } from "@hooks/useUserContext";
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [user, setUserID, userIDResponse] = useUser(
-    "http://localhost:3000/user/instantiate"
+    "http://localhost:3000/user/instantiate",
   );
 
   const navigate = useNavigate();

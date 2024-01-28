@@ -27,7 +27,7 @@ TeamCard.propTypes = {
       name: PropTypes.string.isRequired,
       ID: PropTypes.string.isRequired,
       inTeam: PropTypes.bool.isRequired,
-    })
+    }),
   ).isRequired,
 };
 

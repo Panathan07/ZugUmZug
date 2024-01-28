@@ -9,7 +9,7 @@ const getUserInfo = async (user: User | null, api: string) => {
       "?" +
       new URLSearchParams({
         userID: user?.ID ? user?.ID : "-",
-      }).toString()
+      }).toString(),
   ); // if userID != null -> pass it - else pass an invalid ID
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -19,7 +19,7 @@ const getUserInfo = async (user: User | null, api: string) => {
 };
 
 export const useUser = (
-  instantiateUserAPI: string
+  instantiateUserAPI: string,
 ): [
   User | null,
   React.Dispatch<React.SetStateAction<User | null>>,
