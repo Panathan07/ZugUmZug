@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 import jsondata from "@assets/json/roads.json";
-import { RoadGroup } from "@customtypes/roadGroup";
+import { RoadGroup } from "@customTypes/roadGroup";
 import { useTeamData } from "./useTeamData";
-import { Team } from "@customtypes/team";
+import { Team } from "@customTypes/team";
 import {
   InvalidateQueryFilters,
   UseMutationResult,

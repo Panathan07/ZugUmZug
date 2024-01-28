@@ -2,7 +2,7 @@ import { useUserContext } from "@hooks/useUserContext";
 import { RoadTile } from "./RoadTile";
 import { useRoads } from "@hooks/useRoads";
 import { useTeamData } from "@hooks/useTeamData";
-import { Team } from "@customtypes/team";
+import { Team } from "@customTypes/team";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { BuyRoadPopUp } from "./BuyRoadPopUp";
 import { useCallback, useState } from "react";
@@ -11,7 +11,7 @@ export function Roads() {
   function roadOnClick(
     currentState: boolean,
     startCity: string,
-    endCity: string,
+    endCity: string
   ): void {
     if (currentState) return;
     setIsPopUpActivated(true);
@@ -34,7 +34,7 @@ export function Roads() {
         roadName: startCity + " - " + endCity,
       });
     },
-    [user.teamId, buyRoadMutation],
+    [user.teamId, buyRoadMutation]
   );
 
   if (teams == null) return <LoadingPage />;
@@ -58,11 +58,11 @@ export function Roads() {
                 roadOnClick(
                   roadGroup.activated,
                   roadGroup.startCity,
-                  roadGroup.endCity,
+                  roadGroup.endCity
                 )
               }
             />
-          )),
+          ))
         )}
       </div>
       <BuyRoadPopUp

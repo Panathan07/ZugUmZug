@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { User } from "@customtypes/user";
+import { User } from "@customTypes/user";
 
 const getUserInfo = async (user: User | null, api: string) => {
   const response = await fetch(
@@ -9,7 +9,7 @@ const getUserInfo = async (user: User | null, api: string) => {
       "?" +
       new URLSearchParams({
         userID: user?.ID ? user?.ID : "-",
-      }).toString(),
+      }).toString()
   ); // if userID != null -> pass it - else pass an invalid ID
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -19,7 +19,7 @@ const getUserInfo = async (user: User | null, api: string) => {
 };
 
 export const useUser = (
-  instantiateUserAPI: string,
+  instantiateUserAPI: string
 ): [
   User | null,
   React.Dispatch<React.SetStateAction<User | null>>,

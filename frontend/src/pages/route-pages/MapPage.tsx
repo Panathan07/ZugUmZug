@@ -1,5 +1,5 @@
-import "../../assets/css/gameMap.css";
-import { Map } from "../../components/map/Map";
+import "@assets/css/gameMap.css";
+import { Map } from "@components/map/Map";
 
 // import { useEffect, useRef, useState } from "react";
 

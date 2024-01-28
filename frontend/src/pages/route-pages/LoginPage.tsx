@@ -3,7 +3,7 @@ import { useTeamData } from "@hooks/useTeamData";
 import { TeamCard } from "@components/login/TeamCard";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { ErrorPage } from "@pages/state-pages/ErrorPage";
-import { Team } from "@customtypes/team";
+import { Team } from "@customTypes/team";
 
 export function Login() {
   const [teams, teamsResponse] = useTeamData<Team>();
