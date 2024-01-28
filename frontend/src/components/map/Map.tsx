@@ -14,7 +14,6 @@ export function Map() {
         className="map-container"
         style={{
           width: mapSize.width,
-          height: mapSize.height,
         }}
       >
         <Roads />

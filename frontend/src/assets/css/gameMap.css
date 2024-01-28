@@ -11,6 +11,7 @@
 .map-wrapper {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .map-background-image {
@@ -34,8 +35,8 @@
   right: 0;
   margin: auto;
   display: inline-block;
-  height: 100dvh;
-  width: 100dvw;
+  height: 100%;
+  width: 100%;
   display: grid;
 }
 

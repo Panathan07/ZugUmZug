@@ -6,7 +6,7 @@ type ImageSize = {
 };
 
 export const useImageSize = (
-  imgRef: RefObject<HTMLImageElement>,
+  imgRef: RefObject<HTMLImageElement>
 ): ImageSize => {
   const [size, setSize] = useState<ImageSize>({ width: 100, height: 100 });
 
@@ -14,8 +14,8 @@ export const useImageSize = (
     const handleResize = () => {
       if (imgRef.current) {
         setSize({
-          width: imgRef.current.clientWidth,
-          height: imgRef.current.clientHeight,
+          width: imgRef.current.getBoundingClientRect().width,
+          height: imgRef.current.getBoundingClientRect().height,
         });
       }
     };
