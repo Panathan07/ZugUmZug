@@ -1,4 +1,4 @@
-import "../../assets/css/taskmanager.css";
+import "@assets/css/taskmanager.css";
 export function Taskmanager() {
   return (
     <>

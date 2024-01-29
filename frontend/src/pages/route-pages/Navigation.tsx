@@ -1,11 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
 import "@assets/css/navbar.css";
 import { useState } from "react";
+import { NavbarLink } from "@customTypes/navbarLink";
 
 export function NavigationBar() {
   const [isActive, setIsActive] = useState(false);
 
   const navbarClasses = `navbar ${isActive ? "active" : ""}`;
+  const links: NavbarLink[] = [
+    { route: "map", description: "Game" },
+    { route: "shop", description: "Punkteshop" },
+    { route: "task-manager", description: "Tasks" },
+  ];
 
   return (
     <>
@@ -14,24 +20,17 @@ export function NavigationBar() {
         onClick={() => setIsActive((prev) => !prev)}
       ></div>
       <nav className={navbarClasses}>
-        <div className="navbar-wrapper">
-          <section className="navbar-header">
-            <div className="menu"></div>
-          </section>
-          <section className="navbar-content">
+        <section className="link-wrapper">
+          {links.map((link) => (
             <div className="route">
-              <Link to="/map">Game</Link>
+              <Link to={link.route}>{link.description}</Link>
             </div>
-            <div className="route">
-              <Link to="/shop">Punkteshop</Link>
-            </div>
-            <div className="route">
-              <Link to="/login">Login</Link>
-            </div>
-          </section>
-        </div>
+          ))}
+        </section>
       </nav>
-      <Outlet />
+      <div className="page-content">
+        <Outlet />
+      </div>
     </>
   );
 }

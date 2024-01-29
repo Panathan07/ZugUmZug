@@ -25,9 +25,9 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="map" element={<MapPage />} />
       <Route path="shop" element={<PointShop />} />
-      <Route path="taskmanager" element={<Taskmanager />} />
-    </Route>,
-  ),
+      <Route path="task-manager" element={<Taskmanager />} />
+    </Route>
+  )
 );
 
 const queryClient = new QueryClient();
@@ -38,5 +38,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
