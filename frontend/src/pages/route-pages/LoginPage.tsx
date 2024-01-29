@@ -4,9 +4,15 @@ import { TeamCard } from "@components/login/TeamCard";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { ErrorPage } from "@pages/state-pages/ErrorPage";
 import { Team } from "@customTypes/team";
+import { useUserContext } from "@hooks/useUserContext";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
   const [teams, teamsResponse] = useTeamData<Team>();
+  const user = useUserContext();
+  const navigate = useNavigate();
+
+  if (user.inTeam) navigate("/map");
 
   if (teamsResponse.isLoading) {
     return <LoadingPage />;
