@@ -90,7 +90,7 @@ export function useRoads(): [
 ] {
   const queryClient = useQueryClient();
   const [roads, setRoads] = useState(collectRoadData());
-  const [teams] = useTeamData<Team>();
+  const [teams] = useTeamData();
   const buyRoad = useMutation({
     mutationFn: buyRoadFetch,
     onSuccess: (data) => {

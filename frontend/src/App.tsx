@@ -1,7 +1,7 @@
 import { useUser } from "@hooks/useUser";
 import { useEffect } from "react";
 import { NavigationBar } from "@pages/route-pages/Navigation";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { UserContext } from "@hooks/useUserContext";
 
@@ -12,15 +12,18 @@ function App() {
   );
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    if (!userIDResponse.isLoading) {
-      if (!user?.inTeam) {
-        navigate("/login");
-        return;
-      }
+    if (!location.pathname) return;
+    if (userIDResponse.isLoading) return;
+    if (user == null) return;
+    console.log(user);
+    if (!user.inTeam) {
+      navigate("/login");
+      return;
     }
-  }, [user, userIDResponse.isLoading, navigate]);
+  }, [user, userIDResponse.isLoading, navigate, location.pathname]);
 
   if (user == null || userIDResponse.isLoading) {
     return <LoadingPage />;

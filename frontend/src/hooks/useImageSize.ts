@@ -12,12 +12,17 @@ export const useImageSize = (
 
   useEffect(() => {
     const handleResize = () => {
-      if (imgRef.current) {
+      if (!imgRef.current) return;
+      if (imgRef.current.clientHeight === 0) {
         setSize({
-          width: imgRef.current.getBoundingClientRect().width,
-          height: imgRef.current.getBoundingClientRect().height,
+          width: imgRef.current.clientWidth, //! bug: On Chrome Browsers the width, clientWidth or getBoundingClientRect().width always evaluates to 0 on first render
+          height: imgRef.current.height,
         });
       }
+      setSize({
+        width: imgRef.current.width, //! bug: On Chrome Browsers the width, clientWidth or getBoundingClientRect().width always evaluates to 0 on first render
+        height: imgRef.current.height,
+      });
     };
     handleResize();
 

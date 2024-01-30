@@ -36,6 +36,10 @@
   color: var(--font-color);
 }
 
+body > * {
+  display: inline;
+}
+
 body {
   min-width: 100dvw;
   height: 100dvh;
