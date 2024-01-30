@@ -5,16 +5,17 @@ import {
   useQueryClient,
   UseQueryResult,
 } from "@tanstack/react-query";
+import { Team } from "@customTypes/team";
 
-export const useTeamData = <T>(): [
-  T[] | null,
-  UseQueryResult<{ teams: T[] }, Error>,
+export const useTeamData = (): [
+  Team[] | null,
+  UseQueryResult<{ teams: Team[] }, Error>,
 ] => {
-  const [teams, setTeams] = useState<T[] | null>(null);
+  const [teams, setTeams] = useState<Team[] | null>(null);
   const queryClient = useQueryClient();
   const teamsResponse = useQuery({
     queryKey: ["teams"],
-    queryFn: () => getTeams<T>("http://localhost:3000/teams"),
+    queryFn: () => getTeams("http://localhost:3000/teams"),
   });
 
   useEffect(() => {
@@ -28,11 +29,13 @@ export const useTeamData = <T>(): [
   return [teams, teamsResponse];
 };
 
-const getTeams = async <T>(api: string) => {
+const getTeams = async (api: string) => {
   const response = await fetch(api);
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
-  const teamsInfo: { teams: T[] } = (await response.json()) as { teams: T[] };
+  const teamsInfo: { teams: Team[] } = (await response.json()) as {
+    teams: Team[];
+  };
   return teamsInfo;
 };

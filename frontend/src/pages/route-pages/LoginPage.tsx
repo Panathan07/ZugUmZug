@@ -3,16 +3,18 @@ import { useTeamData } from "@hooks/useTeamData";
 import { TeamCard } from "@components/login/TeamCard";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { ErrorPage } from "@pages/state-pages/ErrorPage";
-import { Team } from "@customTypes/team";
 import { useUserContext } from "@hooks/useUserContext";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export function Login() {
-  const [teams, teamsResponse] = useTeamData<Team>();
+  const [teams, teamsResponse] = useTeamData();
   const user = useUserContext();
   const navigate = useNavigate();
 
-  if (user.inTeam) navigate("/map");
+  useEffect(() => {
+    if (user.inTeam) navigate("/map");
+  }, [navigate, user.inTeam]);
 
   if (teamsResponse.isLoading) {
     return <LoadingPage />;
