@@ -7,7 +7,7 @@ import { UserContext } from "@hooks/useUserContext";
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [user, setUserID, userIDResponse] = useUser(
+  const [user, , userResponse] = useUser(
     "http://localhost:3000/user/instantiate"
   );
 
@@ -16,16 +16,16 @@ function App() {
 
   useEffect(() => {
     if (!location.pathname) return;
-    if (userIDResponse.isLoading) return;
+    if (userResponse.isLoading) return;
     if (user == null) return;
     console.log(user);
     if (!user.inTeam) {
       navigate("/login");
       return;
     }
-  }, [user, userIDResponse.isLoading, navigate, location.pathname]);
+  }, [user, userResponse.isLoading, navigate, location.pathname]);
 
-  if (user == null || userIDResponse.isLoading) {
+  if (user == null || userResponse.isLoading) {
     return <LoadingPage />;
   }
 
