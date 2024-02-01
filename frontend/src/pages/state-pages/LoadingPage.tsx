@@ -1,7 +1,7 @@
 export function LoadingPage() {
   return (
     <>
-      <h1>Loading</h1>
+      <h1 style={{ margin: "auto" }}>Loading</h1>
     </>
   );
 }
