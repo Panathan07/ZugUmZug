@@ -1,0 +1,38 @@
+.road-cards {
+  width: 100%;
+}
+
+.road-cards .header {
+  width: 100%;
+  font-size: var(--font-size-big);
+  padding-block: 1rem;
+}
+
+.road-cards .content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: min-content min-content;
+  gap: 1rem;
+}
+
+.road-cards .card {
+  height: 7rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 6fr 1fr;
+  box-shadow: 0px 0px 10px 2px var(--_color, #ffffff);
+}
+
+.road-cards .card .color-field {
+  --_color: black;
+  grid-row: 1;
+  background-color: var(--_color, black);
+}
+
+.road-cards .card .price {
+  grid-row: 2;
+  text-align: center;
+}
