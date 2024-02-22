@@ -1,3 +1,4 @@
+import { RoadColor } from "#customtypes/RoadColor";
 import { RoadState } from "#customtypes/RoadState";
 import { task } from "#customtypes/gameTask";
 import { isEqual } from "#utility-functions/isEqual";
@@ -12,11 +13,21 @@ export default class Team {
   color: string;
   members: User[];
   tasks: Task[];
+  colorCards: {
+    blue: number;
+    green: number;
+    yellow: number;
+    red: number;
+    orange: number;
+    black: number;
+    white: number;
+    pink: number;
+  };
   boughtRoads: Road[];
   taskOptions: { [key: string]: task };
 
   constructor(name: string, color: string, id: number) {
-    this.points = 3;
+    this.points = 15;
     this.name = name;
     this.id = id;
     this.color = color;
@@ -24,6 +35,16 @@ export default class Team {
     this.tasks = [];
     this.boughtRoads = [];
     this.taskOptions = {};
+    this.colorCards = {
+      blue: 0,
+      green: 0,
+      yellow: 0,
+      red: 0,
+      orange: 0,
+      black: 0,
+      white: 0,
+      pink: 0,
+    };
   }
 
   addPoints(amount_points: number) {
@@ -97,5 +118,13 @@ export default class Team {
   setTask(new_taskOptions: { [key: string]: task }) {
     console.log(new_taskOptions);
     this.taskOptions = new_taskOptions;
+  }
+
+  buyColorCard(color: RoadColor, price: number): boolean {
+    if (this.points - price < 0) return false;
+    this.points -= price;
+    this.colorCards[color] += 1;
+    console.log("bought Card", this.points, color);
+    return true;
   }
 }

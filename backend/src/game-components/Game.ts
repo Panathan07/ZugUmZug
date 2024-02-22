@@ -5,6 +5,8 @@ import { UserSchema } from "#customtypes/StorageSchema";
 import jsontask from "./tasks.json";
 import { task } from "../custom-types/gameTask";
 import RoadManager from "./RoadManager";
+import { RoadColor } from "#customtypes/RoadColor";
+import ColorCardsManager from "./ColorCardManager";
 
 export default class Game {
   readonly colors: string[];
@@ -31,11 +33,12 @@ export default class Game {
   }
   readonly roadManager: RoadManager;
   readonly storage: UserStorage;
+  readonly colorCardsManager: ColorCardsManager;
 
   constructor(
     amountTeams: number,
     storage: UserStorage,
-    roadManager: RoadManager,
+    roadManager: RoadManager
   ) {
     this.colors = [
       "blue",
@@ -59,6 +62,8 @@ export default class Game {
     for (const value of Object.values(this.tasks)) {
       this.taskRotation.push(value.name);
     }
+    const price = 15;
+    this.colorCardsManager = new ColorCardsManager(price);
   }
   start(): GameState {
     this.state = GameState.Started;
@@ -80,9 +85,9 @@ export default class Game {
           this.currentTasks,
           this.shuffle,
           this.taskRotation,
-          this.tasks,
+          this.tasks
         ),
-      10000,
+      10000
     );
   }
   private changeTasksRotation(
@@ -90,7 +95,7 @@ export default class Game {
     currentTasks: Function,
     shuffle: Function,
     taskRotation: string[],
-    tasks: { [key: string]: task },
+    tasks: { [key: string]: task }
   ) {
     taskRotation = shuffle(taskRotation);
     for (const team of teams) {
@@ -108,7 +113,7 @@ export default class Game {
   currentTasks(
     color: string,
     taskRotation: string[],
-    tasks: { [key: string]: task },
+    tasks: { [key: string]: task }
   ) {
     let task_ret: { [key: string]: task } = {};
     console.log(taskRotation);
@@ -118,6 +123,10 @@ export default class Game {
       }
     }
     return task_ret;
+  }
+
+  useColorCards(): ColorCardsManager {
+    return this.colorCardsManager;
   }
 
   useRoads(): RoadManager {
