@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 import jsondata from "@assets/json/roads.json";
-import { RoadGroup } from "@customtypes/roadGroup";
+import { RoadGroup } from "@customTypes/roadGroup";
 import { useTeamData } from "./useTeamData";
-import { Team } from "@customtypes/team";
+import { Team } from "@customTypes/team";
 import {
   InvalidateQueryFilters,
   UseMutationResult,
@@ -59,7 +59,7 @@ async function buyRoadFetch({
   teamId,
   roadName,
 }: {
-  teamId: number;
+  teamId: number | null;
   roadName: string;
 }) {
   return await fetch("http://localhost:3000/game/buyRoad", {
@@ -82,7 +82,7 @@ export function useRoads(): [
     Response,
     Error,
     {
-      teamId: number;
+      teamId: number | null;
       roadName: string;
     },
     unknown
@@ -90,7 +90,7 @@ export function useRoads(): [
 ] {
   const queryClient = useQueryClient();
   const [roads, setRoads] = useState(collectRoadData());
-  const [teams] = useTeamData<Team>();
+  const [teams] = useTeamData();
   const buyRoad = useMutation({
     mutationFn: buyRoadFetch,
     onSuccess: (data) => {
@@ -99,7 +99,7 @@ export function useRoads(): [
       alert(message);
     },
     onError: () => {
-      alert("An Error occured. Please try again");
+      alert("An Error occurred. Please try again");
     },
     onSettled: () => {
       void queryClient.invalidateQueries("teams" as InvalidateQueryFilters);

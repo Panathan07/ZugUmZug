@@ -24,7 +24,7 @@ export default defineConfig({
         replacement: resolve(__dirname, "./src/pages"),
       },
       {
-        find: "@customtypes",
+        find: "@customTypes",
         replacement: resolve(__dirname, "./src/custom-types"),
       },
     ],
