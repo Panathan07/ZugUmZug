@@ -14,13 +14,11 @@ export default class Team {
     boughtRoads: Road[];
     taskOptions: task[];
     accepetedTasks: task[]; 
-    id : number
-    constructor(name: string, color: string, id : number) {
+    constructor(name: string, color: string) {
         this.points = 3;
         this.name = name;
         this.color = color;
         this.members = [];
-        this.id = id
         this.tasks = [];
         this.boughtRoads = [];
         this.taskOptions = [];
