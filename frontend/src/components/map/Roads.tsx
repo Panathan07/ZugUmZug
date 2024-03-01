@@ -5,6 +5,7 @@ import { useTeamData } from "@hooks/useTeamData";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { BuyRoadPopUp } from "./BuyRoadPopUp";
 import { useCallback, useState } from "react";
+import { RoadColor } from "@customTypes/roadColor";
 
 export function Roads() {
   function roadOnClick(
@@ -27,10 +28,11 @@ export function Roads() {
     endCity: "",
   });
   const submitBuyRoad = useCallback(
-    (startCity: string, endCity: string) => {
+    (startCity: string, endCity: string, colorCard: RoadColor) => {
       return buyRoadMutation.mutate({
         teamId: user.teamId,
         roadName: startCity + " - " + endCity,
+        colorCard: colorCard,
       });
     },
     [user.teamId, buyRoadMutation]

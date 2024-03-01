@@ -1,11 +1,14 @@
 .road-cards {
-  width: 100%;
+  width: calc(100% - 4rem);
+  padding-inline: 2rem;
 }
 
 .road-cards .header {
   width: 100%;
-  font-size: var(--font-size-big);
-  padding-block: 1rem;
+  font-size: var(--font-size-header);
+  padding-block: 1.5rem 2rem;
+  margin: auto;
+  text-align: center;
 }
 
 .road-cards .content {
@@ -13,17 +16,26 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: min-content min-content;
-  gap: 1rem;
+  gap: 3rem;
+  column-gap: 0rem;
+  place-items: center;
 }
 
 .road-cards .card {
-  height: 7rem;
+  height: 20rem;
+  width: 18rem;
   border-radius: 8px;
   padding: 0.5rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 6fr 1fr;
   box-shadow: 0px 0px 10px 2px var(--_color, #ffffff);
+}
+
+.road-cards .card:hover,
+.road-cards .card:focus {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px 4px #ffffff;
 }
 
 .road-cards .card .color-field {
