@@ -29,7 +29,7 @@
   },
   "imports": {
     "#game-components/*": "./src/game-components/*.ts",
-    "#customtypes/*": "./src/custom-types/*.ts",
+    "#customTypes/*": "./src/custom-types/*.ts",
     "#utility-functions/*": "./src/utility-functions/*.ts",
     "#assets/*": "./src/assets/*.ts"
   }
