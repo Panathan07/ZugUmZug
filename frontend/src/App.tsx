@@ -13,11 +13,10 @@ function App() {
 
   useEffect(() => {
     if (!userIDResponse.isLoading) {
-      if (!user?.inTeam) {
-        navigate("/login");
-        return;
-      }
-      navigate("/map");
+        if (!user?.inTeam) {
+            navigate("/login");
+            return;
+        }
     }
 
     console.log(user, user?.inTeam);
