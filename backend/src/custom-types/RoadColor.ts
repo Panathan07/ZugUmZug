@@ -6,4 +6,5 @@ export type RoadColor =
   | "orange"
   | "black"
   | "white"
-  | "pink";
+  | "pink"
+  | "none";

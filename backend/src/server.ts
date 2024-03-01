@@ -122,8 +122,14 @@ app.post("/game/buyRoad", (req, res) => {
   try {
     const roadName = req.body.roadName;
     const teamId = req.body.teamId;
-    let successful = game.useRoads().buyRoad(game.teams, teamId, roadName);
-    res.status(200).json({ boughtRoad: successful });
+    const colorCard = req.body.colorCard;
+    let successful = game
+      .useRoads()
+      .buyRoad(game.teams, teamId, roadName, colorCard);
+    if (successful == null) {
+      throw new Error("Road does not exist.");
+    }
+    res.status(200).json(successful);
   } catch (err) {
     res.status(500);
   }

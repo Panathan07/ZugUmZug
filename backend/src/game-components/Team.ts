@@ -27,7 +27,7 @@ export default class Team {
   taskOptions: { [key: string]: task };
 
   constructor(name: string, color: string, id: number) {
-    this.points = 15;
+    this.points = 60;
     this.name = name;
     this.id = id;
     this.color = color;
@@ -58,12 +58,35 @@ export default class Team {
     this.points -= amount_points;
   }
 
-  buyRoad(road: Road): RoadState {
+  addColorCards(color: RoadColor, amount: number) {
+    if (color === "none") return;
+    this.colorCards[color] += amount;
+  }
+  removeColorCards(color: RoadColor, amount: number) {
+    if (color === "none") return;
+    this.colorCards[color] -= amount;
+    if (this.colorCards[color] < 0) {
+      this.colorCards[color] = 0;
+    }
+  }
+  buyColorCard(color: RoadColor, price: number): boolean {
+    if (!this.hasEnoughPoints(price)) return false;
+    this.removePoints(price);
+    this.addColorCards(color, 1);
+    return true;
+  }
+  hasEnoughColorCards(color: RoadColor, costs: number) {
+    if (color === "none") return;
+    if (costs > this.colorCards[color]) return false;
+    return true;
+  }
+
+  buyRoad(road: Road, colorCard: RoadColor): RoadState {
     let state: RoadState = {
       exists: true,
       boughtRoad: false,
       alreadyBought: false,
-      enoughPoints: false,
+      enoughCards: false,
     };
 
     if (this.hasBoughtRoad(road)) {
@@ -71,13 +94,21 @@ export default class Team {
       return state;
     }
 
-    if (!this.hasEnoughPoints(road.buyCost)) return state;
-    this.removePoints(road.buyCost);
+    let color = null;
+
+    if (road.color === "none") {
+      color = colorCard;
+    } else {
+      color = road.color;
+    }
+
+    if (!this.hasEnoughColorCards(color, road.buyCost)) return state;
+    this.removeColorCards(color, road.buyCost);
 
     this.boughtRoads.push(road);
     road.buy();
 
-    state.enoughPoints = true;
+    state.enoughCards = true;
     state.boughtRoad = true;
     return state;
   }
@@ -118,13 +149,5 @@ export default class Team {
   setTask(new_taskOptions: { [key: string]: task }) {
     console.log(new_taskOptions);
     this.taskOptions = new_taskOptions;
-  }
-
-  buyColorCard(color: RoadColor, price: number): boolean {
-    if (this.points - price < 0) return false;
-    this.points -= price;
-    this.colorCards[color] += 1;
-    console.log("bought Card", this.points, color);
-    return true;
   }
 }
