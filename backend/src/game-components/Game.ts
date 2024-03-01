@@ -32,7 +32,7 @@ export default class Game {
   constructor(
     amountTeams: number,
     storage: UserStorage,
-    roadManager: RoadManager
+    roadManager: RoadManager,
   ) {
     this.colors = [
       "blue",
@@ -157,8 +157,8 @@ export default class Game {
   }
   private createTeams(): Team[] {
     const teamsArray = [];
-    for (let i = 0; i < this.amountTeams; i++) {
-      teamsArray.push(new Team("Team " + this.colors[i], this.colors[i]));
+    for (let id = 0; id < this.amountTeams; id++) {
+      teamsArray.push(new Team("Team " + this.colors[id], this.colors[id], id));
     }
     return teamsArray;
   }

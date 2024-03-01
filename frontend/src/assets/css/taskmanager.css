@@ -6,11 +6,11 @@
     text-align:center;
 }
 .title-box {
-    display: flex;
-    align-content:center;
-    justify-content:center;
-    height: 10%;
-    border : 1px solid black
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 10%;
+  border: 1px solid black;
 }
 .task-box{
     border : 1px solid black;

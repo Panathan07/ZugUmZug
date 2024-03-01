@@ -37,14 +37,14 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
   const user = useUserContext();
   const queryClient = useQueryClient();
   const teamsMutation = useMutation<Response, Error, TeamPostUser>({
-    mutationFn: addUsertoTeam,
+    mutationFn: addUserToTeam,
     onSuccess: (data) => {
        console.log(data);
       const message = "Team beigetreten.";
       alert(message);
     },
     onError: () => {
-      alert("An Error occured. Please try again");
+      alert("An Error occurred. Please try again");
     },
     onSettled: () => {
       void queryClient.invalidateQueries("teams" as InvalidateQueryFilters);
@@ -99,7 +99,7 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
   );
 }
 
-async function addUsertoTeam(TeamPostUserParams: TeamPostUser) {
+async function addUserToTeam(TeamPostUserParams: TeamPostUser) {
   return await fetch("http://localhost:3000/teams/members/add", {
     method: "POST",
     headers: {
