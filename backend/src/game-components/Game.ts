@@ -1,7 +1,7 @@
-import { GameState } from "#customtypes/GameState";
+import { GameState } from "#customTypes/GameState";
 import Team from "./Team";
-import { IStorage, UserStorage } from "#customtypes/Storage";
-import { UserSchema } from "#customtypes/StorageSchema";
+import { IStorage, UserStorage } from "#customTypes/Storage";
+import { UserSchema } from "#customTypes/StorageSchema";
 import jsontask from "./tasks.json";
 import { task } from "../custom-types/gameTask";
 import { cardTask } from "../custom-types/gameTask";
@@ -10,8 +10,8 @@ import RoadManager from "./RoadManager";
 export default class Game {
   readonly colors: string[];
   readonly amountTeams: number;
-    private _state: GameState = GameState.NotStarted;
-    private taskRotation: task[] = [];
+  private _state: GameState = GameState.NotStarted;
+  private taskRotation: task[] = [];
 
   get state(): GameState {
     return this._state;
@@ -50,17 +50,18 @@ export default class Game {
     this.roadManager = roadManager;
     this.storage = storage;
     for (const value of Object.values(jsontask)) {
-        this.taskRotation.push(value as task);
+      this.taskRotation.push(value as task);
     }
-    this.start()
+    this.start();
   }
   start(): GameState {
-      this.state = GameState.Started;
-      this.changeTasksRotation(
-          this._teams,
-          this.currentTasks,
-          this.shuffle,
-          this.taskRotation)
+    this.state = GameState.Started;
+    this.changeTasksRotation(
+      this._teams,
+      this.currentTasks,
+      this.shuffle,
+      this.taskRotation
+    );
     this.timeoutTask();
     return this.state;
   }
@@ -101,64 +102,65 @@ export default class Game {
     }
     return array;
   }
-  currentTasks(
-        color: string,
-        taskRotation: task[],
-    ) {
-        const task_ret: task[] = [];
-        let p = 0;
-        for (let i = 0; i < taskRotation.length; i++) {
-            if (!taskRotation[i]["completed"].includes(color) && p != 4) {
-                p += 1
-                task_ret.push(taskRotation[i]);
+  currentTasks(color: string, taskRotation: task[]) {
+    const task_ret: task[] = [];
+    let p = 0;
+    for (let i = 0; i < taskRotation.length; i++) {
+      if (!taskRotation[i]["completed"].includes(color) && p != 4) {
+        p += 1;
+        task_ret.push(taskRotation[i]);
       }
     }
     return task_ret;
   }
   get_rotation(color: string) {
-        const ret_array: cardTask[] = []
-        for (const value of this.teams[this.colors.indexOf(color)].rotation) {
-            ret_array.push({
-                name: value.name,
-                description: value.description,
-                data: value.data
-            })
+    const ret_array: cardTask[] = [];
+    for (const value of this.teams[this.colors.indexOf(color)].rotation) {
+      ret_array.push({
+        name: value.name,
+        description: value.description,
+        data: value.data,
+      });
+    }
+    return ret_array;
+  }
+  get_accepted_tasks(color: string) {
+    const ret_array: cardTask[] = [];
+    for (const value of this.teams[this.colors.indexOf(color)].accepted_tasks) {
+      ret_array.push({
+        name: value.name,
+        description: value.description,
+        data: value.data,
+      });
+    }
+    return ret_array;
+  }
+  accept_task(color: string, taskName: string): boolean {
+    const teamResponse =
+      this.teams[this.colors.indexOf(color)].accept_task(taskName);
+    if (teamResponse) {
+      for (const value of this.taskRotation) {
+        if (value.name == taskName) {
+          value.completed.push(color);
+          return true;
         }
-        return ret_array
+      }
     }
-    get_accepted_tasks(color: string) {
-        const ret_array: cardTask[] = []
-        for (const value of this.teams[this.colors.indexOf(color)].accepted_tasks) {
-            ret_array.push({
-                name: value.name,
-                description: value.description,
-                data: value.data
-            })
-        }
-        return ret_array
-    }
-    accept_task(color: string, taskName: string): boolean {
-        const teamResponse = this.teams[this.colors.indexOf(color)].accept_task(taskName)
-        if (teamResponse) {
-            for (const value of this.taskRotation) {
-                if (value.name == taskName) {
-                    value.completed.push(color)
-                    return true
-                }
-            }
-        }
-        return false
-    }
-    solve_task(color: string, taskName: string, solution: string): boolean {
-        return this.teams[this.colors.indexOf(color)].solve_task(taskName, solution)
-    }
+    return false;
+  }
+  solve_task(color: string, taskName: string, solution: string): boolean {
+    return this.teams[this.colors.indexOf(color)].solve_task(
+      taskName,
+      solution
+    );
+  }
   useRoads(): RoadManager {
     return this.roadManager;
   }
   private createTeams(): Team[] {
     const teamsArray = [];
-    for (let i = 0; i < this.amountTeams; i++) {
-      teamsArray.push(new Team("Team " + this.colors[i], this.colors[i]));
+    for (let id = 0; id < this.amountTeams; id++) {
+      teamsArray.push(new Team("Team " + this.colors[id], this.colors[id], id));
     }
     return teamsArray;
   }

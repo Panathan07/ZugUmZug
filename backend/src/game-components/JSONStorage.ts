@@ -1,5 +1,5 @@
-import { SchemaProps, StorageSchema } from "#customtypes/StorageSchema";
-import { IStorage } from "#customtypes/Storage";
+import { SchemaProps, StorageSchema } from "#customTypes/StorageSchema";
+import { IStorage } from "#customTypes/Storage";
 import { isEqual } from "#utility-functions/isEqual";
 
 import fs from "fs";

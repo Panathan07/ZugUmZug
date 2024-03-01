@@ -1,5 +1,5 @@
-import { RoadState } from "#customtypes/RoadState";
-import { task } from "#customtypes/gameTask";
+import { RoadState } from "#customTypes/RoadState";
+import { task } from "#customTypes/gameTask";
 import { isEqual } from "#utility-functions/isEqual";
 import Road from "./Road";
 import Task from "./Task";
@@ -69,16 +69,9 @@ export default class Team {
     return false;
   }
 
-  addTask(task: task) {
-    this.tasks.push(task);
-  }
-  removeTask(task: task) {
-    const index = this.tasks.indexOf(task);
-    this.tasks.splice(index, 1);
-  }
-
   addMember(user: User): void {
     if (this.hasMember(user)) return;
+    user.teamId = this.id;
     this.members.push(user);
   }
   removeMember(user: User): void {
@@ -87,7 +80,7 @@ export default class Team {
   }
   hasMember(user: User): boolean {
     for (const member of this.members) {
-      if (isEqual(member, user)) return true;
+      if (member.ID === user.ID) return true;
     }
     return false;
   }

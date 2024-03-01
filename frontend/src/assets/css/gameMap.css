@@ -1,19 +1,15 @@
-.page-content {
-  height: 100%;
-  width: 100%;
-  left: 0;
-  right: 0;
-  background: url("../images/Wellen.png");
+.page-content:has(.map-wrapper) {
   background: grey;
-  overflow: hidden;
 }
 
 .map-wrapper {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .map-background-image {
+  display: block;
   position: absolute;
   height: 100%;
   margin: auto;
@@ -34,8 +30,8 @@
   right: 0;
   margin: auto;
   display: inline-block;
-  height: 100dvh;
-  width: 100dvw;
+  height: 100%;
+  aspect-ratio: 238 / 151; /* aspect ratio of the picture (messured with program)*/
   display: grid;
 }
 
@@ -58,5 +54,3 @@
 .road-tile:hover {
   cursor: pointer;
 }
-
-/* TODO: Wellenhintergrund auf vergilbten Papier */
