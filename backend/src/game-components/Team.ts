@@ -69,13 +69,6 @@ export default class Team {
     return false;
   }
 
-  addTask(task: Task) {
-    this.tasks.push(task);
-  }
-  removeTask(task: Task) {
-    const index = this.tasks.indexOf(task);
-    this.tasks.splice(index, 1);
-  }
 
   addMember(user: User): void {
     if (this.hasMember(user)) return;
@@ -92,11 +85,10 @@ export default class Team {
     }
     return false;
   }
-  get rotation(): { [key: string]: task } {
+  get rotation(): task[] {
     return this.taskOptions;
   }
-  setTask(new_taskOptions: { [key: string]: task }) {
-    console.log(new_taskOptions);
+  setTask(new_taskOptions: task[]) {
     this.taskOptions = new_taskOptions;
   }
 }
