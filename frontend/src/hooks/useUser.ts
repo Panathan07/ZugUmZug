@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocalStorage } from "./useLocalStorage";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { User } from "@customTypes/user";
+import { User } from "@customtypes/user";
 
 const getUserInfo = async (user: User | null, api: string) => {
   const response = await fetch(
@@ -40,8 +40,8 @@ export const useUser = (
       name: UserResult.data.name,
       ID: UserResult.data.ID,
       inTeam: UserResult.data.inTeam,
-      teamId: UserResult.data.teamId,
     });
+    console.log("UserResult.data.inTeam", UserResult.data.inTeam);
   }, [
     UserResult.data,
     UserResult.isFetched,

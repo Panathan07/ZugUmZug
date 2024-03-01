@@ -6,17 +6,18 @@ type ImageSize = {
 };
 
 export const useImageSize = (
-  imgRef: RefObject<HTMLImageElement>
+  imgRef: RefObject<HTMLImageElement>,
 ): ImageSize => {
   const [size, setSize] = useState<ImageSize>({ width: 100, height: 100 });
 
   useEffect(() => {
     const handleResize = () => {
-      if (!imgRef.current) return;
-      setSize({
-        width: imgRef.current.width, //! bug: On Chrome Browsers the width, clientWidth or getBoundingClientRect().width always evaluates to 0 on first render
-        height: imgRef.current.height,
-      });
+      if (imgRef.current) {
+        setSize({
+          width: imgRef.current.clientWidth,
+          height: imgRef.current.clientHeight,
+        });
+      }
     };
     handleResize();
 

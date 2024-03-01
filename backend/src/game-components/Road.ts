@@ -7,7 +7,7 @@ export default class Road {
     bought: boolean,
     startCity: string,
     endCity: string,
-    cost: number,
+    cost: number
   ) {
     this.bought = bought;
     this.startCity = startCity;
