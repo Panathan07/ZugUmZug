@@ -1,8 +1,8 @@
 import crypto from "crypto";
 import User, { UserProps } from "#game-components/User";
 import Team from "#game-components/Team";
-import { IStorage, UserStorage } from "#customtypes/Storage";
-import { UserSchema } from "#customtypes/StorageSchema";
+import { IStorage, UserStorage } from "#customTypes/Storage";
+import { UserSchema } from "#customTypes/StorageSchema";
 
 function addUser(user: User, userStorage: UserStorage) {
   if (userStorage.itemExists(user)) return;
@@ -48,9 +48,10 @@ function isValidID(id: string) {
 }
 
 export function userInTeam(user: User, teams: Team[]) {
-  teams.map((team) => {
+  teams.forEach((team, index) => {
     if (team.hasMember(user)) {
       user.inTeam = true;
+      user.teamId = index;
     }
   });
   return user.inTeam;

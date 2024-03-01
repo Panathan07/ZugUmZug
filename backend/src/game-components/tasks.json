@@ -9,7 +9,7 @@
   "Abc": {
     "name": "Abc",
     "description": "write the first letters of the alphabet",
-    "data": ["test.txt"],
+    "data": [],
     "solution": "abc",
     "completed": []
   }

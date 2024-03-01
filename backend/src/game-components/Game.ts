@@ -3,8 +3,7 @@ import Team from "./Team";
 import { IStorage, UserStorage } from "#customTypes/Storage";
 import { UserSchema } from "#customTypes/StorageSchema";
 import jsontask from "./tasks.json";
-import { task } from "../custom-types/gameTask";
-import { cardTask } from "../custom-types/gameTask";
+import { cardTask, task } from "../custom-types/gameTask";
 import RoadManager from "./RoadManager";
 
 export default class Game {
@@ -23,6 +22,7 @@ export default class Game {
   get teams(): Team[] {
     return this._teams;
   }
+
   set teams(value: Team[]) {
     this._teams = value;
   }
@@ -95,7 +95,7 @@ export default class Game {
       team.setTask(currentTasks(team.color, taskRotation));
     }
   }
-  shuffle(array: task[]) {
+  shuffle(array: string[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];

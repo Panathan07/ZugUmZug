@@ -186,12 +186,10 @@ app.post("/tasks/solve", (req, res) => {
 app.get("/team/tasks", (req, res) => {
   try {
     const color = req.query.teamColor as string;
-    res
-      .status(200)
-      .json({
-        pending: game.get_rotation(color),
-        accepted: game.get_accepted_tasks(color),
-      });
+    res.status(200).json({
+      pending: game.get_rotation(color),
+      accepted: game.get_accepted_tasks(color),
+    });
   } catch {
     res.status(500);
   }

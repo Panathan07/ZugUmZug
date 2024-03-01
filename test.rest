@@ -14,9 +14,14 @@ POST http://localhost:3000/teams/members/add
 Content-Type: application/json
 
 {
-    "user": "5edb227ad89fa9e840c3e770b949cac3",
+    "user": {
+        "name": "",
+        "ID": "f99d76d121c98d4b88b65f3956181835",
+        "inTeam": false,
+        "teamId": -1
+    },
     "teamName": "Team Blau",
-    "teamID": 0,
+    "teamID": 2
 }
 
 ###
@@ -35,22 +40,4 @@ Content-Type: application/json
 {
     "roadName": "Salt Lake City - Helena",
     "teamId": 1
-}
-
-###
-POST http://localhost:3000/tasks/accept
-Content-Type: application/json
-
-{
-    "task" : "Abc",
-    "color" : "red"
-}
-###
-POST http://localhost:3000/tasks/solve
-Content-Type: application/json
-
-{
-    "task" : "TeamName",
-    "color" : "blue",
-    "solution" : "123141"
 }

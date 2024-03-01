@@ -1,37 +1,43 @@
 import { Link, Outlet } from "react-router-dom";
 import "@assets/css/navbar.css";
-import { useState } from "react";
+import { NavbarLink } from "@customTypes/navbarLink";
+import { useTeamData } from "@hooks/useTeamData";
+import { useUserContext } from "@hooks/useUserContext";
+import { LoadingPage } from "@pages/state-pages/LoadingPage";
 
 export function NavigationBar() {
-  const [isActive, setIsActive] = useState(false);
+  const [teams, teamsResponse] = useTeamData();
+  const user = useUserContext();
 
-  const navbarClasses = `navbar ${isActive ? "active" : ""}`;
+  const links: NavbarLink[] = [
+    { route: "map", description: "Game" },
+    { route: "shop", description: "Punkteshop" },
+    { route: "taskmanager", description: "Tasks" },
+  ];
+
+  if (teams == null || teamsResponse.isLoading) return <LoadingPage />;
 
   return (
     <>
-      <div
-        className="show-navbar-button"
-        onClick={() => setIsActive((prev) => !prev)}
-      ></div>
-      <nav className={navbarClasses}>
-        <div className="navbar-wrapper">
-          <section className="navbar-header">
-            <div className="menu"></div>
-          </section>
-          <section className="navbar-content">
-            <div className="route">
-              <Link to="/map">Game</Link>
+      <nav className="navbar">
+        <section className="link-wrapper">
+          {links.map((link) => (
+            <div className="route" key={links.indexOf(link)}>
+              <Link to={link.route}>{link.description}</Link>
             </div>
-            <div className="route">
-              <Link to="/shop">Punkteshop</Link>
-            </div>
-            <div className="route">
-              <Link to="/login">Login</Link>
+          ))}
+        </section>
+        {user.inTeam && !(user.teamId == null) ? (
+          <section className="point-section">
+            <div className="point-item">
+              <div className="main-currency">{teams[user.teamId].points}</div>
             </div>
           </section>
-        </div>
+        ) : null}
       </nav>
-      <Outlet />
+      <div className="page-content">
+        <Outlet />
+      </div>
     </>
   );
 }
