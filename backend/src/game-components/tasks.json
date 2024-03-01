@@ -2,14 +2,14 @@
   "TeamName": {
     "name": "TeamName",
     "description": "Denkt euch einen Passenden Teamnamen aus",
-    "data": "",
+    "data": [],
     "solution": "123121241",
     "completed": []
   },
   "Abc": {
     "name": "Abc",
     "description": "write the first letters of the alphabet",
-    "data": "",
+    "data": ["test.txt"],
     "solution": "abc",
     "completed": []
   }

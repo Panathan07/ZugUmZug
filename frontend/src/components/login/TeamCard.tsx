@@ -8,8 +8,9 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
-import { User } from "@customTypes/user";
-import { TeamPostUser } from "@customTypes/team";
+import { User } from "@customtypes/user";
+import { TeamPostUser } from "@customtypes/team";
+import { useLocalStorage } from "../../hooks/useLocalStorage"
 
 export type TeamCardProps = {
   color: string;
@@ -32,17 +33,18 @@ TeamCard.propTypes = {
 };
 
 export function TeamCard({ color, name, id, members }: TeamCardProps) {
+    const [localcolor, setLocalcolor] = useLocalStorage<string | null>("team-color", null);
   const user = useUserContext();
   const queryClient = useQueryClient();
   const teamsMutation = useMutation<Response, Error, TeamPostUser>({
-    mutationFn: addUserToTeam,
+    mutationFn: addUsertoTeam,
     onSuccess: (data) => {
-      console.log(data);
+       console.log(data);
       const message = "Team beigetreten.";
       alert(message);
     },
     onError: () => {
-      alert("An Error occurred. Please try again");
+      alert("An Error occured. Please try again");
     },
     onSettled: () => {
       void queryClient.invalidateQueries("teams" as InvalidateQueryFilters);
@@ -74,14 +76,17 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
           </div>
         </section>
       </div>
-      <button
-        className="team-join"
-        onClick={() =>
-          teamsMutation.mutate({
-            teamName: name,
-            teamID: id,
-            user: user,
-          } as TeamPostUser)
+          <button
+              className="team-join"
+              onClick={() => {
+                  teamsMutation.mutate({
+                      teamName: name,
+                      teamID: id,
+                      user: user,
+                  } as TeamPostUser)
+                  setLocalcolor(color)
+              }
+                  
         }
       >
         {teamsMutation.isPending
@@ -94,7 +99,7 @@ export function TeamCard({ color, name, id, members }: TeamCardProps) {
   );
 }
 
-async function addUserToTeam(TeamPostUserParams: TeamPostUser) {
+async function addUsertoTeam(TeamPostUserParams: TeamPostUser) {
   return await fetch("http://localhost:3000/teams/members/add", {
     method: "POST",
     headers: {
