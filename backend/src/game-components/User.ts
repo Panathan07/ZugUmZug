@@ -4,7 +4,8 @@ import { json } from "body-parser";
 export default class User {
   name: string = "";
   ID: string = "";
-    inTeam: boolean = false;
+  inTeam: boolean = false;
+  teamId: number | null = null;
 
   constructor(name: string, ID: string) {
     this.name = name;

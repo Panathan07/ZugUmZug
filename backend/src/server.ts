@@ -25,7 +25,7 @@ const userIDFilePath = "./Users.json";
 const userStorage = new JSONStorage<User>(
   `${userIDFilePath}`,
   "Users",
-  UserReplaceKeyMap
+  UserReplaceKeyMap,
 );
 
 const roadManager = new RoadManager();
@@ -46,13 +46,13 @@ app.use(function (req, res, next) {
   // Request methods you wish to allow
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
   );
 
   // Request headers you wish to allow
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
+    "X-Requested-With,content-type",
   );
 
   // Set to true if you need the website to include cookies in the requests sent
@@ -66,7 +66,7 @@ app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
-  })
+  }),
 );
 
 // routers
@@ -102,8 +102,8 @@ app.post("/game/buyRoad", (req, res) => {
   try {
     const roadName = req.body.roadName;
     const teamId = req.body.teamId;
-    let succesful = game.useRoads().buyRoad(game.teams, teamId, roadName);
-    res.status(200).json({ boughtRoad: succesful });
+    let successful = game.useRoads().buyRoad(game.teams, teamId, roadName);
+    res.status(200).json({ boughtRoad: successful });
   } catch (err) {
     res.status(500);
   }
@@ -134,10 +134,14 @@ app.post("/teams/members/add", (req, res) => {
     const user = req.body.user as User;
     const teams = game.teams;
 
-    if (!game.useStorage().itemExists(user)) {
-      res.send(400);
+    if (!game.useStorage().itemExists(user) || user == null) {
+      res.status(400);
       return;
     }
+
+    let originalUser = game.useStorage().get(user);
+
+    if (originalUser == null) return res.status(500);
 
     for (const team of teams) {
       if (team.hasMember(user)) team.removeMember(user);
@@ -148,47 +152,8 @@ app.post("/teams/members/add", (req, res) => {
     res.status(500);
   }
 });
-app.post("/tasks/accept", (req, res) => {
-    try {
-        const taskName = req.body.task
-        const teamColor = req.body.color
-        const gameResponse = game.accept_task(teamColor, taskName)
-        console.log(gameResponse)
-        if (gameResponse) {
-            res.status(200).json({"outcome" : 1})
-            return;
-        }
-    } catch {
-        res.status(500).json({ "errorType": 1 })
-    }
-});
-app.post("/tasks/solve", (req, res) => {
-    
-    try {
-        const solution: string = req.body.solution
-        const task: string = req.body.task
-        const color: string = req.body.color
-        const gameResponse = game.solve_task(color, task, solution)
 
-        if (gameResponse) {
-            res.status(200).json({ "correct": 1 })
-            return;
-        }
-        res.status(200).json({ "correct": 0 })
-    }
-    catch (err) {
-        res.status(500).json({ "wrong": err })
-    }
-})
-app.get("/team/tasks", (req, res) => {
-    try {
-        const color = req.query.teamColor as string
-        res.status(200).json({ "pending": game.get_rotation(color), "accepted" : game.get_accepted_tasks(color) })
-    } catch {
-        res.status(500)
-    }
-});
 // app listens on port
 app.listen(port, () =>
-  console.log(`server started on http://localhost:${port}`)
+  console.log(`server started on http://localhost:${port}`),
 );

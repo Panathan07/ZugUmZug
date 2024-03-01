@@ -25,7 +25,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="map" element={<MapPage />} />
       <Route path="shop" element={<PointShop />} />
-      <Route path="taskmanager" element={<Taskmanager/> }/>
+      <Route path="task-manager" element={<Taskmanager />} />
     </Route>
   )
 );

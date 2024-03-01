@@ -21,7 +21,7 @@ function createNewUserID(userStorage: UserStorage) {
 export function handleUserID(
   incomingUserID: string,
   userStorage: UserStorage,
-  teams: Team[]
+  teams: Team[],
 ): User {
   let userID = incomingUserID;
   if (!isValidID(userID)) {
@@ -48,9 +48,10 @@ function isValidID(id: string) {
 }
 
 export function userInTeam(user: User, teams: Team[]) {
-  teams.map((team) => {
+  teams.forEach((team, index) => {
     if (team.hasMember(user)) {
       user.inTeam = true;
+      user.teamId = index;
     }
   });
   return user.inTeam;
