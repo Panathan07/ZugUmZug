@@ -36,3 +36,21 @@ Content-Type: application/json
     "roadName": "Salt Lake City - Helena",
     "teamId": 1
 }
+
+###
+POST http://localhost:3000/tasks/accept
+Content-Type: application/json
+
+{
+    "task" : "Abc",
+    "color" : "red"
+}
+###
+POST http://localhost:3000/tasks/solve
+Content-Type: application/json
+
+{
+    "task" : "TeamName",
+    "color" : "blue",
+    "solution" : "123141"
+}
