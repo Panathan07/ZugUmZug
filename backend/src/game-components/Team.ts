@@ -27,47 +27,47 @@ export default class Team {
         this.accepetedTasks = []
     }
 
-    addPoints(amount_points: number) {
-        this.points += amount_points;
-    }
-    hasEnoughPoints(costs: number) {
-        if (costs > this.points) return false;
-        return true;
-    }
-    removePoints(amount_points: number) {
-        this.points -= amount_points;
+  addPoints(amount_points: number) {
+    this.points += amount_points;
+  }
+  hasEnoughPoints(costs: number) {
+    if (costs > this.points) return false;
+    return true;
+  }
+  removePoints(amount_points: number) {
+    this.points -= amount_points;
+  }
+
+  buyRoad(road: Road): RoadState {
+    let state: RoadState = {
+      exists: true,
+      boughtRoad: false,
+      alreadyBought: false,
+      enoughPoints: false,
+    };
+
+    if (this.hasBoughtRoad(road)) {
+      state.alreadyBought = true;
+      return state;
     }
 
-    buyRoad(road: Road): RoadState {
-        let state: RoadState = {
-            exists: true,
-            boughtRoad: false,
-            alreadyBought: false,
-            enoughPoints: false,
-        };
+    if (!this.hasEnoughPoints(road.buyCost)) return state;
+    this.removePoints(road.buyCost);
 
-        if (this.hasBoughtRoad(road)) {
-            state.alreadyBought = true;
-            return state;
-        }
+    this.boughtRoads.push(road);
+    road.buy();
 
-        if (!this.hasEnoughPoints(road.buyCost)) return state;
-        this.removePoints(road.buyCost);
-
-        this.boughtRoads.push(road);
-        road.buy();
-
-        state.enoughPoints = true;
-        state.boughtRoad = true;
-        return state;
+    state.enoughPoints = true;
+    state.boughtRoad = true;
+    return state;
+  }
+  hasBoughtRoad(road: Road): boolean {
+    if (road.bought) return true;
+    for (const boughtRoad of this.boughtRoads) {
+      if (isEqual(road, boughtRoad)) return true;
     }
-    hasBoughtRoad(road: Road): boolean {
-        if (road.bought) return true;
-        for (const boughtRoad of this.boughtRoads) {
-            if (isEqual(road, boughtRoad)) return true;
-        }
-        return false;
-    }
+    return false;
+  }
 
     addTask(task: task) {
         this.tasks.push(task);
