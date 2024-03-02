@@ -31,7 +31,7 @@
     // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
       "#game-components/*": ["./src/game-components/*"],
-      "#customtypes/*": ["./src/custom-types/*"],
+      "#customTypes/*": ["./src/custom-types/*"],
       "#utility-functions/*": ["./src/utility-functions/*"],
       "#assets/*": ["./src/assets/*"],
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
