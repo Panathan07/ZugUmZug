@@ -1,0 +1,27 @@
+.pop-up {
+  background-color: var(--primary-bg-color, #000000);
+  border-radius: 10px;
+  border-color: var(--secondary-bg-color, #000000);
+}
+
+.pop-up .button-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.pop-up button {
+  font-size: var(--font-size-normal, 1rem);
+  padding: 0.25rem;
+  border-radius: 10px;
+  border-color: var(--primary-bg-color);
+  color: white;
+  background-color: var(--secondary-bg-color);
+  box-shadow: 0px 0px 3px 0px white;
+  outline: 0;
+}
+
+.pop-up button:hover,
+.pop-up button:focus {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 2px white;
+}

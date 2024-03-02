@@ -1,3 +1,4 @@
+import { RoadColor } from "./roadColor";
 import { User } from "./user";
 
 export type Team = {
@@ -12,6 +13,7 @@ export type Team = {
     endCity: string;
     buyCost: number;
   }[];
+  colorCards: Record<RoadColor, number>;
 };
 
 export type TeamPostUser = {

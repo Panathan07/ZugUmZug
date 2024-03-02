@@ -1,3 +1,5 @@
+import { RoadColor } from "./roadColor";
+
 export type ColorCard =
   | "blue"
   | "green"
@@ -7,3 +9,14 @@ export type ColorCard =
   | "black"
   | "white"
   | "pink";
+
+export const colors = [
+  "red",
+  "orange",
+  "yellow",
+  "pink",
+  "green",
+  "white",
+  "blue",
+  "black",
+] as RoadColor[];

@@ -1,0 +1,29 @@
+.card-list {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  padding-inline: 0;
+  display: flex;
+  align-content: center;
+}
+
+.card-list .card-section {
+  height: 100%;
+  width: 100%;
+  list-style-type: none;
+  margin-inline: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-list .card-section.selected {
+  box-shadow:
+    0px -3px 0px 0px var(--primary-bg-color),
+    0px -7px 2px -2px #ffffff;
+}
+
+.card-list .card-section .card-amount {
+  text-align: center;
+}

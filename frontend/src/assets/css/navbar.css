@@ -33,6 +33,11 @@
   justify-content: center;
 }
 
+.colorCards-display {
+  width: 30%;
+  height: 100%;
+}
+
 .point-section {
   height: 100%;
   width: 20%;

@@ -1,6 +1,9 @@
 import { RoadColor } from "@customTypes/roadColor";
 import { useEffect, useRef, useState } from "react";
 import roadsData from "@assets/json/roads.json";
+import "@assets/css/roadPopUp.css";
+
+import ColorCardsDisplay from "./ColorCardsDisplay";
 
 export function BuyRoadPopUp({
   active,
@@ -19,6 +22,7 @@ export function BuyRoadPopUp({
 }) {
   const popUpRef = useRef<HTMLDialogElement>(null);
   const [color, setColor] = useState<RoadColor>("none");
+  const [selectedColor, setSelectedColor] = useState<RoadColor>("none");
 
   useEffect(() => {
     if (popUpRef == null || popUpRef.current == null) return;
@@ -38,29 +42,63 @@ export function BuyRoadPopUp({
   }, [cityConnection.startCity, cityConnection.endCity]);
 
   function submitOnClick() {
-    submitBuyRoad(cityConnection.startCity, cityConnection.endCity, color);
+    if (color === "none") {
+      submitBuyRoad(
+        cityConnection.startCity,
+        cityConnection.endCity,
+        selectedColor
+      );
+    } else {
+      submitBuyRoad(cityConnection.startCity, cityConnection.endCity, color);
+    }
+
     setTimeout(() => setIsPopUpActivated(false));
   }
 
+  console.log(selectedColor, color);
+
   return (
-    <dialog ref={popUpRef} style={{ background: "black" }}>
+    <dialog ref={popUpRef} className="pop-up">
       <p>
         Du kaufst die Straße von {cityConnection.startCity} nach{" "}
         {cityConnection.endCity}.
       </p>
       <p>Diese kostet {} Punkt/e</p>
-      {color !== "none" ? <></> : <CardChoiceField />}
-      <p>Möchtest du trotzdem fortfahren?</p>
-      <button onClick={submitOnClick}>Kauf fortfahren</button>
-      <button onClick={() => setIsPopUpActivated(false)}>Schließen</button>
+      {color !== "none" ? (
+        <></>
+      ) : (
+        <CardChoiceField
+          selectedColor={selectedColor}
+          selectColor={setSelectedColor}
+        />
+      )}
+      <div className="button-wrapper">
+        {color === "none" && selectedColor === "none" ? (
+          <></>
+        ) : (
+          <button onClick={submitOnClick}>Bestätigen</button>
+        )}
+        <button onClick={() => setIsPopUpActivated(false)}>Schließen</button>
+      </div>
     </dialog>
   );
 }
 
-function CardChoiceField() {
+function CardChoiceField({
+  selectedColor,
+  selectColor,
+}: {
+  selectedColor: RoadColor;
+  selectColor: React.Dispatch<React.SetStateAction<RoadColor>>;
+}) {
   return (
     <>
-      <p>Welche Kartenart möchtest du verwenden</p>
+      <p>Welche Kartenart möchtest du verwenden?</p>
+      <ColorCardsDisplay
+        style={{ marginBlock: "1rem", height: "4rem", width: "100%" }}
+        selectedColor={selectedColor}
+        onClick={selectColor}
+      />
     </>
   );
 }
