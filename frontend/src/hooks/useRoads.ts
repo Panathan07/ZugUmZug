@@ -10,6 +10,7 @@ import {
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
+import { RoadColor } from "@customTypes/roadColor";
 
 function collectRoadData() {
   const roads = [];
@@ -20,11 +21,11 @@ function collectRoadData() {
       endCity: endCity,
       activated: value.activated === 1 ? true : false,
       color: value.color,
+      colorType: value.colorType as RoadColor,
       roads: value.roads,
     };
     roads.push(roadGroup);
   }
-
   return roads;
 }
 
@@ -41,7 +42,6 @@ function alterRoadState(roads: RoadGroup[], teams: Team[]) {
           roadGroup.color = team.color;
           break teamsLoop;
         }
-
         roadGroup.activated = false;
       }
     }
@@ -58,9 +58,11 @@ function updateRoads(teams: Team[], roads: RoadGroup[]): RoadGroup[] {
 async function buyRoadFetch({
   teamId,
   roadName,
+  colorCard,
 }: {
   teamId: number | null;
   roadName: string;
+  colorCard: RoadColor;
 }) {
   return await fetch("http://localhost:3000/game/buyRoad", {
     method: "POST",
@@ -71,6 +73,7 @@ async function buyRoadFetch({
     body: JSON.stringify({
       teamId: teamId,
       roadName: roadName,
+      colorCard: colorCard,
     }),
   });
 }
@@ -84,6 +87,7 @@ export function useRoads(): [
     {
       teamId: number | null;
       roadName: string;
+      colorCard: RoadColor;
     },
     unknown
   >,
@@ -93,13 +97,24 @@ export function useRoads(): [
   const [teams] = useTeamData();
   const buyRoad = useMutation({
     mutationFn: buyRoadFetch,
-    onSuccess: (data) => {
-      console.log(data);
-      const message = "Straße gekauft.";
+    onSuccess: async (data) => {
+      const state = (await data.json()) as {
+        alreadyBought: boolean;
+        boughtRoad: boolean;
+        enoughCards: boolean;
+        exists: boolean;
+      };
+      let message = "";
+      if (!state.exists) message = "Die Straße gibt es nicht.";
+      else if (state.alreadyBought) message = "Die Straße wurde schon gekauft.";
+      else if (!state.enoughCards)
+        message = "Dein Team hat nicht genug Karten von dieser Farbe.";
+      else if (state.boughtRoad) message = "Die Straße wurde gekauft.";
+
       alert(message);
     },
-    onError: () => {
-      alert("An Error occurred. Please try again");
+    onError: (err) => {
+      alert("An Error occurred. Please try again. -> " + err.message);
     },
     onSettled: () => {
       void queryClient.invalidateQueries("teams" as InvalidateQueryFilters);

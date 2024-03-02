@@ -5,6 +5,8 @@ import { UserSchema } from "#customTypes/StorageSchema";
 import jsontask from "./tasks.json";
 import { cardTask, task } from "../custom-types/gameTask";
 import RoadManager from "./RoadManager";
+import { RoadColor } from "#customtypes/RoadColor";
+import ColorCardsManager from "./ColorCardManager";
 
 export default class Game {
   readonly colors: string[];
@@ -28,6 +30,7 @@ export default class Game {
   }
   readonly roadManager: RoadManager;
   readonly storage: UserStorage;
+  readonly colorCardsManager: ColorCardsManager;
 
   constructor(
     amountTeams: number,
@@ -52,6 +55,8 @@ export default class Game {
     for (const value of Object.values(jsontask)) {
       this.taskRotation.push(value as task);
     }
+    const price = 15;
+    this.colorCardsManager = new ColorCardsManager(price);
     this.start();
   }
   start(): GameState {
@@ -113,6 +118,11 @@ export default class Game {
     }
     return task_ret;
   }
+
+  useColorCards(): ColorCardsManager {
+    return this.colorCardsManager;
+  }
+
   get_rotation(color: string) {
     const ret_array: cardTask[] = [];
     for (const value of this.teams[this.colors.indexOf(color)].rotation) {
@@ -154,6 +164,7 @@ export default class Game {
       solution
     );
   }
+
   useRoads(): RoadManager {
     return this.roadManager;
   }

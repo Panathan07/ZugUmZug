@@ -11,6 +11,7 @@ import JSONStorage from "#game-components/JSONStorage";
 import User, { UserProps, UserReplaceKeyMap } from "#game-components/User";
 import Team from "#game-components/Team";
 import RoadManager from "#game-components/RoadManager";
+import { RoadColor } from "#customtypes/RoadColor";
 
 // setting variables
 const port = 3000;
@@ -97,13 +98,38 @@ app.get("/game/end", (req, res) => {
     res.status(500);
   }
 });
+app.get("/game/color-card/price", (req, res) => {
+  try {
+    const json = game.useColorCards().getCards();
+    res.status(200).json(json);
+  } catch (err) {
+    res.status(500);
+  }
+});
+
+app.post("/game/color-card/buy", (req, res) => {
+  try {
+    const color = req.body.color as RoadColor;
+    const teamId = req.body.teamId as number;
+    const successful = game.useColorCards().buyCard(game.teams, teamId, color);
+    res.status(200).json({ successful: successful });
+  } catch (err) {
+    res.status(500);
+  }
+});
 
 app.post("/game/buyRoad", (req, res) => {
   try {
     const roadName = req.body.roadName;
     const teamId = req.body.teamId;
-    let successful = game.useRoads().buyRoad(game.teams, teamId, roadName);
-    res.status(200).json({ boughtRoad: successful });
+    const colorCard = req.body.colorCard;
+    let successful = game
+      .useRoads()
+      .buyRoad(game.teams, teamId, roadName, colorCard);
+    if (successful == null) {
+      throw new Error("Road does not exist.");
+    }
+    res.status(200).json(successful);
   } catch (err) {
     res.status(500);
   }

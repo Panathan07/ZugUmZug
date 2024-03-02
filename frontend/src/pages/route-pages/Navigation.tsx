@@ -4,6 +4,7 @@ import { NavbarLink } from "@customTypes/navbarLink";
 import { useTeamData } from "@hooks/useTeamData";
 import { useUserContext } from "@hooks/useUserContext";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
+import ColorCardsDisplay from "@components/map/ColorCardsDisplay";
 
 export function NavigationBar() {
   const [teams, teamsResponse] = useTeamData();
@@ -26,6 +27,9 @@ export function NavigationBar() {
               <Link to={link.route}>{link.description}</Link>
             </div>
           ))}
+        </section>
+        <section className="colorCards-display">
+          {user.inTeam && !(user.teamId == null) ? <ColorCardsDisplay /> : null}
         </section>
         {user.inTeam && !(user.teamId == null) ? (
           <section className="point-section">

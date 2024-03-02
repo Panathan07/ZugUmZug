@@ -1,5 +1,6 @@
-import { RoadState } from "#customTypes/RoadState";
-import { task } from "#customTypes/gameTask";
+import { RoadColor } from "#customtypes/RoadColor";
+import { RoadState } from "#customtypes/RoadState";
+import { task } from "#customtypes/gameTask";
 import { isEqual } from "#utility-functions/isEqual";
 import Road from "./Road";
 import Task from "./Task";
@@ -10,19 +11,39 @@ export default class Team {
   name: string;
   color: string;
   members: User[];
+  colorCards: {
+    blue: number;
+    green: number;
+    yellow: number;
+    red: number;
+    orange: number;
+    black: number;
+    white: number;
+    pink: number;
+  };
   id: number;
   tasks: task[];
   boughtRoads: Road[];
   taskOptions: task[];
   accepetedTasks: task[];
   constructor(name: string, color: string, id: number) {
-    this.points = 3;
+    this.points = 60;
     this.name = name;
     this.color = color;
     this.members = [];
     this.id = id;
     this.tasks = [];
     this.boughtRoads = [];
+    this.colorCards = {
+      blue: 0,
+      green: 0,
+      yellow: 0,
+      red: 0,
+      orange: 0,
+      black: 0,
+      white: 0,
+      pink: 0,
+    };
     this.taskOptions = [];
     this.accepetedTasks = [];
   }
@@ -38,12 +59,35 @@ export default class Team {
     this.points -= amount_points;
   }
 
-  buyRoad(road: Road): RoadState {
+  addColorCards(color: RoadColor, amount: number) {
+    if (color === "none") return;
+    this.colorCards[color] += amount;
+  }
+  removeColorCards(color: RoadColor, amount: number) {
+    if (color === "none") return;
+    this.colorCards[color] -= amount;
+    if (this.colorCards[color] < 0) {
+      this.colorCards[color] = 0;
+    }
+  }
+  buyColorCard(color: RoadColor, price: number): boolean {
+    if (!this.hasEnoughPoints(price)) return false;
+    this.removePoints(price);
+    this.addColorCards(color, 1);
+    return true;
+  }
+  hasEnoughColorCards(color: RoadColor, costs: number) {
+    if (color === "none") return;
+    if (costs > this.colorCards[color]) return false;
+    return true;
+  }
+
+  buyRoad(road: Road, colorCard: RoadColor): RoadState {
     let state: RoadState = {
       exists: true,
       boughtRoad: false,
       alreadyBought: false,
-      enoughPoints: false,
+      enoughCards: false,
     };
 
     if (this.hasBoughtRoad(road)) {
@@ -51,13 +95,21 @@ export default class Team {
       return state;
     }
 
-    if (!this.hasEnoughPoints(road.buyCost)) return state;
-    this.removePoints(road.buyCost);
+    let color = null;
+
+    if (road.color === "none") {
+      color = colorCard;
+    } else {
+      color = road.color;
+    }
+
+    if (!this.hasEnoughColorCards(color, road.buyCost)) return state;
+    this.removeColorCards(color, road.buyCost);
 
     this.boughtRoads.push(road);
     road.buy();
 
-    state.enoughPoints = true;
+    state.enoughCards = true;
     state.boughtRoad = true;
     return state;
   }
