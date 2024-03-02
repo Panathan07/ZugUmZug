@@ -11,6 +11,7 @@ import JSONStorage from "#game-components/JSONStorage";
 import User, { UserProps, UserReplaceKeyMap } from "#game-components/User";
 import Team from "#game-components/Team";
 import RoadManager from "#game-components/RoadManager";
+import { RoadColor } from "#customTypes/RoadColor";
 
 // setting variables
 const port = 3000;
@@ -97,13 +98,38 @@ app.get("/game/end", (req, res) => {
     res.status(500);
   }
 });
+app.get("/game/color-card/price", (req, res) => {
+  try {
+    const json = game.useColorCards().getCards();
+    res.status(200).json(json);
+  } catch (err) {
+    res.status(500);
+  }
+});
+
+app.post("/game/color-card/buy", (req, res) => {
+  try {
+    const color = req.body.color as RoadColor;
+    const teamId = req.body.teamId as number;
+    const successful = game.useColorCards().buyCard(game.teams, teamId, color);
+    res.status(200).json({ successful: successful });
+  } catch (err) {
+    res.status(500);
+  }
+});
 
 app.post("/game/buyRoad", (req, res) => {
   try {
     const roadName = req.body.roadName;
     const teamId = req.body.teamId;
-    let successful = game.useRoads().buyRoad(game.teams, teamId, roadName);
-    res.status(200).json({ boughtRoad: successful });
+    const colorCard = req.body.colorCard;
+    let successful = game
+      .useRoads()
+      .buyRoad(game.teams, teamId, roadName, colorCard);
+    if (successful == null) {
+      throw new Error("Road does not exist.");
+    }
+    res.status(200).json(successful);
   } catch (err) {
     res.status(500);
   }
@@ -148,6 +174,48 @@ app.post("/teams/members/add", (req, res) => {
     }
     teams[teamID].addMember(user);
     res.status(200).json(teams);
+  } catch {
+    res.status(500);
+  }
+});
+
+app.post("/tasks/accept", (req, res) => {
+  try {
+    const taskName = req.body.task;
+    const teamColor = req.body.color;
+    const gameResponse = game.accept_task(teamColor, taskName);
+    console.log(gameResponse);
+    if (gameResponse) {
+      res.status(200).json({ outcome: 1 });
+      return;
+    }
+  } catch {
+    res.status(500).json({ errorType: 1 });
+  }
+});
+app.post("/tasks/solve", (req, res) => {
+  try {
+    const solution: string = req.body.solution;
+    const task: string = req.body.task;
+    const color: string = req.body.color;
+    const gameResponse = game.solve_task(color, task, solution);
+
+    if (gameResponse) {
+      res.status(200).json({ correct: 1 });
+      return;
+    }
+    res.status(200).json({ correct: 0 });
+  } catch (err) {
+    res.status(500).json({ wrong: err });
+  }
+});
+app.get("/team/tasks", (req, res) => {
+  try {
+    const color = req.query.teamColor as string;
+    res.status(200).json({
+      pending: game.get_rotation(color),
+      accepted: game.get_accepted_tasks(color),
+    });
   } catch {
     res.status(500);
   }

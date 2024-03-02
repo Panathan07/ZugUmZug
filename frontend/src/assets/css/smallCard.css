@@ -1,0 +1,19 @@
+.small-card {
+  height: 100%;
+  width: 50%;
+  border-radius: 4px;
+  background-color: rgb(162, 173, 184);
+  padding: 3px;
+}
+
+.small-card:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 7px 1px white;
+}
+
+.small-card .top {
+  background-color: var(--_color, "grey");
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+}

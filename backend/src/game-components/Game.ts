@@ -1,17 +1,18 @@
-import { GameState } from "#customtypes/GameState";
+import { GameState } from "#customTypes/GameState";
 import Team from "./Team";
-import { IStorage, UserStorage } from "#customtypes/Storage";
-import { UserSchema } from "#customtypes/StorageSchema";
+import { IStorage, UserStorage } from "#customTypes/Storage";
+import { UserSchema } from "#customTypes/StorageSchema";
 import jsontask from "./tasks.json";
-import { task } from "../custom-types/gameTask";
+import { cardTask, task } from "../custom-types/gameTask";
 import RoadManager from "./RoadManager";
+import { RoadColor } from "#customTypes/RoadColor";
+import ColorCardsManager from "./ColorCardManager";
 
 export default class Game {
   readonly colors: string[];
   readonly amountTeams: number;
   private _state: GameState = GameState.NotStarted;
-  private taskRotation: string[];
-  private tasks: { [key: string]: task } = {};
+  private taskRotation: task[] = [];
 
   get state(): GameState {
     return this._state;
@@ -23,14 +24,13 @@ export default class Game {
   get teams(): Team[] {
     return this._teams;
   }
-  get_rotation(color: string) {
-    return this.teams[this.colors.indexOf(color)].rotation;
-  }
+
   set teams(value: Team[]) {
     this._teams = value;
   }
   readonly roadManager: RoadManager;
   readonly storage: UserStorage;
+  readonly colorCardsManager: ColorCardsManager;
 
   constructor(
     amountTeams: number,
@@ -53,15 +53,20 @@ export default class Game {
     this.roadManager = roadManager;
     this.storage = storage;
     for (const value of Object.values(jsontask)) {
-      this.tasks[value["name"]] = value as task;
+      this.taskRotation.push(value as task);
     }
-    this.taskRotation = [];
-    for (const value of Object.values(this.tasks)) {
-      this.taskRotation.push(value.name);
-    }
+    const price = 15;
+    this.colorCardsManager = new ColorCardsManager(price);
+    this.start();
   }
   start(): GameState {
     this.state = GameState.Started;
+    this.changeTasksRotation(
+      this._teams,
+      this.currentTasks,
+      this.shuffle,
+      this.taskRotation
+    );
     this.timeoutTask();
     return this.state;
   }
@@ -79,8 +84,7 @@ export default class Game {
           this._teams,
           this.currentTasks,
           this.shuffle,
-          this.taskRotation,
-          this.tasks
+          this.taskRotation
         ),
       10000
     );
@@ -89,13 +93,11 @@ export default class Game {
     teams: Team[],
     currentTasks: Function,
     shuffle: Function,
-    taskRotation: string[],
-    tasks: { [key: string]: task }
+    taskRotation: task[]
   ) {
     taskRotation = shuffle(taskRotation);
     for (const team of teams) {
-      console.log(currentTasks(team.color, taskRotation, tasks));
-      team.setTask(currentTasks(team.color, taskRotation, tasks));
+      team.setTask(currentTasks(team.color, taskRotation));
     }
   }
   shuffle(array: string[]) {
@@ -105,19 +107,62 @@ export default class Game {
     }
     return array;
   }
-  currentTasks(
-    color: string,
-    taskRotation: string[],
-    tasks: { [key: string]: task }
-  ) {
-    let task_ret: { [key: string]: task } = {};
-    console.log(taskRotation);
-    for (const value of taskRotation) {
-      if (!tasks[value]["completed"].includes(color)) {
-        task_ret[value] = tasks[value];
+  currentTasks(color: string, taskRotation: task[]) {
+    const task_ret: task[] = [];
+    let p = 0;
+    for (let i = 0; i < taskRotation.length; i++) {
+      if (!taskRotation[i]["completed"].includes(color) && p != 4) {
+        p += 1;
+        task_ret.push(taskRotation[i]);
       }
     }
     return task_ret;
+  }
+
+  useColorCards(): ColorCardsManager {
+    return this.colorCardsManager;
+  }
+
+  get_rotation(color: string) {
+    const ret_array: cardTask[] = [];
+    for (const value of this.teams[this.colors.indexOf(color)].rotation) {
+      ret_array.push({
+        name: value.name,
+        description: value.description,
+        data: value.data,
+      });
+    }
+    return ret_array;
+  }
+  get_accepted_tasks(color: string) {
+    const ret_array: cardTask[] = [];
+    for (const value of this.teams[this.colors.indexOf(color)].accepted_tasks) {
+      ret_array.push({
+        name: value.name,
+        description: value.description,
+        data: value.data,
+      });
+    }
+    return ret_array;
+  }
+  accept_task(color: string, taskName: string): boolean {
+    const teamResponse =
+      this.teams[this.colors.indexOf(color)].accept_task(taskName);
+    if (teamResponse) {
+      for (const value of this.taskRotation) {
+        if (value.name == taskName) {
+          value.completed.push(color);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  solve_task(color: string, taskName: string, solution: string): boolean {
+    return this.teams[this.colors.indexOf(color)].solve_task(
+      taskName,
+      solution
+    );
   }
 
   useRoads(): RoadManager {

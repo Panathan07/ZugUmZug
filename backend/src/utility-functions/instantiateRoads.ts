@@ -9,7 +9,8 @@ export function instantiateRoads(): Road[] {
     let city1 = road.city1;
     let city2 = road.city2;
     let buyCost = road.buyCost;
-    roads.push(new Road(false, city1, city2, buyCost));
+    let color = road.color;
+    roads.push(new Road(false, city1, city2, buyCost, color));
   }
 
   return roads;

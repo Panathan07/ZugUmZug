@@ -1,5 +1,6 @@
-import { RoadState } from "#customtypes/RoadState";
-import { task } from "#customtypes/gameTask";
+import { RoadColor } from "#customTypes/RoadColor";
+import { RoadState } from "#customTypes/RoadState";
+import { task } from "#customTypes/gameTask";
 import { isEqual } from "#utility-functions/isEqual";
 import Road from "./Road";
 import Task from "./Task";
@@ -8,22 +9,43 @@ import User from "./User";
 export default class Team {
   points: number;
   name: string;
-  id: number;
   color: string;
   members: User[];
-  tasks: Task[];
+  colorCards: {
+    blue: number;
+    green: number;
+    yellow: number;
+    red: number;
+    orange: number;
+    black: number;
+    white: number;
+    pink: number;
+  };
+  id: number;
+  tasks: task[];
   boughtRoads: Road[];
-  taskOptions: { [key: string]: task };
-
+  taskOptions: task[];
+  accepetedTasks: task[];
   constructor(name: string, color: string, id: number) {
-    this.points = 3;
+    this.points = 60;
     this.name = name;
-    this.id = id;
     this.color = color;
     this.members = [];
+    this.id = id;
     this.tasks = [];
     this.boughtRoads = [];
-    this.taskOptions = {};
+    this.colorCards = {
+      blue: 0,
+      green: 0,
+      yellow: 0,
+      red: 0,
+      orange: 0,
+      black: 0,
+      white: 0,
+      pink: 0,
+    };
+    this.taskOptions = [];
+    this.accepetedTasks = [];
   }
 
   addPoints(amount_points: number) {
@@ -37,12 +59,35 @@ export default class Team {
     this.points -= amount_points;
   }
 
-  buyRoad(road: Road): RoadState {
+  addColorCards(color: RoadColor, amount: number) {
+    if (color === "none") return;
+    this.colorCards[color] += amount;
+  }
+  removeColorCards(color: RoadColor, amount: number) {
+    if (color === "none") return;
+    this.colorCards[color] -= amount;
+    if (this.colorCards[color] < 0) {
+      this.colorCards[color] = 0;
+    }
+  }
+  buyColorCard(color: RoadColor, price: number): boolean {
+    if (!this.hasEnoughPoints(price)) return false;
+    this.removePoints(price);
+    this.addColorCards(color, 1);
+    return true;
+  }
+  hasEnoughColorCards(color: RoadColor, costs: number) {
+    if (color === "none") return;
+    if (costs > this.colorCards[color]) return false;
+    return true;
+  }
+
+  buyRoad(road: Road, colorCard: RoadColor): RoadState {
     let state: RoadState = {
       exists: true,
       boughtRoad: false,
       alreadyBought: false,
-      enoughPoints: false,
+      enoughCards: false,
     };
 
     if (this.hasBoughtRoad(road)) {
@@ -50,13 +95,21 @@ export default class Team {
       return state;
     }
 
-    if (!this.hasEnoughPoints(road.buyCost)) return state;
-    this.removePoints(road.buyCost);
+    let color = null;
+
+    if (road.color === "none") {
+      color = colorCard;
+    } else {
+      color = road.color;
+    }
+
+    if (!this.hasEnoughColorCards(color, road.buyCost)) return state;
+    this.removeColorCards(color, road.buyCost);
 
     this.boughtRoads.push(road);
     road.buy();
 
-    state.enoughPoints = true;
+    state.enoughCards = true;
     state.boughtRoad = true;
     return state;
   }
@@ -66,14 +119,6 @@ export default class Team {
       if (isEqual(road, boughtRoad)) return true;
     }
     return false;
-  }
-
-  addTask(task: Task) {
-    this.tasks.push(task);
-  }
-  removeTask(task: Task) {
-    const index = this.tasks.indexOf(task);
-    this.tasks.splice(index, 1);
   }
 
   addMember(user: User): void {
@@ -91,11 +136,41 @@ export default class Team {
     }
     return false;
   }
-  get rotation(): { [key: string]: task } {
+  get rotation(): task[] {
     return this.taskOptions;
   }
-  setTask(new_taskOptions: { [key: string]: task }) {
-    console.log(new_taskOptions);
+  get accepted_tasks(): task[] {
+    return this.accepetedTasks;
+  }
+  accept_task(task: string): boolean {
+    if (this.accepetedTasks.length > 4) {
+      return false;
+    }
+    for (let i = 0; i < this.taskOptions.length; i++) {
+      if (this.taskOptions[i].name == task) {
+        this.accepetedTasks.push(this.taskOptions[i]);
+        this.taskOptions.splice(i, 1);
+        return true;
+      }
+    }
+    return false;
+  }
+  solve_task(task: string, solution: string): boolean {
+    if (this.accepetedTasks.length == 0) {
+      return false;
+    }
+    for (let i = 0; i < this.accepetedTasks.length; i++) {
+      console.log(this.accepetedTasks[i].name);
+      if (this.accepetedTasks[i].name == task) {
+        if (this.accepetedTasks[i].solution == solution) {
+          this.accepetedTasks.splice(i, 1);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  setTask(new_taskOptions: task[]) {
     this.taskOptions = new_taskOptions;
   }
 }

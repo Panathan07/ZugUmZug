@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align:center;
 }
 .title-box {
     display: flex;
@@ -14,4 +15,33 @@
 .task-box{
     border : 1px solid black;
     height: 45%;
+}
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+    height : 90%;
+    column-gap : 5%
+}
+.task{
+    border: 10px,solid,black;
+    height: 100%;
+    width: 100%;
+    background-color: forestgreen
+}
+
+.accept-task {
+    font-size: var(--font-size-big);
+    margin-block: 1rem;
+    background-color: transparent;
+    border: 1px solid var(--_color);
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.team-join:hover,
+.team-join:focus {
+        cursor: pointer;
+        filter: brightness(85%);
 }

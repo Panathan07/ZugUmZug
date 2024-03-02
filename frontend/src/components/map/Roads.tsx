@@ -2,10 +2,10 @@ import { useUserContext } from "@hooks/useUserContext";
 import { RoadTile } from "./RoadTile";
 import { useRoads } from "@hooks/useRoads";
 import { useTeamData } from "@hooks/useTeamData";
-import { Team } from "@customtypes/team";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
 import { BuyRoadPopUp } from "./BuyRoadPopUp";
 import { useCallback, useState } from "react";
+import { RoadColor } from "@customTypes/roadColor";
 
 export function Roads() {
   function roadOnClick(
@@ -21,17 +21,18 @@ export function Roads() {
 
   const [roads, , buyRoadMutation] = useRoads();
   const user = useUserContext();
-  const [teams] = useTeamData<Team>();
+  const [teams] = useTeamData();
   const [isPopUpActivated, setIsPopUpActivated] = useState(false);
   const [cityConnection, setCityConnection] = useState({
     startCity: "",
     endCity: "",
   });
   const submitBuyRoad = useCallback(
-    (startCity: string, endCity: string) => {
+    (startCity: string, endCity: string, colorCard: RoadColor) => {
       return buyRoadMutation.mutate({
         teamId: user.teamId,
         roadName: startCity + " - " + endCity,
+        colorCard: colorCard,
       });
     },
     [user.teamId, buyRoadMutation]

@@ -8,8 +8,8 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { LoadingPage } from "@pages/state-pages/LoadingPage";
-import { User } from "@customtypes/user";
-import { TeamPostUser } from "@customtypes/team";
+import { User } from "@customTypes/user";
+import { TeamPostUser } from "@customTypes/team";
 
 export type TeamCardProps = {
   color: string;

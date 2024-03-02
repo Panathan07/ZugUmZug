@@ -1,8 +1,8 @@
 import crypto from "crypto";
 import User, { UserProps } from "#game-components/User";
 import Team from "#game-components/Team";
-import { IStorage, UserStorage } from "#customtypes/Storage";
-import { UserSchema } from "#customtypes/StorageSchema";
+import { IStorage, UserStorage } from "#customTypes/Storage";
+import { UserSchema } from "#customTypes/StorageSchema";
 
 function addUser(user: User, userStorage: UserStorage) {
   if (userStorage.itemExists(user)) return;
