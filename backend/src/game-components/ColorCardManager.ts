@@ -1,4 +1,4 @@
-import { RoadColor } from "#customtypes/RoadColor";
+import { RoadColor } from "#customTypes/RoadColor";
 import Team from "./Team";
 
 export default class ColorCardsManager {

@@ -1,6 +1,6 @@
-import { RoadColor } from "#customtypes/RoadColor";
-import { RoadState } from "#customtypes/RoadState";
-import { task } from "#customtypes/gameTask";
+import { RoadColor } from "#customTypes/RoadColor";
+import { RoadState } from "#customTypes/RoadState";
+import { task } from "#customTypes/gameTask";
 import { isEqual } from "#utility-functions/isEqual";
 import Road from "./Road";
 import Task from "./Task";

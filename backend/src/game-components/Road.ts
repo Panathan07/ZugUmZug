@@ -1,4 +1,4 @@
-import { RoadColor } from "#customtypes/RoadColor";
+import { RoadColor } from "#customTypes/RoadColor";
 
 export default class Road {
   bought: boolean;

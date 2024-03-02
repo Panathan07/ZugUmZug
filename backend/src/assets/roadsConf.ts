@@ -1,7 +1,7 @@
 import { splitCities } from "#utility-functions/splitCities";
 import fs from "fs";
 import RoadJson from "./roadConfig.json";
-import { RoadColor } from "#customtypes/RoadColor";
+import { RoadColor } from "#customTypes/RoadColor";
 
 type RoadConfig = {
   city1: string;

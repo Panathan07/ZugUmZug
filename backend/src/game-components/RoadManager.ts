@@ -1,5 +1,5 @@
-import { RoadColor } from "#customtypes/RoadColor";
-import { RoadState } from "#customtypes/RoadState";
+import { RoadColor } from "#customTypes/RoadColor";
+import { RoadState } from "#customTypes/RoadState";
 import { instantiateRoads } from "#utility-functions/instantiateRoads";
 import { splitCities } from "#utility-functions/splitCities";
 import Road from "./Road";

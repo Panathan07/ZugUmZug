@@ -5,7 +5,7 @@ import { UserSchema } from "#customTypes/StorageSchema";
 import jsontask from "./tasks.json";
 import { cardTask, task } from "../custom-types/gameTask";
 import RoadManager from "./RoadManager";
-import { RoadColor } from "#customtypes/RoadColor";
+import { RoadColor } from "#customTypes/RoadColor";
 import ColorCardsManager from "./ColorCardManager";
 
 export default class Game {
