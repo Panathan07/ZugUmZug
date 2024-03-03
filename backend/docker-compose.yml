@@ -1,0 +1,12 @@
+services:
+  backend:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app/server
+      - /app/server/node_modules
+      - /app/server/dist
+    command: npm run start:docker
+    environment:
+      - PORT=3000

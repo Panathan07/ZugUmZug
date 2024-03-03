@@ -1,0 +1,8 @@
+coverage
+dist
+node_modules
+dist
+.vscode
+.prettierignore
+.eslintrc.cjs
+README.md
