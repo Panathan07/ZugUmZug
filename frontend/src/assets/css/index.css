@@ -41,8 +41,8 @@ body > * {
 }
 
 body {
-  min-width: 100dvw;
-  height: 100dvh;
+  min-width: 100svw;
+  height: 100svh;
   margin: 0;
   color: var(--color);
   background-color: var(--primary-bg-color);
