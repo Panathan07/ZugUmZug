@@ -211,10 +211,11 @@ app.post("/tasks/solve", (req, res) => {
 });
 app.get("/team/tasks", (req, res) => {
   try {
-    const color = req.query.teamColor as string;
+    const teamId = req.query.teamId as string;
+    console.log("/team/tasks/", teamId);
     res.status(200).json({
-      pending: game.get_rotation(color),
-      accepted: game.get_accepted_tasks(color),
+      pending: game.get_rotation(1),
+      accepted: game.get_accepted_tasks(1),
     });
   } catch {
     res.status(500);
