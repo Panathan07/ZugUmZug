@@ -4,6 +4,8 @@ import { isEqual } from "#utility-functions/isEqual";
 
 import fs from "fs";
 import { renameKeys } from "#utility-functions/renameKeys";
+import path from "path";
+import userJSON from "../assets/Users.json";
 
 export default class JSONStorage<Schema extends StorageSchema>
   implements IStorage<Schema>
@@ -82,18 +84,15 @@ export default class JSONStorage<Schema extends StorageSchema>
     return resultingIndex;
   }
   private syncData() {
-    fs.readFile(this.path, "utf8", (err, data) => {
-      console.log("got data from storage");
-      if (err) throw err;
-      if (data == null) {
-        this.table = {
-          [this.name]: [],
-        };
-        return;
-      }
-      this.table = JSON.parse(data);
-      this.storage = this.table[Object.keys(this.table)[0]] as Schema[];
-    });
+    console.log("got data from storage");
+    if (userJSON == null) {
+      this.table = {
+        [this.name]: [],
+      };
+      return;
+    }
+    this.table = userJSON;
+    this.storage = this.table[Object.keys(this.table)[0]] as Schema[];
   }
   private syncChanges() {
     this.table = {

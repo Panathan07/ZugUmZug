@@ -7,7 +7,8 @@
     "build": "npx tsc",
     "start": "node ./src/server.ts",
     "dev": "nodemon ./src/server.ts",
-    "test": "jest"
+    "test": "jest",
+    "start:docker": "npm run build && node dist/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -28,9 +29,9 @@
     "typescript": "^5.3.3"
   },
   "imports": {
-    "#game-components/*": "./src/game-components/*.ts",
-    "#customTypes/*": "./src/custom-types/*.ts",
-    "#utility-functions/*": "./src/utility-functions/*.ts",
-    "#assets/*": "./src/assets/*.ts"
+    "#game-components/*": "./dist/src/game-components/*.js",
+    "#customTypes/*": "./dist/src/custom-types/*.js",
+    "#utility-functions/*": "./dist/src/utility-functions/*.js",
+    "#assets/*": "./dist/src/assets/*.js"
   }
 }
