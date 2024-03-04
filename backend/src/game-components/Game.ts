@@ -123,9 +123,9 @@ export default class Game {
     return this.colorCardsManager;
   }
 
-  get_rotation(color: string) {
+  get_rotation(teamId: number) {
     const ret_array: cardTask[] = [];
-    for (const value of this.teams[this.colors.indexOf(color)].rotation) {
+    for (const value of this.teams[teamId].rotation) {
       ret_array.push({
         name: value.name,
         description: value.description,
@@ -134,9 +134,9 @@ export default class Game {
     }
     return ret_array;
   }
-  get_accepted_tasks(color: string) {
+  get_accepted_tasks(teamId: number) {
     const ret_array: cardTask[] = [];
-    for (const value of this.teams[this.colors.indexOf(color)].accepted_tasks) {
+    for (const value of this.teams[teamId].accepted_tasks) {
       ret_array.push({
         name: value.name,
         description: value.description,
