@@ -15,10 +15,7 @@ export type solvedTask = {
 };
 export function PendingTaskCard({ name, description, data }: cardTask) {
   const queryClient = useQueryClient();
-  const [localColor, setLocalColor] = useLocalStorage<string | null>(
-    "team-color",
-    null
-  );
+  const [localColor] = useLocalStorage<string | null>("team-color", null);
   const acceptMutation = useMutation<Response, Error, acceptedTask>({
     mutationFn: acceptTask,
     onError: () => {
@@ -58,10 +55,7 @@ export function PendingTaskCard({ name, description, data }: cardTask) {
 
 export function AcceptedTaskCard({ name, description, data }: cardTask) {
   const queryClient = useQueryClient();
-  const [localColor, setLocalColor] = useLocalStorage<string | null>(
-    "team-color",
-    null
-  );
+  const [localColor] = useLocalStorage<string | null>("team-color", null);
   const solveMutation = useMutation<Response, Error, solvedTask>({
     mutationFn: solveTask,
     onError: () => {

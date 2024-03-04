@@ -14,7 +14,7 @@ import RoadManager from "#game-components/RoadManager";
 import { RoadColor } from "#customTypes/RoadColor";
 
 // setting variables
-const port = 3000;
+const port = process.env.PORT || 3000;
 const corsOptions = {
   origin: "*",
   credentials: true, //access-control-allow-credentials:true
@@ -22,7 +22,7 @@ const corsOptions = {
 };
 
 // init userID storage
-const userIDFilePath = "./Users.json";
+const userIDFilePath = "/assets/Users.json";
 const userStorage = new JSONStorage<User>(
   `${userIDFilePath}`,
   "Users",
@@ -42,7 +42,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  // res.setHeader("Access-Control-Allow-Origin", "http://localhost:5000");
 
   // Request methods you wish to allow
   res.setHeader(
@@ -211,10 +211,18 @@ app.post("/tasks/solve", (req, res) => {
 });
 app.get("/team/tasks", (req, res) => {
   try {
-    const color = req.query.teamColor as string;
+    let teamIdString = req.query.teamId as string;
+    let teamId: number;
+    try {
+      teamId = parseInt(teamIdString);
+    } catch (err) {
+      res.status(400);
+      return;
+    }
+    console.log("/team/tasks/", teamId);
     res.status(200).json({
-      pending: game.get_rotation(color),
-      accepted: game.get_accepted_tasks(color),
+      pending: game.get_rotation(teamId),
+      accepted: game.get_accepted_tasks(teamId),
     });
   } catch {
     res.status(500);

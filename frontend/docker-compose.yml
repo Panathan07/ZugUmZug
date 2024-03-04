@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build: .
+    ports:
+      - 5000:5000
+      - 9229:9229 # for debugging
+    volumes:
+      - .:/app/client
+      - /app/client/node_modules
+      - /app/client/dist
+    command: npm run preview
+    environment:
+      - PORT=5000

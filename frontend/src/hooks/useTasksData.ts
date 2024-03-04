@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { cardTask } from "@customTypes/gameTask";
-import { useLocalStorage } from "./useLocalStorage";
+import { useUserContext } from "./useUserContext";
 
-const getTasks = async (api: string, color: string | null) => {
-  console.log(color, "color");
+const getTasks = async (api: string, teamId: number | null) => {
+  console.log(teamId, "Team");
   const response = await fetch(
     api +
       "?" +
       new URLSearchParams({
-        teamColor: color ? color : "",
+        teamId: teamId == null ? "" : teamId.toString(),
       }).toString()
   );
   if (!response.ok) {
@@ -24,14 +24,15 @@ export const useTasksData = (): {
   pending: cardTask[];
   accepted: cardTask[];
 } | null => {
-  const [localColor] = useLocalStorage<string | null>("team-color", null);
+  const user = useUserContext();
   const [tasks, setTasks] = useState<{
     pending: cardTask[];
     accepted: cardTask[];
   } | null>(null);
   const taskResponse = useQuery({
     queryKey: ["tasks"],
-    queryFn: () => getTasks("http://localhost:3000/team/tasks", localColor),
+    queryFn: () => getTasks("http://localhost:3000/team/tasks", user.teamId),
+    staleTime: 10000,
   });
 
   useEffect(() => {
