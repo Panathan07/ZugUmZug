@@ -17,3 +17,39 @@ Ein Spiel welches sich über die ganze USA abspielt.
   > Die Auswahl der Karten im Shop ist für jedes Team anders. Außerdem ist bei jedem Team die Auswahl immer zufällig ausgewählt.
 
 - > Wenn ein Team nun eine Straße baut, können **andere Teams** diese Straße nicht mehr bauen und müssen unter Umständen einen anderen Weg zu ihrem Ziel finden.
+
+# Anleitung zum Starten
+
+## Make sure you have node version 20.11.1 installed and also the package manager
+
+### Frontend(Client)
+
+- > go into the console/terminal in the working directory
+  >
+  > ```
+  > cd ./frontend
+  > ```
+  >
+  > ```
+  > npm install
+  > ```
+  >
+  > ```
+  > npm run dev
+  > ```
+
+### Backend(Server)
+
+- > go into the console/terminal in the working directory
+  >
+  > ```
+  > cd ./backend
+  > ```
+  >
+  > ```
+  > npm install
+  > ```
+  >
+  > ```
+  > npm run dev
+  > ```
