@@ -5,8 +5,8 @@
   "main": "server.ts",
   "scripts": {
     "build": "npx tsc",
-    "start": "node ./src/server.ts",
-    "dev": "nodemon ./src/server.ts",
+    "start": "node ./dist/src/server.js",
+    "dev": "npm run build && nodemon ./dist/src/server.js",
     "test": "jest",
     "start:docker": "npm run build && node dist/server.js"
   },
