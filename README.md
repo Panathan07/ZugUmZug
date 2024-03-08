@@ -26,30 +26,30 @@ Ein Spiel welches sich über die ganze USA abspielt.
 
 - > go into the console/terminal in the working directory
   >
-  > ```cd ./frontend
-  >
+  > ```
+  > cd ./frontend
   > ```
   >
-  > ```npm install
-  >
+  > ```
+  > npm install
   > ```
   >
-  > ```npm run dev
-  >
+  > ```
+  > npm run dev
   > ```
 
 ### Backend(Server)
 
 - > go into the console/terminal in the working directory
   >
-  > ```cd ./backend
-  >
+  > ```
+  > cd ./backend
   > ```
   >
-  > ```npm install
-  >
+  > ```
+  > npm install
   > ```
   >
-  > ```npm run dev
-  >
+  > ```
+  > npm run dev
   > ```
