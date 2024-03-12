@@ -4,25 +4,39 @@ import { LoadingPage } from "../state-pages/LoadingPage";
 import { PendingTaskCard } from "@components/tasks/taskCard";
 import { AcceptedTaskCard } from "@components/tasks/taskCard";
 import { cardTask } from "@customTypes/gameTask";
+import { useResetTimeData } from "../../hooks/useResetTime";
+import { useState } from "react";
+import { InvalidateQueryFilters, QueryClient, useQueryClient } from "@tanstack/react-query";
 
 export function Taskmanager() {
-  const data = useTasksData();
-  if (data == null) {
-    return <LoadingPage />;
-  }
+    const queryclient = useQueryClient()
+    const data = useTasksData();
+    const resetTime = useResetTimeData()
+    const [resetTaskTime, setReset] = useState(!(resetTime == null) ? resetTime.task : 0)
+    if (data == null || resetTime == null) {
+        return <LoadingPage />
+    }
+    const timer = () => {
+        setTimeout(
+            () => {
+                setReset(resetTaskTime - 1)
+                if (resetTaskTime <= 0) {
+                    void queryclient.invalidateQueries("goals" as InvalidateQueryFilters);
+                    void queryclient.invalidateQueries("resetTime" as InvalidateQueryFilters)
+                    setReset(resetTime.task)
+                }
+            }, 100
+        )
+    }
+    timer()
 
-  const pending_task_arr: cardTask[] = [];
-  for (const value of Object.values(data.pending)) {
-    pending_task_arr.push(value);
-  }
-  const accepted_task_arr: cardTask[] = [];
-  for (const value of Object.values(data.accepted)) {
-    accepted_task_arr.push(value);
-  }
+    const pending_task_arr: cardTask[] = data.pending;
+    const accepted_task_arr: cardTask[] = data.accepted;
   return (
     <>
       <div className="title-box">
-        <p className="title">Aufgaben</p>
+              <p className="title">Aufgaben</p>
+              <Time time = {resetTaskTime}/>
       </div>
       <div className="task-box">
         <p style={{ fontSize: "17px", display: "inline" }}>
@@ -56,4 +70,7 @@ export function Taskmanager() {
       </div>
     </>
   );
+}
+function Time({ time }: { time: number }) {
+    return (<p> {time} sekunden bis zu neuen  Aufgaben </p>)
 }

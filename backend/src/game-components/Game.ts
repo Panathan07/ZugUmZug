@@ -2,16 +2,19 @@ import { GameState } from "#customTypes/GameState";
 import Team from "./Team";
 import { IStorage, UserStorage } from "#customTypes/Storage";
 import { UserSchema } from "#customTypes/StorageSchema";
-import jsontask from "./tasks.json";
+import jsontask from "../assets/tasks.json";
+import jsonconnection from "../assets/cityConnections.json"
 import { cardTask, task } from "../custom-types/gameTask";
 import RoadManager from "./RoadManager";
-
+import { shuffle } from "#utility-functions/shuffle"
 export default class Game {
+     goalTimer: number
+     taskTimer: number
+  //readonly street_connections: streetConnections;
   readonly colors: string[];
   readonly amountTeams: number;
   private _state: GameState = GameState.NotStarted;
-  private taskRotation: task[] = [];
-
+    private taskRotation: task[] = [];
   get state(): GameState {
     return this._state;
   }
@@ -21,7 +24,10 @@ export default class Game {
   private _teams: Team[] = [];
   get teams(): Team[] {
     return this._teams;
-  }
+    }
+    get time() {
+        return { task: this.taskTimer, goal: this.goalTimer }
+    }
 
   set teams(value: Team[]) {
     this._teams = value;
@@ -29,11 +35,13 @@ export default class Game {
   readonly roadManager: RoadManager;
   readonly storage: UserStorage;
 
-  constructor(
+    constructor(
     amountTeams: number,
     storage: UserStorage,
     roadManager: RoadManager
-  ) {
+    ) {
+        this.taskTimer = 300
+        this.goalTimer = 600
     this.colors = [
       "blue",
       "green",
@@ -43,9 +51,9 @@ export default class Game {
       "black",
       "white",
     ];
-
     this.amountTeams = amountTeams;
-    this.state = GameState.NotStarted;
+        this.state = GameState.NotStarted;
+        
     this.teams = this.createTeams();
     this.roadManager = roadManager;
     this.storage = storage;
@@ -55,11 +63,12 @@ export default class Game {
     this.start();
   }
   start(): GameState {
-    this.state = GameState.Started;
+      this.state = GameState.Started
+      this.resetTimer()
     this.changeTasksRotation(
       this._teams,
       this.currentTasks,
-      this.shuffle,
+      shuffle,
       this.taskRotation
     );
     this.timeoutTask();
@@ -71,19 +80,34 @@ export default class Game {
   }
   useStorage(): UserStorage {
     return this.storage;
-  }
+    }
+  // Task Functions
   timeoutTask() {
     setInterval(
       () =>
         this.changeTasksRotation(
           this._teams,
           this.currentTasks,
-          this.shuffle,
+          shuffle,
           this.taskRotation
         ),
-      10000
+      300000
     );
-  }
+    }
+    resetTimer() {
+        setInterval(
+            () => {
+                this.taskTimer -= 1
+                this.goalTimer -= 1
+                if (this.taskTimer == 0) {
+                    this.taskTimer = 300
+                }
+                if (this.goalTimer == 0) {
+                    this.goalTimer = 600
+                }
+            },100
+        )
+    }
   private changeTasksRotation(
     teams: Team[],
     currentTasks: Function,
@@ -94,13 +118,6 @@ export default class Game {
     for (const team of teams) {
       team.setTask(currentTasks(team.color, taskRotation));
     }
-  }
-  shuffle(array: string[]) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
   }
   currentTasks(color: string, taskRotation: task[]) {
     const task_ret: task[] = [];
@@ -153,7 +170,23 @@ export default class Game {
       taskName,
       solution
     );
-  }
+    }
+    //
+    //connecting goals
+    setGoal(color: string, connection: string[]) {
+        return this.teams[this.colors.indexOf(color)].setGoal(connection)
+    }
+    get_goals(color: string) {
+        return this.teams[this.colors.indexOf(color)].goals
+    }
+    check_connection(teamColor: string, connection: string[]) {
+        if (this.teams[this.colors.indexOf(teamColor)].citys_connected(connection)) {
+            return true
+        }
+        return false
+    }
+    //
+
   useRoads(): RoadManager {
     return this.roadManager;
   }

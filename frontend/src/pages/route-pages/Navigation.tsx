@@ -12,7 +12,8 @@ export function NavigationBar() {
   const links: NavbarLink[] = [
     { route: "map", description: "Game" },
     { route: "shop", description: "Punkteshop" },
-    { route: "taskmanager", description: "Tasks" },
+      { route: "taskmanager", description: "Tasks" },
+      { route: "goals", description: "Goals" }
   ];
 
   if (teams == null || teamsResponse.isLoading) return <LoadingPage />;

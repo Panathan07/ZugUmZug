@@ -1,0 +1,33 @@
+.title-box{
+    border : 5px , solid, red;
+}
+.title{
+    font-size-adjust : 2
+}
+.goal-box {
+    
+    border: 5px, solid,red;
+    height: 44.5%
+}
+.goal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    height: 90%;
+    column-gap: 5%
+}
+.goal-title{
+    font-size : 170%;
+}
+.goal{
+    height : 100%;
+    width : 100%;
+    background-color : green
+}
+.button{
+    height : 30px;
+    width: 60px;
+    color : blue;
+    font-size : 20px
+}

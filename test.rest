@@ -41,3 +41,19 @@ Content-Type: application/json
     "roadName": "Salt Lake City - Helena",
     "teamId": 1
 }
+###
+POST http://localhost:3000/team/goals/accept
+Content-Type: application/json
+
+{
+    "teamColor" : "blue",
+    "connection" : ["Winnipeg","Oklahoma City"]
+}
+###
+POST http://localhost:3000/team/goals/check
+Content-Type: application/json
+
+{
+    "teamColor" : "blue",
+    "connection" : ["Vancouver","Kansas City"]
+}

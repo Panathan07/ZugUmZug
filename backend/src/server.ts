@@ -194,6 +194,55 @@ app.get("/team/tasks", (req, res) => {
     res.status(500);
   }
 });
+app.get("/team/goals", (req, res) => {
+    try {
+        const color = req.query.teamColor as string
+        res.status(200).json({
+            pending: game.get_goals(color)[0],
+            accepted: game.get_goals(color)[1]
+        })
+    }
+    catch {
+        res.status(500)
+    }
+})
+app.post("/team/goals/accept", (req, res) => {
+    try {
+        const color = req.body.teamColor as string
+        const connection = req.body.connection as string[]
+        const gameResponse = game.setGoal(color, connection)
+        if (gameResponse) {
+            res.status(200).json({ "status": 1 })
+            return
+        }
+        res.status(500)
+    } catch {
+        res.status(500)
+    }
+})
+app.post("/team/goals/check", (req, res) => {
+    try {
+        const color = req.body.teamColor as string
+        const connection = req.body.connection as string[]
+        const gameResponse = game.check_connection(color, connection)
+        console.log(gameResponse)
+        if (gameResponse) {
+            res.status(200).json({ "status": 1 })
+            return
+        }
+        res.status(500)
+    } catch {
+        res.status(500)
+    }
+
+})
+app.get("/team/time", (req, res) => {
+    try {
+        res.status(200).json(game.time)
+    } catch {
+        res.status(500)
+    }
+})
 
 // app listens on port
 app.listen(port, () =>
