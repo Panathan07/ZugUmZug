@@ -2,11 +2,13 @@ import { GameState } from "#customTypes/GameState";
 import Team from "./Team";
 import { IStorage, UserStorage } from "#customTypes/Storage";
 import { UserSchema } from "#customTypes/StorageSchema";
-import jsontask from "./tasks.json";
+import jsontask from "../assets/tasks.json";
+import jsonconnection from "../assets/cityConnections.json";
 import { cardTask, task } from "../custom-types/gameTask";
 import RoadManager from "./RoadManager";
 import { RoadColor } from "#customTypes/RoadColor";
 import ColorCardsManager from "./ColorCardManager";
+import { shuffle } from "#utility-functions/shuffle";
 
 export default class Game {
   readonly colors: string[];
@@ -24,9 +26,15 @@ export default class Game {
   get teams(): Team[] {
     return this._teams;
   }
-
   set teams(value: Team[]) {
     this._teams = value;
+  }
+
+  goalTimer: number;
+  taskTimer: number;
+
+  get time() {
+    return { task: this.taskTimer, goal: this.goalTimer };
   }
   readonly roadManager: RoadManager;
   readonly storage: UserStorage;
@@ -37,6 +45,8 @@ export default class Game {
     storage: UserStorage,
     roadManager: RoadManager
   ) {
+    this.taskTimer = 300;
+    this.goalTimer = 600;
     this.colors = [
       "blue",
       "green",
@@ -61,10 +71,11 @@ export default class Game {
   }
   start(): GameState {
     this.state = GameState.Started;
+    this.resetTimer();
     this.changeTasksRotation(
       this._teams,
       this.currentTasks,
-      this.shuffle,
+      shuffle,
       this.taskRotation
     );
     this.timeoutTask();
@@ -83,11 +94,23 @@ export default class Game {
         this.changeTasksRotation(
           this._teams,
           this.currentTasks,
-          this.shuffle,
+          shuffle,
           this.taskRotation
         ),
-      10000
+      this.taskTimer * 1000
     );
+  }
+  resetTimer() {
+    setInterval(() => {
+      this.taskTimer -= 1;
+      this.goalTimer -= 1;
+      if (this.taskTimer == 0) {
+        this.taskTimer = 300;
+      }
+      if (this.goalTimer == 0) {
+        this.goalTimer = 600;
+      }
+    }, 100);
   }
   private changeTasksRotation(
     teams: Team[],
@@ -99,13 +122,6 @@ export default class Game {
     for (const team of teams) {
       team.setTask(currentTasks(team.color, taskRotation));
     }
-  }
-  shuffle(array: string[]) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
   }
   currentTasks(color: string, taskRotation: task[]) {
     const task_ret: task[] = [];
@@ -163,6 +179,22 @@ export default class Game {
       taskName,
       solution
     );
+  }
+
+  //connecting goals
+  setGoal(color: string, connection: string[]) {
+    return this.teams[this.colors.indexOf(color)].setGoal(connection);
+  }
+  get_goals(color: string) {
+    return this.teams[this.colors.indexOf(color)].goals;
+  }
+  check_connection(teamColor: string, connection: string[]) {
+    if (
+      this.teams[this.colors.indexOf(teamColor)].citys_connected(connection)
+    ) {
+      return true;
+    }
+    return false;
   }
 
   useRoads(): RoadManager {

@@ -1,0 +1,69 @@
+{
+  "content": [
+    {
+      "connection": ["Helena", "Toronto"],
+      "reward": 6,
+      "distance": 12
+    },
+    {
+      "connection": ["Houston", "Los Angeles"],
+      "reward": 7,
+      "distance": 12
+    },
+    {
+      "connection": ["San Francisco", "Las Vegas"],
+      "reward": 2,
+      "distance": 5
+    },
+    {
+      "connection": ["Vancouver", "Miami"],
+      "reward": 15,
+      "distance": 23
+    },
+    {
+      "connection": ["Chicago", "Boston"],
+      "distance": 7,
+      "reward": 4
+    },
+    {
+      "connection": ["Winnipeg", "Oklahoma City"],
+      "distance": 9,
+      "reward": 5
+    },
+    {
+      "connection": ["El Paso", "Sault St. Marie"],
+      "distance": 12,
+      "reward": 7
+    },
+    {
+      "connection": ["Salt Lake City", "Saint Louis"],
+      "distance": 9,
+      "reward": 4
+    },
+    {
+      "connection": ["Portland", "Calgary"],
+      "distance": 5,
+      "reward": 2
+    },
+    {
+      "connection": ["Miami", "Chicago"],
+      "distance": 10,
+      "reward": 5
+    },
+    {
+      "connection": ["Montreal", "Santa Fe"],
+      "distance": 16,
+      "reward": 9
+    },
+    {
+      "connection": ["Charleston", "Omaha"],
+      "distance": 8,
+      "reward": 5
+    },
+    {
+      "connection": ["Little Rock", "Seattle"],
+      "distance": 16,
+      "reward": 8
+    }
+  ]
+}
