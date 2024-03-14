@@ -14,6 +14,7 @@ export function NavigationBar() {
     { route: "map", description: "Game" },
     { route: "shop", description: "Punkteshop" },
     { route: "taskmanager", description: "Tasks" },
+    { route: "goals", description: "Goals" },
   ];
 
   if (teams == null || teamsResponse.isLoading) return <LoadingPage />;
