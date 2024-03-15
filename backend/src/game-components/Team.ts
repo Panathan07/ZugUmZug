@@ -11,7 +11,7 @@ import {
   streetDictionary,
   streetConnection,
 } from "../custom-types/streetConnection";
-import jsonconnection from "../assets/cityConnections.json";
+import jsonConnection from "../assets/cityConnections.json";
 import { areCitysConnected } from "../utility-functions/connectedCityCheck";
 
 export default class Team {
@@ -33,8 +33,8 @@ export default class Team {
   tasks: task[];
   boughtRoads: Road[];
   taskOptions: task[];
-  accepetedTasks: task[];
-  conncetedStreets: streetDictionary;
+  acceptedTasks: task[];
+  connectedStreets: streetDictionary;
   streetGoals: streetConnection[];
   currentStreetGoals: streetConnection[];
   currentStreetOptions: streetConnection[];
@@ -45,8 +45,8 @@ export default class Team {
 
     this.currentStreetGoals = [];
     this.currentStreetOptions = [];
-    this.conncetedStreets = street_dictionary();
-    this.streetGoals = jsonconnection["content"];
+    this.connectedStreets = street_dictionary();
+    this.streetGoals = jsonConnection["content"];
     this.streetGoals = shuffle(this.streetGoals) as streetConnection[];
     this.currentStreetOptions = [this.streetGoals[0], this.streetGoals[1]];
 
@@ -68,7 +68,7 @@ export default class Team {
       pink: 0,
     };
     this.taskOptions = [];
-    this.accepetedTasks = [];
+    this.acceptedTasks = [];
   }
 
   addPoints(amount_points: number) {
@@ -163,15 +163,15 @@ export default class Team {
     return this.taskOptions;
   }
   get accepted_tasks(): task[] {
-    return this.accepetedTasks;
+    return this.acceptedTasks;
   }
   accept_task(task: string): boolean {
-    if (this.accepetedTasks.length > 4) {
+    if (this.acceptedTasks.length > 4) {
       return false;
     }
     for (let i = 0; i < this.taskOptions.length; i++) {
       if (this.taskOptions[i].name == task) {
-        this.accepetedTasks.push(this.taskOptions[i]);
+        this.acceptedTasks.push(this.taskOptions[i]);
         this.taskOptions.splice(i, 1);
         return true;
       }
@@ -179,17 +179,16 @@ export default class Team {
     return false;
   }
   solve_task(task: string, solution: string): boolean {
-    if (this.accepetedTasks.length == 0) {
+    if (this.acceptedTasks.length == 0) {
       return false;
     }
-    for (let i = 0; i < this.accepetedTasks.length; i++) {
-      console.log(this.accepetedTasks[i].name);
-      if (this.accepetedTasks[i].name == task) {
-        if (this.accepetedTasks[i].solution == solution) {
-          this.accepetedTasks.splice(i, 1);
-          return true;
-        }
-      }
+    for (let i = 0; i < this.acceptedTasks.length; i++) {
+      console.log(this.acceptedTasks[i].name, task);
+      if (!(this.acceptedTasks[i].name == task)) continue;
+      console.log(this.acceptedTasks[i].solution, solution);
+      if (!(this.acceptedTasks[i].solution == solution)) continue;
+      this.acceptedTasks.splice(i, 1);
+      return true;
     }
     return false;
   }
@@ -203,9 +202,9 @@ export default class Team {
       this.streetGoals = shuffle(this.streetGoals) as streetConnection[];
       this.currentStreetOptions = [this.streetGoals[0], this.streetGoals[1]];
       console.log(this.currentStreetOptions);
-    }, 60000);
+    }, 600000);
   }
-  citys_connected(connection: string[]) {
+  citiesConnected(connection: string[]) {
     let roadsDictionary: streetDictionary = {};
     for (let value of this.boughtRoads) {
       if (!Object.keys(roadsDictionary).includes(value.endCity)) {

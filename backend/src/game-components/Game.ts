@@ -97,37 +97,37 @@ export default class Game {
           shuffle,
           this.taskRotation
         ),
-      this.taskTimer * 1000
+      600 * 1000
     );
   }
   resetTimer() {
     setInterval(() => {
       this.taskTimer -= 1;
       this.goalTimer -= 1;
-      if (this.taskTimer == 0) {
+      if (this.taskTimer <= 0) {
         this.taskTimer = 300;
       }
-      if (this.goalTimer == 0) {
+      if (this.goalTimer <= 0) {
         this.goalTimer = 600;
       }
-    }, 100);
+    }, 1000);
   }
   private changeTasksRotation(
     teams: Team[],
-    currentTasks: Function,
+    currentTasks: (teamId: number, taskRotation: task[]) => task[],
     shuffle: Function,
     taskRotation: task[]
   ) {
     taskRotation = shuffle(taskRotation);
     for (const team of teams) {
-      team.setTask(currentTasks(team.color, taskRotation));
+      team.setTask(currentTasks(team.id, taskRotation));
     }
   }
-  currentTasks(color: string, taskRotation: task[]) {
+  currentTasks(teamId: number, taskRotation: task[]) {
     const task_ret: task[] = [];
     let p = 0;
     for (let i = 0; i < taskRotation.length; i++) {
-      if (!taskRotation[i]["completed"].includes(color) && p != 4) {
+      if (!taskRotation[i]["completed"].includes(teamId) && p != 4) {
         p += 1;
         task_ret.push(taskRotation[i]);
       }
@@ -161,36 +161,32 @@ export default class Game {
     }
     return ret_array;
   }
-  accept_task(color: string, taskName: string): boolean {
-    const teamResponse =
-      this.teams[this.colors.indexOf(color)].accept_task(taskName);
+  accept_task(teamId: number, taskName: string): boolean {
+    const teamResponse = this.teams[teamId].accept_task(taskName);
     if (teamResponse) {
       for (const value of this.taskRotation) {
         if (value.name == taskName) {
-          value.completed.push(color);
+          value.completed.push(teamId);
           return true;
         }
       }
     }
     return false;
   }
-  solve_task(color: string, taskName: string, solution: string): boolean {
-    return this.teams[this.colors.indexOf(color)].solve_task(
-      taskName,
-      solution
-    );
+  solve_task(teamId: number, taskName: string, solution: string): boolean {
+    return this.teams[teamId].solve_task(taskName, solution);
   }
 
   //connecting goals
   setGoal(color: string, connection: string[]) {
     return this.teams[this.colors.indexOf(color)].setGoal(connection);
   }
-  get_goals(color: string) {
-    return this.teams[this.colors.indexOf(color)].goals;
+  get_goals(teamId: number) {
+    return this.teams[teamId].goals;
   }
   check_connection(teamColor: string, connection: string[]) {
     if (
-      this.teams[this.colors.indexOf(teamColor)].citys_connected(connection)
+      this.teams[this.colors.indexOf(teamColor)].citiesConnected(connection)
     ) {
       return true;
     }

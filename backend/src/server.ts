@@ -182,8 +182,15 @@ app.post("/teams/members/add", (req, res) => {
 app.post("/tasks/accept", (req, res) => {
   try {
     const taskName = req.body.task;
-    const teamColor = req.body.color;
-    const gameResponse = game.accept_task(teamColor, taskName);
+    let teamIdString = req.body.teamId as string;
+    let teamId: number;
+    try {
+      teamId = parseInt(teamIdString);
+    } catch (err) {
+      res.status(400);
+      return;
+    }
+    const gameResponse = game.accept_task(teamId, taskName);
     console.log(gameResponse);
     if (gameResponse) {
       res.status(200).json({ outcome: 1 });
@@ -197,8 +204,16 @@ app.post("/tasks/solve", (req, res) => {
   try {
     const solution: string = req.body.solution;
     const task: string = req.body.task;
-    const color: string = req.body.color;
-    const gameResponse = game.solve_task(color, task, solution);
+    let teamIdString = req.body.teamId as string;
+    let teamId: number;
+    try {
+      teamId = parseInt(teamIdString);
+    } catch (err) {
+      res.status(400);
+      return;
+    }
+    console.log(solution);
+    const gameResponse = game.solve_task(teamId, task, solution);
 
     if (gameResponse) {
       res.status(200).json({ correct: 1 });
@@ -219,7 +234,6 @@ app.get("/team/tasks", (req, res) => {
       res.status(400);
       return;
     }
-    console.log("/team/tasks/", teamId);
     res.status(200).json({
       pending: game.get_rotation(teamId),
       accepted: game.get_accepted_tasks(teamId),
@@ -231,10 +245,17 @@ app.get("/team/tasks", (req, res) => {
 
 app.get("/team/goals", (req, res) => {
   try {
-    const color = req.query.teamColor as string;
+    let teamIdString = req.query.teamId as string;
+    let teamId: number;
+    try {
+      teamId = parseInt(teamIdString);
+    } catch (err) {
+      res.status(400);
+      return;
+    }
     res.status(200).json({
-      pending: game.get_goals(color)[0],
-      accepted: game.get_goals(color)[1],
+      pending: game.get_goals(teamId)[0],
+      accepted: game.get_goals(teamId)[1],
     });
   } catch {
     res.status(500);
