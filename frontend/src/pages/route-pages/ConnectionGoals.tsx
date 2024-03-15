@@ -17,6 +17,7 @@ export function Goals() {
   if (data == null || resetTime == null) {
     return <LoadingPage />;
   }
+
   const timer = () => {
     setTimeout(() => {
       setReset(resetGoalTime - 1);
@@ -27,7 +28,7 @@ export function Goals() {
         );
         setReset(resetTime.goal); // needs too wait for new reset time (Doesnt)
       }
-    }, 100);
+    }, 1000);
   };
   timer();
   const pending_goals = data.pending;
@@ -41,8 +42,9 @@ export function Goals() {
       <div className="goal-box">
         <p className="goal-title">accepted</p>
         <div className="goal-grid">
-          {accepted_goals.map((value) => (
+          {accepted_goals.map((value, index) => (
             <AcceptedGoal
+              key={index}
               connection={value.connection}
               distance={value.distance}
               reward={value.reward}
@@ -53,8 +55,9 @@ export function Goals() {
       <div className="goal-box">
         <p className="goal-title">pending</p>
         <div className="goal-grid">
-          {pending_goals.map((value) => (
+          {pending_goals.map((value, index) => (
             <PendingGoals
+              key={index}
               connection={value.connection}
               distance={value.distance}
               reward={value.reward}

@@ -28,7 +28,7 @@ export function Taskmanager() {
         );
         setReset(resetTime.task);
       }
-    }, 100);
+    }, 1000);
   };
   timer();
 
@@ -46,8 +46,8 @@ export function Taskmanager() {
           Angenommene Aufgaben
         </p>
         <div className="task-grid">
-          {accepted_task_arr.map((task_value) => (
-            <section>
+          {accepted_task_arr.map((task_value, index) => (
+            <section key={index}>
               <AcceptedTaskCard
                 name={task_value.name}
                 description={task_value.description}
@@ -62,8 +62,9 @@ export function Taskmanager() {
           Anzunehmende Aufgaben
         </p>
         <div className="task-grid">
-          {pending_task_arr.map((task_value) => (
+          {pending_task_arr.map((task_value, index) => (
             <PendingTaskCard
+              key={index}
               name={task_value.name}
               description={task_value.description}
               data={task_value.data}

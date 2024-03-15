@@ -1,13 +1,13 @@
 import { streetConnection } from "@customTypes/streetConnection";
-import { useLocalStorage } from "./useLocalStorage";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-async function getGoals(api: string, color: string | null) {
+import { useUserContext } from "./useUserContext";
+async function getGoals(api: string, teamId: number | null) {
   const response = await fetch(
     api +
       "?" +
       new URLSearchParams({
-        teamColor: color != null ? color : "",
+        teamId: teamId != null ? teamId.toString() : "",
       }).toString()
   );
   if (!response.ok) {
@@ -28,7 +28,7 @@ export const useGoalData = (): {
   pending: streetConnection[];
   accepted: streetConnection[];
 } | null => {
-  const [localColor] = useLocalStorage<string | null>("team-color", null);
+  const user = useUserContext();
 
   const [goals, setGoals] = useState<{
     pending: streetConnection[];
@@ -36,7 +36,7 @@ export const useGoalData = (): {
   } | null>(null);
   const goalResponse = useQuery({
     queryKey: ["goals"],
-    queryFn: () => getGoals("http://localhost:3000/team/goals", localColor),
+    queryFn: () => getGoals("http://localhost:3000/team/goals", user.teamId),
   });
   useEffect(() => {
     if (goalResponse.isLoading) return;

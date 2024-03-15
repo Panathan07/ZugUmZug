@@ -1,21 +1,22 @@
 import "@assets/css/taskmanager.css";
 import { cardTask } from "@customTypes/gameTask";
-import { useLocalStorage } from "@hooks/useLocalStorage";
+import { useUserContext } from "@hooks/useUserContext";
 import { useMutation } from "@tanstack/react-query";
 import { InvalidateQueryFilters, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
 
 export type acceptedTask = {
-  color: string | null;
+  teamId: number | null;
   task: string;
 };
 export type solvedTask = {
-  color: string | null;
+  teamId: number | null;
   task: string;
   solution: string;
 };
 export function PendingTaskCard({ name, description, data }: cardTask) {
   const queryClient = useQueryClient();
-  const [localColor] = useLocalStorage<string | null>("team-color", null);
+  const user = useUserContext();
   const acceptMutation = useMutation<Response, Error, acceptedTask>({
     mutationFn: acceptTask,
     onError: () => {
@@ -32,8 +33,8 @@ export function PendingTaskCard({ name, description, data }: cardTask) {
       <div className="task">
         <p className="title">{name}</p>
         <p>{description}</p>
-        {data.map((value) => (
-          <a href={taskDataAccess + value} download>
+        {data.map((value, index) => (
+          <a key={index} href={taskDataAccess + value} download>
             {value}
           </a>
         ))}
@@ -41,7 +42,7 @@ export function PendingTaskCard({ name, description, data }: cardTask) {
           className="task-accept"
           onClick={() => {
             acceptMutation.mutate({
-              color: localColor,
+              teamId: user.teamId,
               task: name,
             } as acceptedTask);
           }}
@@ -55,7 +56,7 @@ export function PendingTaskCard({ name, description, data }: cardTask) {
 
 export function AcceptedTaskCard({ name, description, data }: cardTask) {
   const queryClient = useQueryClient();
-  const [localColor] = useLocalStorage<string | null>("team-color", null);
+  const user = useUserContext();
   const solveMutation = useMutation<Response, Error, solvedTask>({
     mutationFn: solveTask,
     onError: () => {
@@ -66,7 +67,7 @@ export function AcceptedTaskCard({ name, description, data }: cardTask) {
     },
   });
   const taskDataAccess: string = "/task-file/";
-  let input_solution: string = "";
+  const [solutionInput, setSolutionInput] = useState("");
   return (
     <>
       <div className="task">
@@ -80,14 +81,17 @@ export function AcceptedTaskCard({ name, description, data }: cardTask) {
         <div>
           <input
             style={{ color: "blue" }}
-            onChange={(event) => (input_solution = event.target.value)}
+            onChange={(event) => {
+              setSolutionInput(event.target.value);
+              console.log(solutionInput);
+            }}
           ></input>
           <button
             onClick={() =>
               solveMutation.mutate({
-                color: localColor,
+                teamId: user.teamId,
                 task: name,
-                solution: input_solution,
+                solution: solutionInput,
               } as solvedTask)
             }
           >
@@ -100,6 +104,7 @@ export function AcceptedTaskCard({ name, description, data }: cardTask) {
 }
 
 async function solveTask(solution: solvedTask) {
+  console.log(solution.solution);
   return await fetch("http://localhost:3000/tasks/solve", {
     method: "POST",
     headers: {
