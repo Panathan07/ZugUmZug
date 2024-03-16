@@ -186,7 +186,8 @@ export default class Team {
       console.log(this.acceptedTasks[i].name, task);
       if (!(this.acceptedTasks[i].name == task)) continue;
       console.log(this.acceptedTasks[i].solution, solution);
-      if (!(this.acceptedTasks[i].solution == solution)) continue;
+        if (!(this.acceptedTasks[i].solution == solution)) continue;
+        this.points +=  this.acceptedTasks[i].reward
       this.acceptedTasks.splice(i, 1);
       return true;
     }

@@ -4,13 +4,15 @@
     "description": "Denkt euch einen Passenden Teamnamen aus",
     "data": [],
     "solution": "123121241",
-    "completed": []
+    "completed": [],
+    "reward" :  10
   },
   "Abc": {
     "name": "Abc",
     "description": "write the first letters of the alphabet",
     "data": [],
     "solution": "abc",
-    "completed": []
+    "completed": [],
+    "reward" :  10
   }
 }
