@@ -263,9 +263,16 @@ app.get("/team/goals", (req, res) => {
 });
 app.post("/team/goals/accept", (req, res) => {
   try {
-    const color = req.body.teamColor as string;
+    let teamIdString = req.body.teamId as string;
+    let teamId: number;
+    try {
+      teamId = parseInt(teamIdString);
+    } catch (err) {
+      res.status(400);
+      return;
+    }
     const connection = req.body.connection as string[];
-    const gameResponse = game.setGoal(color, connection);
+    const gameResponse = game.setGoal(teamId, connection);
     if (gameResponse) {
       res.status(200).json({ status: 1 });
       return;
@@ -277,9 +284,16 @@ app.post("/team/goals/accept", (req, res) => {
 });
 app.post("/team/goals/check", (req, res) => {
   try {
-    const color = req.body.teamColor as string;
+    let teamIdString = req.body.teamId as string;
+    let teamId: number;
+    try {
+      teamId = parseInt(teamIdString);
+    } catch (err) {
+      res.status(400);
+      return;
+    }
     const connection = req.body.connection as string[];
-    const gameResponse = game.check_connection(color, connection);
+    const gameResponse = game.check_connection(teamId, connection);
     console.log(gameResponse);
     if (gameResponse) {
       res.status(200).json({ status: 1 });

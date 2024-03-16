@@ -178,16 +178,14 @@ export default class Game {
   }
 
   //connecting goals
-  setGoal(color: string, connection: string[]) {
-    return this.teams[this.colors.indexOf(color)].setGoal(connection);
+  setGoal(teamId: number, connection: string[]) {
+    return this.teams[teamId].setGoal(connection);
   }
   get_goals(teamId: number) {
     return this.teams[teamId].goals;
   }
-  check_connection(teamColor: string, connection: string[]) {
-    if (
-      this.teams[this.colors.indexOf(teamColor)].citiesConnected(connection)
-    ) {
+  check_connection(teamId: number, connection: string[]) {
+    if (this.teams[teamId].citiesConnected(connection)) {
       return true;
     }
     return false;
