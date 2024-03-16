@@ -32,42 +32,37 @@ export function Taskmanager() {
   };
   timer();
 
-  const pending_task_arr: cardTask[] = data.pending;
-  const accepted_task_arr: cardTask[] = data.accepted;
+  const pendingTasks: cardTask[] = data.pending;
+  const acceptedTasks: cardTask[] = data.accepted;
   return (
     <>
-      <div className="title-box">
-        <p className="title">Aufgaben</p>
-        <p className="title">Aufgaben</p>
+      <div className="task-header">
+        <div className="header">Aufgaben</div>
         <Time time={resetTaskTime} />
       </div>
-      <div className="task-box">
-        <p style={{ fontSize: "17px", display: "inline" }}>
-          Angenommene Aufgaben
-        </p>
-        <div className="task-grid">
-          {accepted_task_arr.map((task_value, index) => (
+      <div className="cards-section accepted-task">
+        <div className="heading">Angenommene Aufgaben</div>
+        <div className="card-grid">
+          {acceptedTasks.map((task, index) => (
             <section key={index}>
               <AcceptedTaskCard
-                name={task_value.name}
-                description={task_value.description}
-                data={task_value.data}
+                name={task.name}
+                description={task.description}
+                data={task.data}
               />
             </section>
           ))}
         </div>
       </div>
-      <div className="task-box">
-        <p style={{ fontSize: "17px", display: "inline" }}>
-          Anzunehmende Aufgaben
-        </p>
-        <div className="task-grid">
-          {pending_task_arr.map((task_value, index) => (
+      <div className="cards-section pending-task">
+        <div className="heading">Verfügbare Aufgaben</div>
+        <div className="card-grid">
+          {pendingTasks.map((task, index) => (
             <PendingTaskCard
               key={index}
-              name={task_value.name}
-              description={task_value.description}
-              data={task_value.data}
+              name={task.name}
+              description={task.description}
+              data={task.data}
             />
           ))}
         </div>
@@ -77,5 +72,5 @@ export function Taskmanager() {
 }
 
 function Time({ time }: { time: number }) {
-  return <p> {time} Sekunden bis zu neuen Aufgaben </p>;
+  return <p className="timer"> {time} Sekunden bis zu neuen Aufgaben </p>;
 }

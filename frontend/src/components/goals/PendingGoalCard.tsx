@@ -5,9 +5,9 @@ import {
   useMutation,
   useQueryClient,
 } from "@tanstack/react-query";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useUserContext } from "@hooks/useUserContext";
 export type acceptedGoal = {
-  teamColor: string;
+  teamId: number | null;
   connection: string[];
 };
 export function PendingGoals({
@@ -16,7 +16,7 @@ export function PendingGoals({
   //   distance,
 }: streetConnection) {
   const queryClient = useQueryClient();
-  const [localcolor] = useLocalStorage<string | null>("team-color", null);
+  const user = useUserContext();
   const acceptGoal = useMutation<Response, Error, acceptedGoal>({
     mutationFn: acceptgoal,
     onError: () => {
@@ -28,22 +28,21 @@ export function PendingGoals({
   });
   return (
     <>
-      <div className="goal">
-        <p className="goal-title">
+      <div className="card">
+        <p className="title">
           Von {connection[0]} zu {connection[1]}
         </p>
-        <br></br>
-        <p className="goal-title">Belohnung : {reward} Siegpunkte</p>
+        <p className="reward">Belohnung : {reward} Siegpunkte</p>
         <button
-          className="button"
+          className="card-button"
           onClick={() =>
             acceptGoal.mutate({
-              teamColor: localcolor as string,
+              teamId: user.teamId,
               connection: connection,
             })
           }
         >
-          accept Goal
+          Annehmen
         </button>
       </div>
     </>

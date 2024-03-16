@@ -30,16 +30,21 @@ export function PendingTaskCard({ name, description, data }: cardTask) {
   const taskDataAccess: string = "/task-file/";
   return (
     <>
-      <div className="task">
+      <div className="card">
         <p className="title">{name}</p>
-        <p>{description}</p>
+        <p className="description">{description}</p>
         {data.map((value, index) => (
-          <a key={index} href={taskDataAccess + value} download>
+          <a
+            className="download"
+            key={index}
+            href={taskDataAccess + value}
+            download
+          >
             {value}
           </a>
         ))}
         <button
-          className="task-accept"
+          className="card-button"
           onClick={() => {
             acceptMutation.mutate({
               teamId: user.teamId,
@@ -47,7 +52,7 @@ export function PendingTaskCard({ name, description, data }: cardTask) {
             } as acceptedTask);
           }}
         >
-          accept
+          Annehmen
         </button>
       </div>
     </>
@@ -60,7 +65,7 @@ export function AcceptedTaskCard({ name, description, data }: cardTask) {
   const solveMutation = useMutation<Response, Error, solvedTask>({
     mutationFn: solveTask,
     onError: () => {
-      alert("An Error occured. Please try again");
+      alert("An Error occurred. Please try again");
     },
     onSettled: () => {
       void queryClient.invalidateQueries("tasks" as InvalidateQueryFilters);
@@ -70,23 +75,30 @@ export function AcceptedTaskCard({ name, description, data }: cardTask) {
   const [solutionInput, setSolutionInput] = useState("");
   return (
     <>
-      <div className="task">
+      <div className="card">
         <p className="title">{name}</p>
-        <p>{description}</p>
-        {data.map((value) => (
-          <a href={taskDataAccess + value} download>
+        <p className="description">{description}</p>
+        {data.map((value, index) => (
+          <a
+            className="download"
+            key={index}
+            href={taskDataAccess + value}
+            download
+          >
             {value}
           </a>
         ))}
-        <div>
+        <div className="solution-field">
           <input
-            style={{ color: "blue" }}
             onChange={(event) => {
               setSolutionInput(event.target.value);
               console.log(solutionInput);
             }}
-          ></input>
+            className="solution-input"
+            placeholder="Lösung..."
+          />
           <button
+            className="submit-solution card-button"
             onClick={() =>
               solveMutation.mutate({
                 teamId: user.teamId,
@@ -95,7 +107,7 @@ export function AcceptedTaskCard({ name, description, data }: cardTask) {
               } as solvedTask)
             }
           >
-            solve
+            Lösen
           </button>
         </div>
       </div>

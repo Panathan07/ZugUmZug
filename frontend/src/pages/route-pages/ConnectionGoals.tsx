@@ -35,13 +35,13 @@ export function Goals() {
   const accepted_goals = data.accepted;
   return (
     <>
-      <div className="title-box">
-        <p className="title">Goals</p>
+      <div className="goal-header">
+        <div className="header">Goals</div>
         <Time time={resetGoalTime} />
       </div>
-      <div className="goal-box">
-        <p className="goal-title">accepted</p>
-        <div className="goal-grid">
+      <div className="cards-section accepted-goals">
+        <div className="heading">Angenommen</div>
+        <div className="card-grid">
           {accepted_goals.map((value, index) => (
             <AcceptedGoal
               key={index}
@@ -52,9 +52,9 @@ export function Goals() {
           ))}
         </div>
       </div>
-      <div className="goal-box">
-        <p className="goal-title">pending</p>
-        <div className="goal-grid">
+      <div className="cards-section pending-goals">
+        <div className="heading">Verfügbar</div>
+        <div className="card-grid">
           {pending_goals.map((value, index) => (
             <PendingGoals
               key={index}
@@ -70,5 +70,5 @@ export function Goals() {
 }
 
 function Time({ time }: { time: number }) {
-  return <p> {time} Sekunden bis zu neuen Aufgaben </p>;
+  return <p className="timer"> {time} Sekunden bis zu neuen Aufgaben </p>;
 }
