@@ -3,10 +3,12 @@ export type task = {
   description: string;
   data: string[];
   solution: string;
-  completed: number[];
+    completed: number[];
+    reward: number; 
 };
 export type cardTask = {
   name: string;
   description: string;
-  data: string[];
+    data: string[];
+  reward : number
 };

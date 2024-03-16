@@ -49,9 +49,10 @@ export function Taskmanager() {
           {accepted_task_arr.map((task_value, index) => (
             <section key={index}>
               <AcceptedTaskCard
-                name={task_value.name}
-                description={task_value.description}
-                data={task_value.data}
+                      name={task_value.name}
+                      description={task_value.description}
+                      data={task_value.data}
+                      reward={task_value.reward}
               />
             </section>
           ))}
@@ -67,7 +68,8 @@ export function Taskmanager() {
               key={index}
               name={task_value.name}
               description={task_value.description}
-              data={task_value.data}
+                  data={task_value.data}
+                  reward={task_value.reward}
             />
           ))}
         </div>
