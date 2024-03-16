@@ -145,7 +145,8 @@ export default class Game {
       ret_array.push({
         name: value.name,
         description: value.description,
-        data: value.data,
+          data: value.data,
+          reward: value.reward
       });
     }
     return ret_array;
@@ -156,7 +157,8 @@ export default class Game {
       ret_array.push({
         name: value.name,
         description: value.description,
-        data: value.data,
+          data: value.data,
+          reward: value.reward
       });
     }
     return ret_array;

@@ -49,6 +49,7 @@ export function Taskmanager() {
                 name={task.name}
                 description={task.description}
                 data={task.data}
+                reward={task.reward}
               />
             </section>
           ))}
@@ -63,6 +64,7 @@ export function Taskmanager() {
               name={task.name}
               description={task.description}
               data={task.data}
+              reward={task.reward}
             />
           ))}
         </div>

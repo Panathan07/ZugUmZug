@@ -14,7 +14,7 @@ export type solvedTask = {
   task: string;
   solution: string;
 };
-export function PendingTaskCard({ name, description, data }: cardTask) {
+export function PendingTaskCard({ name, description, data, reward }: cardTask) {
   const queryClient = useQueryClient();
   const user = useUserContext();
   const acceptMutation = useMutation<Response, Error, acceptedTask>({
@@ -33,6 +33,7 @@ export function PendingTaskCard({ name, description, data }: cardTask) {
       <div className="card">
         <p className="title">{name}</p>
         <p className="description">{description}</p>
+        <p className="reward">Belohnung : {reward}</p>
         {data.map((value, index) => (
           <a
             className="download"
@@ -59,7 +60,12 @@ export function PendingTaskCard({ name, description, data }: cardTask) {
   );
 }
 
-export function AcceptedTaskCard({ name, description, data }: cardTask) {
+export function AcceptedTaskCard({
+  name,
+  description,
+  data,
+  reward,
+}: cardTask) {
   const queryClient = useQueryClient();
   const user = useUserContext();
   const solveMutation = useMutation<Response, Error, solvedTask>({
@@ -78,6 +84,7 @@ export function AcceptedTaskCard({ name, description, data }: cardTask) {
       <div className="card">
         <p className="title">{name}</p>
         <p className="description">{description}</p>
+        <p className="reward">Belohnung : {reward}</p>
         {data.map((value, index) => (
           <a
             className="download"
