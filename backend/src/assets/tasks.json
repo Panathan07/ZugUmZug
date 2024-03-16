@@ -1,18 +1,19 @@
 {
   "TeamName": {
     "name": "TeamName",
-    "description": "Denkt euch einen Passenden Teamnamen aus",
+    "description": "Denkt euch einen Passenden Teamnamen ",
     "data": [],
     "solution": "123121241",
     "completed": [],
-    "reward" :  10
+    "reward": 10
   },
+
   "Abc": {
     "name": "Abc",
     "description": "write the first letters of the alphabet",
     "data": [],
     "solution": "abc",
     "completed": [],
-    "reward" :  10
+    "reward": 10
   }
 }
