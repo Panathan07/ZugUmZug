@@ -1,19 +1,60 @@
 {
-  "TeamName": {
-    "name": "TeamName",
-    "description": "Denkt euch einen Passenden Teamnamen ",
+  "Thermoter": {
+    "name": "Thermometer",
+    "description": "Timmi´s Vater hat sich ein neues Thermometer gekauft, dieses misst jeden Tag die Außentemperatur. Nach zwei Jahr wurde eine Liste der Messungen gespeichert.Gebe die Durchschnitts Temperatur an.(auf 1 Kommastelle gerundet)",
+    "data": [ "temperaturen.txt" ],
+    "solution": "9.7",
+    "completed": [],
+    "reward": 30
+  },
+
+  "Palindroms": {
+    "name": "Palindrome",
+    "description": "Überprüfe ob die Wörter in der Datei Palindrome sind(rückwärts lesen = vorwärts). Gib die Anzahl an Palindromen an.",
+    "data": [ "palindrom-check.txt" ],
+    "solution": "90",
+    "completed": [],
+    "reward": 40
+  },
+  "flower-parts": {
+    "name": "Blume",
+    "description": "Welcher Zahl ist der Begriff `Wurzeln`",
+    "data": [ "Blume-Aufbau.png" ],
+    "solution": "2",
+    "completed": [],
+    "reward": 5
+  },
+  "schnittpunkt": {
+    "name": "linear-Schnittpunkt",
+    "description": "gegeben sind die graphen f(x) = 5 x-2 und g(x) = 3 x finde den Schnittpunkt und gebe ihn so an : `x y`",
     "data": [],
-    "solution": "123121241",
+    "solution": "1 3",
     "completed": [],
     "reward": 10
   },
-
-  "Abc": {
-    "name": "Abc",
-    "description": "write the first letters of the alphabet",
+  "schnittpunkt2": {
+    "name": "exponetial-Schnittpunkt",
+    "description": "gegeben sind die graphen f(x) = 3^(x)-3 und g(x) = g(x) = x^(2)-1 finde den Schnittpunkt und gebe ihn so an : `x y`",
     "data": [],
-    "solution": "abc",
+    "solution": "1 0",
     "completed": [],
     "reward": 10
+  },
+  "EndeWeltkrieg2": {
+    "name": "Wann endete WW2",
+    "description": "Gib das Jahr an in welchem der zweite Weltkrieg endete",
+    "data": [],
+    "solution": "1945",
+    "completed": [],
+    "reward": 5
+  },
+  "endo-exotherm": {
+    "name": "Reaktionstypen",
+    "description": "Heißt eine Reaktion bei der Energie an die Umwelt abgegeben wird a) exotherm oder b) endotherm",
+    "data": [],
+    "solution": "a",
+    "completed": [],
+    "reward": 5
   }
+
 }
