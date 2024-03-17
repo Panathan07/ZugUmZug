@@ -199,11 +199,12 @@ export default class Team {
 
   private timeoutGoals() {
     setInterval(() => {
-      console.log("hey");
-      this.streetGoals = shuffle(this.streetGoals) as streetConnection[];
-      this.currentStreetOptions = [this.streetGoals[0], this.streetGoals[1]];
-      console.log(this.currentStreetOptions);
+      this.shuffleGoals();
     }, 600000);
+  }
+  shuffleGoals() {
+    this.streetGoals = shuffle(this.streetGoals) as streetConnection[];
+    this.currentStreetOptions = [this.streetGoals[0], this.streetGoals[1]];
   }
   citiesConnected(connection: string[]) {
     let roadsDictionary: streetDictionary = {};

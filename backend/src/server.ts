@@ -242,6 +242,16 @@ app.get("/team/tasks", (req, res) => {
     res.status(500);
   }
 });
+app.post("/team/tasks/rotate", (req, res) => {
+  try {
+    game.shuffleTasks();
+    res.status(200).json({
+      successful: true,
+    });
+  } catch {
+    res.status(500);
+  }
+});
 
 app.get("/team/goals", (req, res) => {
   try {
@@ -257,6 +267,23 @@ app.get("/team/goals", (req, res) => {
       pending: game.get_goals(teamId)[0],
       accepted: game.get_goals(teamId)[1],
     });
+  } catch {
+    res.status(500);
+  }
+});
+app.post("/team/goals/rotate", (req, res) => {
+  try {
+    let teamIdString = req.body.teamId as string;
+    let teamId: number;
+    try {
+      teamId = parseInt(teamIdString);
+    } catch (err) {
+      res.status(400);
+      return;
+    }
+    game.teams[teamId].shuffleGoals();
+    res.status(200).json({ status: 1 });
+    return;
   } catch {
     res.status(500);
   }

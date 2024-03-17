@@ -11,10 +11,10 @@ export function NavigationBar() {
   const user = useUserContext();
 
   const links: NavbarLink[] = [
-    { route: "map", description: "Game" },
+    { route: "map", description: "Karte" },
     { route: "shop", description: "Punkteshop" },
-    { route: "taskmanager", description: "Tasks" },
-    { route: "goals", description: "Goals" },
+    { route: "taskmanager", description: "Aufgaben" },
+    { route: "goals", description: "Ziele" },
   ];
 
   if (teams == null || teamsResponse.isLoading) return <LoadingPage />;

@@ -6,7 +6,11 @@ import { AcceptedTaskCard } from "@components/tasks/taskCard";
 import { cardTask } from "@customTypes/gameTask";
 import { useResetTimeData } from "@hooks/useResetTime";
 import { useState } from "react";
-import { InvalidateQueryFilters, useQueryClient } from "@tanstack/react-query";
+import {
+  InvalidateQueryFilters,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 
 export function Taskmanager() {
   const queryClient = useQueryClient();
@@ -15,6 +19,20 @@ export function Taskmanager() {
   const [resetTaskTime, setReset] = useState(
     !(resetTime == null) ? resetTime.task : 0
   );
+  const rotateTasks = useMutation({
+    mutationFn: async () => {
+      return await fetch("http://localhost:3000/team/tasks/rotate", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+    },
+    onSettled: () => {
+      void queryClient.invalidateQueries("teams" as InvalidateQueryFilters);
+    },
+  });
   if (data == null || resetTime == null) {
     return <LoadingPage />;
   }
@@ -40,8 +58,11 @@ export function Taskmanager() {
         <div className="header">Aufgaben</div>
         <Time time={resetTaskTime} />
       </div>
+      <button className="shuffle" onClick={() => rotateTasks.mutate()}>
+        Neu mischen
+      </button>
       <div className="cards-section accepted-task">
-        <div className="heading">Angenommene Aufgaben</div>
+        <div className="heading">Angenommen</div>
         <div className="card-grid">
           {acceptedTasks.map((task, index) => (
             <section key={index}>
@@ -56,7 +77,7 @@ export function Taskmanager() {
         </div>
       </div>
       <div className="cards-section pending-task">
-        <div className="heading">Verfügbare Aufgaben</div>
+        <div className="heading">Verfügbar</div>
         <div className="card-grid">
           {pendingTasks.map((task, index) => (
             <PendingTaskCard

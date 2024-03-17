@@ -4,16 +4,39 @@ import "../../assets/css/goals.css";
 import { PendingGoals } from "../../components/goals/PendingGoalCard";
 import { AcceptedGoal } from "../../components/goals/AcceptedGoalCard";
 import { useResetTimeData } from "../../hooks/useResetTime";
-import { InvalidateQueryFilters, useQueryClient } from "@tanstack/react-query";
+import {
+  InvalidateQueryFilters,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { useState } from "react";
+import { useUserContext } from "@hooks/useUserContext";
 
 export function Goals() {
-  const queryclient = useQueryClient();
+  const queryClient = useQueryClient();
   const data = useGoalData();
   const resetTime = useResetTimeData();
+  const user = useUserContext();
   const [resetGoalTime, setReset] = useState(
     !(resetTime == null) ? resetTime.goal : 0
   );
+  const rotateGoals = useMutation({
+    mutationFn: async () => {
+      return await fetch("http://localhost:3000/team/goals/rotate", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          teamId: user.teamId,
+        }),
+      });
+    },
+    onSettled: () => {
+      void queryClient.invalidateQueries("teams" as InvalidateQueryFilters);
+    },
+  });
   if (data == null || resetTime == null) {
     return <LoadingPage />;
   }
@@ -22,8 +45,8 @@ export function Goals() {
     setTimeout(() => {
       setReset(resetGoalTime - 1);
       if (resetGoalTime <= 0) {
-        void queryclient.invalidateQueries("goals" as InvalidateQueryFilters);
-        void queryclient.invalidateQueries(
+        void queryClient.invalidateQueries("goals" as InvalidateQueryFilters);
+        void queryClient.invalidateQueries(
           "resetTime" as InvalidateQueryFilters
         );
         setReset(resetTime.goal); // needs too wait for new reset time (Doesnt)
@@ -36,9 +59,12 @@ export function Goals() {
   return (
     <>
       <div className="goal-header">
-        <div className="header">Goals</div>
+        <div className="header">Ziele</div>
         <Time time={resetGoalTime} />
       </div>
+      <button className="shuffle" onClick={() => rotateGoals.mutate()}>
+        Neu mischen
+      </button>
       <div className="cards-section accepted-goals">
         <div className="heading">Angenommen</div>
         <div className="card-grid">

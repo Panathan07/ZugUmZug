@@ -65,7 +65,7 @@ export default class Game {
     for (const value of Object.values(jsontask)) {
       this.taskRotation.push(value as task);
     }
-    const price = 15;
+    const price = 5;
     this.colorCardsManager = new ColorCardsManager(price);
     this.start();
   }
@@ -123,6 +123,14 @@ export default class Game {
       team.setTask(currentTasks(team.id, taskRotation));
     }
   }
+  shuffleTasks() {
+    this.changeTasksRotation(
+      this.teams,
+      this.currentTasks,
+      shuffle,
+      this.taskRotation
+    );
+  }
   currentTasks(teamId: number, taskRotation: task[]) {
     const task_ret: task[] = [];
     let p = 0;
@@ -145,8 +153,8 @@ export default class Game {
       ret_array.push({
         name: value.name,
         description: value.description,
-          data: value.data,
-          reward: value.reward
+        data: value.data,
+        reward: value.reward,
       });
     }
     return ret_array;
@@ -157,8 +165,8 @@ export default class Game {
       ret_array.push({
         name: value.name,
         description: value.description,
-          data: value.data,
-          reward: value.reward
+        data: value.data,
+        reward: value.reward,
       });
     }
     return ret_array;
