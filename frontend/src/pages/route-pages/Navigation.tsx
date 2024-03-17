@@ -35,7 +35,12 @@ export function NavigationBar() {
         {user.inTeam && !(user.teamId == null) ? (
           <section className="point-section">
             <div className="point-item">
-              <div className="main-currency">{teams[user.teamId].points}</div>
+              <div className="win-points">
+                {teams[user.teamId].winPoints} Siegpunkte
+              </div>
+            </div>
+            <div className="point-item">
+              <div className="main-currency">{teams[user.teamId].points} P</div>
             </div>
           </section>
         ) : null}

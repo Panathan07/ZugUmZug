@@ -5,6 +5,7 @@ export type Team = {
   name: string;
   color: string;
   points: number;
+  winPoints: number;
   members: User[];
   tasks: string[];
   boughtRoads: {
