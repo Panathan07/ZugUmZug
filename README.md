@@ -39,6 +39,7 @@ Ein Spiel welches sich über die ganze USA abspielt.
   > ```
 
 ### Backend(Server)
+-> add all the Tasks you wich to should be in your game into the backend/src/assets/tasks.json file as seen in the given templates already in this file.
 
 - > go into the console/terminal in the working directory
   >
