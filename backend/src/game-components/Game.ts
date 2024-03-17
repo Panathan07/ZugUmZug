@@ -211,4 +211,16 @@ export default class Game {
     }
     return teamsArray;
   }
+
+  getResults() {
+    let winningTeam: Team = this.teams[0];
+    let maxPoints: number = 0;
+    for (let team of this.teams) {
+      if (team.winPoints > maxPoints) {
+        maxPoints = team.winPoints;
+        winningTeam = team;
+      }
+    }
+    return winningTeam;
+  }
 }

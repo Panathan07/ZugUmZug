@@ -12,6 +12,7 @@ import User, { UserProps, UserReplaceKeyMap } from "#game-components/User";
 import Team from "#game-components/Team";
 import RoadManager from "#game-components/RoadManager";
 import { RoadColor } from "#customTypes/RoadColor";
+import { GameState } from "#customTypes/GameState";
 
 // setting variables
 const port = process.env.PORT || 3000;
@@ -93,6 +94,18 @@ app.get("/game/end", (req, res) => {
   try {
     game.end();
     let json = { state: game.state };
+    res.status(200).json(json);
+  } catch (err) {
+    res.status(500);
+  }
+});
+app.get("/game/results", (req, res) => {
+  try {
+    if (game.state !== GameState.Ended) {
+      res.status(200).json({ team: null });
+      return;
+    }
+    const json = { team: game.getResults() };
     res.status(200).json(json);
   } catch (err) {
     res.status(500);
