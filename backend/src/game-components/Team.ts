@@ -38,9 +38,9 @@ export default class Team {
   streetGoals: streetConnection[];
   currentStreetGoals: streetConnection[];
   currentStreetOptions: streetConnection[];
-  win_points: number;
+  winPoints: number;
   constructor(name: string, color: string, id: number) {
-    this.win_points = 0;
+    this.winPoints = 0;
     this.timeoutGoals();
 
     this.currentStreetGoals = [];
@@ -186,8 +186,8 @@ export default class Team {
       console.log(this.acceptedTasks[i].name, task);
       if (!(this.acceptedTasks[i].name == task)) continue;
       console.log(this.acceptedTasks[i].solution, solution);
-        if (!(this.acceptedTasks[i].solution == solution)) continue;
-        this.points +=  this.acceptedTasks[i].reward
+      if (!(this.acceptedTasks[i].solution == solution)) continue;
+      this.points += this.acceptedTasks[i].reward;
       this.acceptedTasks.splice(i, 1);
       return true;
     }
@@ -224,13 +224,13 @@ export default class Team {
         this.currentStreetGoals[0].connection.includes(connection[0]) &&
         this.currentStreetGoals[0].connection.includes(connection[1])
       ) {
-        this.win_points += this.currentStreetGoals[0].reward;
+        this.winPoints += this.currentStreetGoals[0].reward;
         this.currentStreetGoals.splice(0, 1);
       } else if (
         this.currentStreetGoals[1].connection.includes(connection[0]) &&
         this.currentStreetGoals[1].connection.includes(connection[1])
       ) {
-        this.win_points += this.currentStreetGoals[1].reward;
+        this.winPoints += this.currentStreetGoals[1].reward;
         this.currentStreetGoals.splice(1, 1);
       }
       return true;
