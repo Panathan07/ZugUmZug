@@ -53,3 +53,4 @@ Ein Spiel welches sich über die ganze USA abspielt.
   > ```
   > npm run dev
   > ```
+- currently it only works on local network(so the same wifi for example) may be uptaded in the future
