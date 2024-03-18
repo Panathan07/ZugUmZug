@@ -58,7 +58,7 @@ export function Taskmanager() {
         <div className="header">Aufgaben</div>
         <Time time={resetTaskTime} />
       </div>
-      <button className="shuffle" onClick={() => rotateTasks.mutate()}>
+      <button className="shuffle card-button" onClick={() => rotateTasks.mutate()}>
         Neu mischen
       </button>
       <div className="cards-section accepted-task">
